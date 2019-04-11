@@ -1,0 +1,34 @@
+<Model
+  xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
+  xmlns:s="http://release.niem.gov/niem/structures/4.0/"
+  xmlns="http://reference.niem.gov/specification/metamodel/5.0alpha1">
+  <ObjectProperty mm:name="Model">
+    <DefinitionText>A data model.</DefinitionText>
+    <Class mm:name="ModelType">
+      <DefinitionText>A data type for a data model.</DefinitionText>
+      <HasProperty mm:minOccurs="0"
+                   mm:maxOccurs="unbounded"
+                   mm:sequenceID="1">
+        <ObjectProperty mm:name="ObjectProperty">
+          <DefinitionText>A data type for an object property.</DefinitionText>
+        </ObjectProperty>
+      </HasProperty>
+    </Class>
+  </ObjectProperty>
+  <Property mm:name="Namespace">
+    <Namespace s:ref="mm"/>
+    <DefinitionText>A namespace.</DefinitionText>
+    <Type mm:name="NamespaceType">
+      <DefinitionText>A data type for a namespace.</DefinitionText>
+      <Namespace mm:namespaceURI="http://reference.niem.gov/specification/metamodel/5.0alpha1"
+                 mm:namespacePrefix="mm"
+                 s:id="mm">
+        <DefinitionText>This is a schema for a metamodel for NIEM.</DefinitionText>
+      </Namespace>
+      <Property mm:name="namespaceURI">
+        <Namespace s:ref="mm"/>
+        <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
+      </Property>
+    </Type>
+  </Property>
+</Model>

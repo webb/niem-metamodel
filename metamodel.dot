@@ -1,0 +1,47 @@
+digraph G {
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0];
+  rankdir = LR;
+
+  node [shape=record];
+  
+  Class -> { Namespace HasProperty HasValue SubClassOf };
+  Class [label="\N\l|name\l|DefinitionText\l"];
+  DataProperty -> { Namespace Datatype };
+  DataProperty [label="\N\l|name\l|DefinitionText\l"];
+  Datatype -> { Namespace SubDatatypeOf ListOf UnionOf Facet };
+  Datatype [label="\N\l|name\l|DefinitionText\l"];
+  Facet [shape=ellipse];
+  HasProperty -> Property;
+  HasProperty [label="\N\l|sequenceID?\l|minOccurs\l|maxOccurs\l"];
+  HasValue -> Datatype;
+  ListOf -> Datatype;
+  Model [label="\N\l|Namespace*\l|Class*\l|Datatype*\l|ObjectProperty*\l|DataProperty*\l"];
+  Namespace -> { };
+  Namespace [label="\N\l|namespacePrefix\l|namespaceURI\l|DefinitionText\l"];
+  ObjectProperty -> { Namespace Class SubPropertyOf };
+  ObjectProperty [label="\N\l|name\l|DefinitionText\l"];
+  Property [shape=ellipse];
+  SubClassOf -> Class;
+  SubDatatypeOf -> { Datatype }           
+  SubPropertyOf -> ObjectProperty;
+  UnionOf -> Datatype;
+
+  // facets
+  Length [label="\N\l|value\l|DefinitionText\l"];
+  MinLength [label="\N\l|value\l|DefinitionText\l"];
+  MaxLength [label="\N\l|value\l|DefinitionText\l"];
+  Pattern [label="\N\l|value\l|DefinitionText\l"];
+  Enumeration [label="\N\l|value\l|DefinitionText\l"];
+  WhiteSpace [label="\N\l|value\l|DefinitionText\l"];
+  MaxInclusive [label="\N\l|value\l|DefinitionText\l"];
+  MaxExclusive [label="\N\l|value\l|DefinitionText\l"];
+  MinExclusive [label="\N\l|value\l|DefinitionText\l"];
+  MinInclusive [label="\N\l|value\l|DefinitionText\l"];
+  TotalDigits [label="\N\l|value\l|DefinitionText\l"];
+  FractionDigits [label="\N\l|value\l|DefinitionText\l"];
+
+  edge [dir=back, label="SubPropertyOf"];
+  Property -> { DataProperty ObjectProperty };
+  Facet -> { Length MinLength MaxLength Pattern Enumeration WhiteSpace MaxInclusive MaxExclusive MinExclusive MinInclusive TotalDigits FractionDigits }
+}
