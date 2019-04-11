@@ -49,7 +49,7 @@
   <ObjectProperty mm:name="DataProperty" s:id="DataProperty">
     <DefinitionText>A data type for an object property.</DefinitionText>
   </ObjectProperty>
-  <ObjectProperty xml:base="https://example.org/model/" mm:name="Class" s:id="Class">
+  <ObjectProperty mm:name="Class" s:id="Class">
     <DefinitionText>A data type for a class.</DefinitionText>
   </ObjectProperty>
   <ObjectProperty mm:name="Datatype" s:id="Datatype">
