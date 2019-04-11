@@ -1,10 +1,14 @@
 
-targets = tmp/token/valid-sch/metamodel.xml
+targets = \
+  tmp/token/valid-xsd/metamodel.xml \
+  tmp/token/valid-sch/metamodel.xml \
+  tmp/metamodel.png \
 
 .PHONY: default
-default: ${targets} metamodel.png xsd tmp/metamodel.png
+default: ${targets} xsd 
 
 tmp/metamodel.png: metamodel.dot
+	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<
 
 .PHONY: xsd
@@ -18,6 +22,11 @@ tmp.metamodel.sch.xsl: metamodel.sch functions.xsl
 
 tmp/token/valid-sch/%: % tmp.metamodel.sch.xsl functions.xsl
 	schematron-execute --xslt-file=tmp.metamodel.sch.xsl $<
+	mkdir -p ${dir $@}
+	touch $@
+
+tmp/token/valid-xsd/%: %
+	xs-validate -c xml-catalog.xml $<
 	mkdir -p ${dir $@}
 	touch $@
 

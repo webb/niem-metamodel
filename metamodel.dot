@@ -6,21 +6,21 @@ digraph G {
   node [shape=record];
   
   Class -> { Namespace HasProperty HasValue SubClassOf };
-  Class [label="\N\l|name\l|DefinitionText\l"];
+  Class [label="\N\l|name\lDefinitionText\l"];
   DataProperty -> { Namespace Datatype };
-  DataProperty [label="\N\l|name\l|DefinitionText\l"];
+  DataProperty [label="\N\l|name\lDefinitionText\l"];
   Datatype -> { Namespace SubDatatypeOf ListOf UnionOf Facet };
-  Datatype [label="\N\l|name\l|DefinitionText\l"];
+  Datatype [label="\N\l|name\lDefinitionText\l"];
   Facet [shape=ellipse];
   HasProperty -> Property;
-  HasProperty [label="\N\l|sequenceID?\l|minOccurs\l|maxOccurs\l"];
+  HasProperty [label="\N\l|sequenceID?\lminOccurs\lmaxOccurs\l"];
   HasValue -> Datatype;
   ListOf -> Datatype;
-  Model [label="\N\l|Namespace*\l|Class*\l|Datatype*\l|ObjectProperty*\l|DataProperty*\l"];
+  Model [label="\N\l|Namespace*\lClass*\lDatatype*\lObjectProperty*\lDataProperty*\l"];
   Namespace -> { };
-  Namespace [label="\N\l|namespacePrefix\l|namespaceURI\l|DefinitionText\l"];
+  Namespace [label="\N\l|namespacePrefix\lnamespaceURI\lDefinitionText\l"];
   ObjectProperty -> { Namespace Class SubPropertyOf };
-  ObjectProperty [label="\N\l|name\l|DefinitionText\l"];
+  ObjectProperty [label="\N\l|name\lDefinitionText\l"];
   Property [shape=ellipse];
   SubClassOf -> Class;
   SubDatatypeOf -> { Datatype }           
@@ -28,18 +28,18 @@ digraph G {
   UnionOf -> Datatype;
 
   // facets
-  Length [label="\N\l|value\l|DefinitionText\l"];
-  MinLength [label="\N\l|value\l|DefinitionText\l"];
-  MaxLength [label="\N\l|value\l|DefinitionText\l"];
-  Pattern [label="\N\l|value\l|DefinitionText\l"];
-  Enumeration [label="\N\l|value\l|DefinitionText\l"];
-  WhiteSpace [label="\N\l|value\l|DefinitionText\l"];
-  MaxInclusive [label="\N\l|value\l|DefinitionText\l"];
-  MaxExclusive [label="\N\l|value\l|DefinitionText\l"];
-  MinExclusive [label="\N\l|value\l|DefinitionText\l"];
-  MinInclusive [label="\N\l|value\l|DefinitionText\l"];
-  TotalDigits [label="\N\l|value\l|DefinitionText\l"];
-  FractionDigits [label="\N\l|value\l|DefinitionText\l"];
+  Length [label="\N\l|value\lDefinitionText\l"];
+  MinLength [label="\N\l|value\lDefinitionText\l"];
+  MaxLength [label="\N\l|value\lDefinitionText\l"];
+  Pattern [label="\N\l|value\lDefinitionText\l"];
+  Enumeration [label="\N\l|value\lDefinitionText\l"];
+  WhiteSpace [label="\N\l|value\lDefinitionText\l"];
+  MaxInclusive [label="\N\l|value\lDefinitionText\l"];
+  MaxExclusive [label="\N\l|value\lDefinitionText\l"];
+  MinExclusive [label="\N\l|value\lDefinitionText\l"];
+  MinInclusive [label="\N\l|value\lDefinitionText\l"];
+  TotalDigits [label="\N\l|value\lDefinitionText\l"];
+  FractionDigits [label="\N\l|value\lDefinitionText\l"];
 
   edge [dir=back, label="SubPropertyOf"];
   Property -> { DataProperty ObjectProperty };

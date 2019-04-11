@@ -1,34 +1,58 @@
 <Model
   xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
   xmlns:s="http://release.niem.gov/niem/structures/4.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xml:base="https://example.org/2/"
   xmlns="http://reference.niem.gov/specification/metamodel/5.0alpha1">
   <ObjectProperty mm:name="Model">
     <DefinitionText>A data model.</DefinitionText>
     <Class mm:name="ModelType">
       <DefinitionText>A data type for a data model.</DefinitionText>
-      <HasProperty mm:minOccurs="0"
-                   mm:maxOccurs="unbounded"
-                   mm:sequenceID="1">
-        <ObjectProperty mm:name="ObjectProperty">
-          <DefinitionText>A data type for an object property.</DefinitionText>
-        </ObjectProperty>
+      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
+        <ObjectProperty s:ref="Namespace"/>
+      </HasProperty>
+      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
+        <ObjectProperty s:ref="ObjectProperty"/>
+      </HasProperty>
+      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
+        <ObjectProperty s:ref="DataProperty"/>
+      </HasProperty>
+      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
+        <ObjectProperty s:ref="Class"/>
+      </HasProperty>
+      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
+        <ObjectProperty s:ref="Datatype"/>
       </HasProperty>
     </Class>
   </ObjectProperty>
-  <Property mm:name="Namespace">
+  <Namespace mm:namespaceURI="http://reference.niem.gov/specification/metamodel/5.0alpha1"
+             mm:namespacePrefix="mm"
+             s:id="mm">
+    <DefinitionText>This is a schema for a metamodel for NIEM.</DefinitionText>
+  </Namespace>
+  <ObjectProperty mm:name="Namespace" s:id="Namespace">
     <Namespace s:ref="mm"/>
     <DefinitionText>A namespace.</DefinitionText>
-    <Type mm:name="NamespaceType">
-      <DefinitionText>A data type for a namespace.</DefinitionText>
-      <Namespace mm:namespaceURI="http://reference.niem.gov/specification/metamodel/5.0alpha1"
-                 mm:namespacePrefix="mm"
-                 s:id="mm">
-        <DefinitionText>This is a schema for a metamodel for NIEM.</DefinitionText>
-      </Namespace>
-      <Property mm:name="namespaceURI">
-        <Namespace s:ref="mm"/>
-        <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
-      </Property>
-    </Type>
-  </Property>
+    <Class>
+      <HasProperty>
+        <DataProperty mm:name="namespaceURI">
+          <Namespace s:uri="#mm"/>
+          <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
+          <Datatype s:uri="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        </DataProperty>
+      </HasProperty>
+    </Class>
+  </ObjectProperty>
+  <ObjectProperty mm:name="ObjectProperty" s:id="ObjectProperty">
+    <DefinitionText>A data type for an object property.</DefinitionText>
+  </ObjectProperty>
+  <ObjectProperty mm:name="DataProperty" s:id="DataProperty">
+    <DefinitionText>A data type for an object property.</DefinitionText>
+  </ObjectProperty>
+  <ObjectProperty xml:base="https://example.org/model/" mm:name="Class" s:id="Class">
+    <DefinitionText>A data type for a class.</DefinitionText>
+  </ObjectProperty>
+  <ObjectProperty mm:name="Datatype" s:id="Datatype">
+    <DefinitionText>A data type for a datatype.</DefinitionText>
+  </ObjectProperty>
 </Model>

@@ -30,17 +30,21 @@
   <element name="Namespace" substitutionGroup="mm:ModelComponent">
     <complexType>
       <sequence>
+        <element ref="mm:Namespace" minOccurs="0"/>
+        <element ref="mm:DefinitionText" minOccurs="0"/>
       </sequence>
-      <attribute name="namespaceURI" type="anyURI" use="required"/>
-      <attribute name="namespacePrefix" type="NCName" use="required"/>
+      <attribute name="namespaceURI" type="anyURI"/>
+      <attribute name="namespacePrefix" type="NCName"/>
+      <attribute ref="structures:id"/>
+      <attribute ref="structures:ref"/>
     </complexType>
   </element>
 
   <element name="Class" substitutionGroup="mm:ModelComponent">
     <complexType>
       <sequence>
-        <element ref="mm:DefinitionText"/>
-        <element name="SubClassOf">
+        <element ref="mm:DefinitionText" minOccurs="0"/>
+        <element name="SubClassOf" minOccurs="0">
           <complexType>
             <sequence>
               <element ref="mm:Class"/>
@@ -56,40 +60,45 @@
         </element>
         <element ref="mm:HasProperty" minOccurs="0" maxOccurs="unbounded"/>
       </sequence>
-      <attribute name="name" type="NCName" use="required"/>
+      <attribute name="name" type="NCName"/>
     </complexType>
   </element>
 
   <element name="Datatype" substitutionGroup="mm:ModelComponent">
     <complexType>
       <sequence>
-        <element ref="mm:DefinitionText"/>
+        <element ref="mm:DefinitionText" minOccurs="0"/>
       </sequence>
-      <attribute name="name" type="NCName" use="required"/>
+      <attribute name="name" type="NCName"/>
+      <attribute ref="structures:uri"/>
     </complexType>
   </element>
 
   <element name="Property" abstract="true" substitutionGroup="mm:ModelComponent">
   </element>
 
-  <element name="ObjectProperty" substitutionGroup="mm:Property">
+  <element name="ObjectProperty" substitutionGroup="mm:Property"
+           nillable="true">
     <complexType>
       <sequence>
-        <element ref="mm:DefinitionText"/>
-        <element ref="mm:Class"/>
+        <element ref="mm:Namespace" minOccurs="0"/>
+        <element ref="mm:DefinitionText" minOccurs="0"/>
+        <element ref="mm:Class" minOccurs="0"/>
       </sequence>
-      <attribute name="name" type="NCName" use="required"/>
+      <attribute name="name" type="NCName"/>
+      <attribute ref="structures:id"/>
+      <attribute ref="structures:ref"/>
     </complexType>
   </element>
 
-  <element name="HasProperty" abstract="true">
+  <element name="HasProperty">
     <complexType>
       <sequence>
         <element ref="mm:Property"/>
       </sequence>
       <attribute name="sequenceID" type="integer"/>
-      <attribute name="minOccurs" type="integer" use="required"/>
-      <attribute name="maxOccurs" use="required">
+      <attribute name="minOccurs" type="integer"/>
+      <attribute name="maxOccurs">
         <simpleType>
           <union memberTypes="integer">
             <simpleType>
@@ -106,7 +115,9 @@
   <element name="DataProperty" substitutionGroup="mm:Property">
     <complexType>
       <sequence>
-        <element ref="mm:DefinitionText"/>
+        <element ref="mm:Namespace" minOccurs="0"/>
+        <element ref="mm:DefinitionText" minOccurs="0"/>
+        <element ref="mm:Datatype" minOccurs="0"/>
       </sequence>
       <attribute name="name" type="NCName" use="required"/>
     </complexType>

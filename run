@@ -1,0 +1,2 @@
+
+exec 3>&1 && make 2>&1 | tee /dev/fd/3 | emacsclientgrep
