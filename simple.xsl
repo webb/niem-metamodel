@@ -12,18 +12,36 @@
 
   <import href="functions.xsl"/>
 
-  <template match="//*[exists(@structures:ref)]">
-    <message>@structures:ref=<value-of select="@structures:ref"/>&#10; resolves to <value-of select="f:get-uri(.)"/></message>
-    <apply-templates/>
-  </template>
-
-  <template match="//*[exists(@structures:id)]">
-    <message>@structures:id=<value-of select="@structures:id"/>&#10; resolves to <value-of select="f:get-uri(.)"/></message>
-    <apply-templates/>
-  </template>
-
-  <template match="//*[exists(@structures:uri)]">
-    <message>@structures:uri=<value-of select="@structures:uri"/>&#10; resolves to <value-of select="f:get-uri(.)"/></message>
+  <template match="//*[exists(@structures:ref or @structures:id or @structures:uri)]">
+    <message>
+      <text>object id </text>
+      <value-of select="generate-id(.)"/>
+      <text> uri </text>
+      <value-of select="f:get-uri(.)"/>
+      <text> matches objects:&#10;</text>
+      <for-each select="f:collect-objects(.)">
+        <text>  id </text>
+        <value-of select="generate-id(.)"/>
+        <text> uri </text>
+        <value-of select="f:get-uri(.)"/>
+        <text>&#10;</text>
+      </for-each>
+      <text>properties:&#10;</text>
+      <for-each select="f:collect-properties-test(.)">
+        <choose>
+          <when test="self::element()">
+            <text>  element </text>
+            <value-of select="node-name(.)"/>
+            <text>&#10;</text>
+          </when>
+          <when test="self::attribute()">
+            <text>  attribute </text>
+            <value-of select="node-name(.)"/>
+            <text>&#10;</text>
+          </when>
+        </choose>
+      </for-each>
+    </message>
     <apply-templates/>
   </template>
 

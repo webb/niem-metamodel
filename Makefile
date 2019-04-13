@@ -7,6 +7,10 @@ targets = \
 .PHONY: default
 default: ${targets} xsd 
 
+tmp/restacked.xml: metamodel.xml restack.xsl functions.xsl
+	mkdir -p ${dir $@}
+	saxon --in=$< --out=$@ --xsl=restack.xsl
+
 tmp/metamodel.png: metamodel.dot
 	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<

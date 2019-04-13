@@ -1,8 +1,8 @@
 <Model
   xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
+  xml:base="http://reference.niem.gov/specification/metamodel/5.0alpha1"
   xmlns:s="http://release.niem.gov/niem/structures/4.0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xml:base="https://example.org/2/"
   xmlns="http://reference.niem.gov/specification/metamodel/5.0alpha1">
   <ObjectProperty mm:name="Model">
     <DefinitionText>A data model.</DefinitionText>
@@ -47,7 +47,7 @@
     <DefinitionText>A data type for an object property.</DefinitionText>
   </ObjectProperty>
   <ObjectProperty mm:name="DataProperty" s:id="DataProperty">
-    <DefinitionText>A data type for an object property.</DefinitionText>
+    <DefinitionText>A data type for a data property.</DefinitionText>
   </ObjectProperty>
   <ObjectProperty mm:name="Class" s:id="Class">
     <DefinitionText>A data type for a class.</DefinitionText>
