@@ -10,11 +10,9 @@ digraph G {
   Namespace [label="\N\l|NamespaceURI\lNamespacePrefix\lDefinitionText\l"];
 
   Class [label="\N\l|Name\lNamespace\lDefinitionText\l"];
-  ExtensionOf [label="\N\l"];
   Class -> ExtensionOf:w [dir=both];
-  Class -> HasDataProperty;
-  Class -> HasObjectProperty;
-  Class -> HasValue;
+  ExtensionOf [label="\N\l"];
+  ExtensionOf -> { HasDataProperty HasObjectProperty HasValue};
   
   HasObjectProperty [label="\N\l|SequenceID\lMinOccurs\lObjectPropertyMaxOccurs\l"];
   HasObjectProperty -> ObjectProperty;
