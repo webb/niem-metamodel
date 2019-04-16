@@ -1,11 +1,17 @@
 
+png_target_files = ${patsubst %.dot,tmp/%.png,${wildcard *.dot}}
+
 targets = \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
+  ${png_target_files} \
   tmp/metamodel.png \
 
 .PHONY: default
 default: ${targets} xsd 
+
+.PHONY: png
+png: ${png_target_files}
 
 .PHONY: vxsd
 vxsd: tmp/token/valid-xsd/metamodel.xml

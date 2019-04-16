@@ -5,18 +5,18 @@ digraph G {
 
   node [shape=record];
   
-  NamespaceReference [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
+  Namespace [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
 
-  ClassReference [label="\N\l|Name\l"];
-  ClassReference -> NamespaceReference;
+  Class [label="\N\l|Name\l"];
+  Class -> Namespace;
 
-  ObjectPropertyReference [label="\N\l|Name\l"];
-  ObjectPropertyReference -> NamespaceReference;
+  ObjectProperty [label="\N\l|Name\l"];
+  ObjectProperty -> Namespace;
                           
-  DataPropertyReference [label="\N\l|Name\l"];
-  DataPropertyReference -> NamespaceReference;
+  DataProperty [label="\N\l|Name\l"];
+  DataProperty -> Namespace;
   
-  DatatypeReference [label="\N\l|Name\l"];
-  DatatypeReference -> NamespaceReference;
+  Datatype [label="\N\l|Name\l"];
+  Datatype -> Namespace;
   
 }

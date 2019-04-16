@@ -8,80 +8,85 @@ digraph G {
   /** ============================================================ **/
   /** Model **/
 
-  Model [label="\N\l|NamespaceReference*\lObjectPropertyReference*\lClassReference*\lDataPropertyReference*\lDatatypeReference*\l"];
+  Model [label="\N\l|Namespace*\lObjectProperty*\lClass*\lDataProperty*\lDatatype*\l"];
 
   /** ============================================================ **/
   /** References **/
 
-  NamespaceReference [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
+  Namespace [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
 
-  ClassReference [label="\N\l|Name\l"];
-  ClassReference -> NamespaceReference;
-
-  ObjectPropertyReference [label="\N\l|Name\l"];
-  ObjectPropertyReference -> NamespaceReference;
+  ObjectProperty [label="\N\l|Name\l"];
+  ObjectProperty -> Namespace;
                           
-  DataPropertyReference [label="\N\l|Name\l"];
-  DataPropertyReference -> NamespaceReference;
+  Class [label="\N\l|Name\l"];
+  Class -> Namespace;
+
+  DataProperty [label="\N\l|Name\l"];
+  DataProperty -> Namespace;
   
-  DatatypeReference [label="\N\l|Name\l"];
-  DatatypeReference -> NamespaceReference;
+  Datatype [label="\N\l|Name\l"];
+  Datatype -> Namespace;
+
+  // binding references to definitions
+
+  Namespace -> NamespaceDefinition [dir=back,label="SubPropertyOf"];
+  ObjectProperty -> ObjectPropertyDefinition [dir=back,label="SubPropertyOf"];
+  Class -> ClassDefinition [dir=back,label="SubPropertyOf"];
+  DataProperty -> DataPropertyDefinition [dir=back,label="SubPropertyOf"];
+  Datatype -> DatatypeDefinition [dir=back,label="SubPropertyOf"];
 
   /** ============================================================ **/
   /** Definitions **/
 
-  Namespace [label="\N\l|DefinitionText\l"];
+  NamespaceDefinition [label="\N\l|DefinitionText\l"];
   
-  NamespaceReference -> Namespace [label="SubPropertyOf",dir=back];
+  // object property ///////////////////////////////////////////////////////
 
-  ClassReference [label="\N\l|Name\lNamespace\l"];
-  Class [label="\N\l|DefinitionText\l"];
-  ClassReference -> Class [dir=back, label="SubPropertyOf"];
-  Class -> ExtensionOf:w;
-  ExtensionOf [label="\N\l"];
-  ExtensionOf -> { ClassReference HasDataProperty HasObjectProperty HasValue};
-  
-  HasObjectProperty [label="\N\l|SequenceID\lMinOccurs\lObjectPropertyMaxOccurs\l"];
-  HasObjectProperty -> ObjectPropertyReference;
-
-  ObjectPropertyReference [label="\N\l|Name\lNamespace\l"];
-  ObjectProperty -> SubPropertyOf;
-  
-  ObjectProperty [label="\N\l|DefinitionText\l"];
-  ObjectPropertyReference -> ObjectProperty [dir=back, label=SubPropertyOf];
-  ObjectProperty -> ClassReference;
+  ObjectPropertyDefinition [label="\N\l|DefinitionText\l"];
+  ObjectPropertyDefinition -> SubPropertyOf;
+  ObjectProperty -> Class;
 
   SubPropertyOf [label="\N\l"];
-  SubPropertyOf -> ObjectPropertyReference;
+  SubPropertyOf -> ObjectProperty;
 
-  HasDataProperty [label="\N\l|MinOccurs\lDataPropertyMaxOccurs\l"];
-  HasDataProperty -> DataPropertyReference;
+  // class ///////////////////////////////////////////////////////
+  
+  ClassDefinition [label="\N\l|DefinitionText\l"];
+  ClassDefinition -> ExtensionOf:w;
 
-  DataPropertyReference [label="\N\l|Name\lNamespace\l"];
-  DataProperty [label="\N\l|DefinitionText\l"];
-  DataPropertyReference -> DataProperty [dir=back,label=SubPropertyOf];
-  
-  DataProperty -> DatatypeReference;
-  
-  DatatypeReference [label="\N\l|Name\lNamespace\l"];
-  Datatype [label="\N\l|DefinitionText\l"];
-  DatatypeReference -> Datatype [label=SubPropertyof,dir=back];
-  Datatype -> ListOf;
-  Datatype -> UnionOf;
-  Datatype -> RestrictionOf;
+  ExtensionOf [label="\N\l"];
+  ExtensionOf -> { Class HasValue HasObjectProperty HasDataProperty };
 
   HasValue [label="\N\l"];
-  HasValue -> DatatypeReference;
+  HasValue -> Datatype;
+  
+  HasObjectProperty [label="\N\l|SequenceID\lMinOccurs\lObjectPropertyMaxOccurs\l"];
+  HasObjectProperty -> ObjectProperty;
+
+  HasDataProperty [label="\N\l|MinOccurs\lDataPropertyMaxOccurs\l"];
+  HasDataProperty -> DataProperty;
+
+  // data property ///////////////////////////////////////////////////////
+
+  DataPropertyDefinition [label="\N\l|DefinitionText\l"];
+  DataPropertyDefinition -> Datatype;
+  
+  // datatype ///////////////////////////////////////////////////////
+
+  DatatypeDefinition [label="\N\l|DefinitionText\l"];
+  DatatypeDefinition -> ListOf;
+  DatatypeDefinition -> UnionOf;
+  DatatypeDefinition -> RestrictionOf;
 
   ListOf [label="\N\l"];
-  ListOf -> DatatypeReference;
+  ListOf -> Datatype;
   UnionOf [label="\N\l"];
-  UnionOf -> DatatypeReference;
-
+  UnionOf -> Datatype;
   RestrictionOf [label="\N\l"];
-  RestrictionOf -> { Facet DatatypeReference };
+  RestrictionOf -> { Facet Datatype };
 
-  // facets
+  // facets ///////////////////////////////////////////////////////
+
   Facet [label="\N\l"];
   Length [label="\N\l|Value\lDefinitionText\l"];
   MinLength [label="\N\l|Value\lDefinitionText\l"];

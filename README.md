@@ -16,6 +16,16 @@ Primarily uses terms from RDFS and OWL.
 - SubClassOf
 - SubPropertyOf
 
+# Order
+
+Consistently use this order:
+
+1. Namespace
+2. ObjectProperty
+3. Class
+4. DataProperty
+5. Datatype
+
 # Versioning
 
 - Later: 
