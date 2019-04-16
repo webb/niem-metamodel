@@ -1,11 +1,10 @@
 
-png_target_files = ${patsubst %.dot,tmp/%.png,${wildcard *.dot}}
+png_target_files = ${patsubst %.dot,%.png,${wildcard *.dot}}
 
 targets = \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
   ${png_target_files} \
-  tmp/metamodel.png \
 
 .PHONY: default
 default: ${targets} xsd 
@@ -27,8 +26,7 @@ tmp/restacked.xml: metamodel.xml restack.xsl functions.xsl
 	mkdir -p ${dir $@}
 	saxon --in=$< --out=$@ --xsl=restack.xsl
 
-tmp/%.png: %.dot
-	mkdir -p ${dir $@}
+%.png: %.dot
 	dot -Tpng -o$@ $<
 
 .PHONY: xsd
