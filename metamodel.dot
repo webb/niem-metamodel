@@ -5,40 +5,55 @@ digraph G {
 
   node [shape=Mrecord];
   
-  Model [label="\N\l|Namespace*\lClass*\lDatatype*\lObjectProperty*\lDataProperty*\l"];
+  // model ///////////////////////////////////////////////////////////////////
 
-  Namespace [label="\N\l|NamespaceURI\lNamespacePrefix\lDefinitionText\l"];
+  Model [label="\N\l|- Namespace*\l- ObjectProperty*\l- Class*\l- DataProperty*\l- Datatype*\l"];
 
-  Class [label="\N\l|Name\lNamespace\lDefinitionText\l"];
-  Class -> ExtensionOf:w [dir=both];
-  ExtensionOf [label="\N\l"];
-  ExtensionOf -> { HasDataProperty HasObjectProperty HasValue};
-  
-  HasObjectProperty [label="\N\l|SequenceID\lMinOccurs\lObjectPropertyMaxOccurs\l"];
-  HasObjectProperty -> ObjectProperty;
+  // namespace ///////////////////////////////////////////////////////
 
-  ObjectProperty [label="\N\l|Name\lNamespace\lDefinitionText\l"];
-  ObjectProperty -> Class;
-  ObjectProperty -> SubPropertyOf [dir=both];
+  Namespace [label="<ref>\N\l- NamespaceURI\l- NamespacePrefix\l|<def>\NDefinition\l- DefinitionText\l"];
+
+  Model -> Namespace [style = invis];
+
+  // object property ///////////////////////////////////////////////////////
+
+  ObjectProperty [label="<ref>\N\l- Name\l- Namespace\l|<def>\NDefinition\l- DefinitionText\l"];
+  ObjectProperty:def -> Class;
+  ObjectProperty:def:s -> SubPropertyOf [dir=both] [taillabel="0-1"];
 
   SubPropertyOf [label="\N\l"];
 
-  HasDataProperty [label="\N\l|MinOccurs\lDataPropertyMaxOccurs\l"];
-  HasDataProperty -> DataProperty;
+  // class ///////////////////////////////////////////////////////
 
-  DataProperty [label="\N\l|Name\lNamespace\lDefinitionText\l"];
+  Class [label="<ref>\N\l- Name\l- Namespace\l|<def>\NDefinition\l- DefinitionText\l"];
+  Class:def -> ExtensionOf [dir=both];
+  ExtensionOf [label="\N\l"];
+  ExtensionOf -> { HasDataProperty HasObjectProperty } [taillabel="0-n"];
+  ExtensionOf -> HasValue [taillabel="0-1"];
   
-  DataProperty -> Datatype;
+  HasValue [label="\N\l"];
+  HasValue -> Datatype:ref;
+
+  HasObjectProperty [label="\N\l- SequenceID\l- MinOccurs\l- ObjectPropertyMaxOccurs\l"];
+  HasObjectProperty:w -> ObjectProperty:ref:n;
+
+  HasDataProperty [label="\N\l- MinOccurs\l- DataPropertyMaxOccurs\l"];
+  HasDataProperty -> DataProperty:ref;
+
+  // data property ///////////////////////////////////////////////////////
+
+  DataProperty [label="<ref>\N\l- Name\l- Namespace\l|<def>\NDefinition\l- DefinitionText\l"];
+  DataProperty:def -> Datatype:ref;
   
-  Datatype [label="\N\l|Name\lNamespace\lDefinitionText\l"];
+  // datatype ///////////////////////////////////////////////////////
+
+  Datatype [label="<ref>\N\l- Name\l- Namespace\l|<def>\NDefinition\l- DefinitionText\l"];
   Datatype -> ListOf [dir=both];
   Datatype -> UnionOf [dir=both];
   Datatype -> RestrictionOf [dir=both];
 
-  HasValue [label="\N\l"];
-  HasValue -> Datatype;
-
   ListOf [label="\N\l"];
+
   UnionOf [label="\N\l"];
 
   RestrictionOf [label="\N\l"];
