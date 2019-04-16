@@ -7,11 +7,21 @@ targets = \
 .PHONY: default
 default: ${targets} xsd 
 
+.PHONY: vxsd
+vxsd: tmp/token/valid-xsd/metamodel.xml
+
+.PHONY: sch
+sch: tmp/token/valid-sch/metamodel.xml
+
+tmp/augmented.xml: tmp/restacked.xml augment.xsl functions.xsl
+	mkdir -p ${dir $@}
+	saxon --in=$< --out=$@ --xsl=augment.xsl
+
 tmp/restacked.xml: metamodel.xml restack.xsl functions.xsl
 	mkdir -p ${dir $@}
 	saxon --in=$< --out=$@ --xsl=restack.xsl
 
-tmp/metamodel.png: metamodel.dot
+tmp/%.png: %.dot
 	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<
 

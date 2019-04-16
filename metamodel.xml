@@ -1,58 +1,152 @@
 <Model
   xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
-  xml:base="http://reference.niem.gov/specification/metamodel/5.0alpha1"
   xmlns:s="http://release.niem.gov/niem/structures/4.0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://reference.niem.gov/specification/metamodel/5.0alpha1">
-  <ObjectProperty mm:name="Model">
-    <DefinitionText>A data model.</DefinitionText>
-    <Class mm:name="ModelType">
-      <DefinitionText>A data type for a data model.</DefinitionText>
-      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
-        <ObjectProperty s:ref="Namespace"/>
-      </HasProperty>
-      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
-        <ObjectProperty s:ref="ObjectProperty"/>
-      </HasProperty>
-      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
-        <ObjectProperty s:ref="DataProperty"/>
-      </HasProperty>
-      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
-        <ObjectProperty s:ref="Class"/>
-      </HasProperty>
-      <HasProperty mm:minOccurs="0" mm:maxOccurs="unbounded" mm:sequenceID="1">
-        <ObjectProperty s:ref="Datatype"/>
-      </HasProperty>
-    </Class>
-  </ObjectProperty>
-  <Namespace mm:namespaceURI="http://reference.niem.gov/specification/metamodel/5.0alpha1"
-             mm:namespacePrefix="mm"
-             s:id="mm">
+  <Namespace s:id="mm">
+    <NamespaceURI>http://reference.niem.gov/specification/metamodel/5.0alpha1</NamespaceURI>
+    <NamespacePrefix>mm</NamespacePrefix>
     <DefinitionText>This is a schema for a metamodel for NIEM.</DefinitionText>
   </Namespace>
-  <ObjectProperty mm:name="Namespace" s:id="Namespace">
-    <Namespace s:ref="mm"/>
-    <DefinitionText>A namespace.</DefinitionText>
+  <NamespaceReference s:id="structures">
+    <NamespaceURI>http://release.niem.gov/niem/structures/4.0/</NamespaceURI>
+    <NamespacePrefix>structures</NamespacePrefix>
+  </NamespaceReference>
+  <NamespaceReference s:id="xs-proxy">
+    <NamespaceURI>http://release.niem.gov/niem/proxy/xsd/4.0/</NamespaceURI>
+    <NamespacePrefix>xs-proxy</NamespacePrefix>
+  </NamespaceReference>
+  <ObjectProperty>
+    <Name>Model</Name>
+    <Namespace s:ref="mm" xsi:nil="true"/>
+    <DefinitionText>A data model.</DefinitionText>
     <Class>
-      <HasProperty>
-        <DataProperty mm:name="namespaceURI">
-          <Namespace s:uri="#mm"/>
-          <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
-          <Datatype s:uri="http://www.w3.org/2001/XMLSchema#anyURI"/>
-        </DataProperty>
-      </HasProperty>
+      <Name>ModelType</Name>
+      <Namespace s:ref="mm" xsi:nil="true"/>
+      <DefinitionText>A data type for a data model.</DefinitionText>
+      <ExtensionOf>
+        <Class>
+          <Name>ObjectType</Name>
+          <NamespaceReference s:ref="structures" xsi:nil="true"/>
+        </Class>
+        <HasObjectProperty>
+          <SequenceID>1</SequenceID>
+          <MinOccurs>0</MinOccurs>
+          <ObjectPropertyMaxOccurs>unbounded</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="Namespace" xsi:nil="true"/>
+        </HasObjectProperty>
+        <HasObjectProperty>
+          <SequenceID>2</SequenceID>
+          <MinOccurs>0</MinOccurs>
+          <ObjectPropertyMaxOccurs>unbounded</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="ObjectProperty" xsi:nil="true"/>
+        </HasObjectProperty>
+        <HasObjectProperty>
+          <SequenceID>3</SequenceID>
+          <MinOccurs>0</MinOccurs>
+          <ObjectPropertyMaxOccurs>unbounded</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="Class" xsi:nil="true"/>
+        </HasObjectProperty>
+        <HasObjectProperty>
+          <SequenceID>4</SequenceID>
+          <MinOccurs>0</MinOccurs>
+          <ObjectPropertyMaxOccurs>unbounded</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="DataProperty" xsi:nil="true"/>
+        </HasObjectProperty>
+        <HasObjectProperty>
+          <SequenceID>5</SequenceID>
+          <MinOccurs>0</MinOccurs>
+          <ObjectPropertyMaxOccurs>unbounded</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
+        </HasObjectProperty>
+      </ExtensionOf>
     </Class>
   </ObjectProperty>
-  <ObjectProperty mm:name="ObjectProperty" s:id="ObjectProperty">
-    <DefinitionText>A data type for an object property.</DefinitionText>
+  <ObjectProperty s:id="Name">
+    <Name>Name</Name>
+    <Namespace s:ref="mm" xsi:nil="true"/>
+    <DefinitionText>A name.</DefinitionText>
+    <ClassReference>
+      <Name>NCName</Name>
+      <NamespaceReference s:ref="xs-proxy" xsi:nil="true"/>
+    </ClassReference>
   </ObjectProperty>
-  <ObjectProperty mm:name="DataProperty" s:id="DataProperty">
-    <DefinitionText>A data type for a data property.</DefinitionText>
+  <ObjectProperty s:id="Namespace">
+    <Name>Namespace</Name>
+    <Namespace s:ref="mm" xsi:nil="true"/>
+    <DefinitionText>A namespace.</DefinitionText>
+    <Class>
+      <Name>NamespaceType</Name>
+      <Namespace s:ref="mm" xsi:nil="true"/>
+      <DefinitionText>A data type for a namespace</DefinitionText>
+      <ExtensionOf>
+        <ClassReference>
+          <Name>ObjectType</Name>
+          <NamespaceReference s:ref="structures" xsi:nil="true"/>
+        </ClassReference>
+        <HasObjectProperty>
+          <SequenceID>1</SequenceID>
+          <MinOccurs>1</MinOccurs>
+          <ObjectPropertyMaxOccurs>1</ObjectPropertyMaxOccurs>
+          <ObjectProperty>
+            <Name>NamespaceURI</Name>
+            <Namespace s:ref="mm" xsi:nil="true"/>
+            <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
+            <ClassReference>
+              <Name>anyURI</Name>
+              <NamespaceReference s:ref="xs-proxy" xsi:nil="true"/>
+            </ClassReference>
+          </ObjectProperty>
+        </HasObjectProperty>
+      </ExtensionOf>
+    </Class>
   </ObjectProperty>
-  <ObjectProperty mm:name="Class" s:id="Class">
-    <DefinitionText>A data type for a class.</DefinitionText>
+  <ObjectProperty s:id="ObjectProperty">
+    <Name>ObjectProperty</Name>
+    <Namespace xsi:nil="true" s:ref="mm"/>
+    <DefinitionText>An object property.</DefinitionText>
+    <Class>
+      <Name>ObjectPropertyType</Name>
+      <Namespace s:ref="mm" xsi:nil="true"/>
+      <DefinitionText>A data type for an object property</DefinitionText>
+      <ExtensionOf>
+        <ClassReference>
+          <Name>ObjectType</Name>
+          <NamespaceReference s:ref="structures" xsi:nil="true"/>
+        </ClassReference>
+      </ExtensionOf>
+    </Class>
   </ObjectProperty>
-  <ObjectProperty mm:name="Datatype" s:id="Datatype">
-    <DefinitionText>A data type for a datatype.</DefinitionText>
+  <ObjectProperty s:id="Class">
+    <Name>Class</Name>
+    <Namespace xsi:nil="true" s:ref="mm"/>
+    <DefinitionText>A class.</DefinitionText>
+    <Class>
+      <Name>ClassType</Name>
+      <Namespace s:ref="mm" xsi:nil="true"/>
+      <DefinitionText>A data type for a class.</DefinitionText>
+      <ExtensionOf>
+        <ClassReference>
+          <Name>ObjectType</Name>
+          <NamespaceReference s:ref="structures" xsi:nil="true"/>
+        </ClassReference>
+        <HasObjectProperty>
+          <SequenceID>1</SequenceID>
+          <MinOccurs>1</MinOccurs>
+          <ObjectPropertyMaxOccurs>1</ObjectPropertyMaxOccurs>
+          <ObjectProperty s:ref="Name" xsi:nil="true"/>
+        </HasObjectProperty>
+      </ExtensionOf>
+    </Class>
+  </ObjectProperty>
+  <ObjectProperty s:id="DataProperty">
+    <Name>DataProperty</Name>
+    <Namespace xsi:nil="true" s:ref="mm"/>
+    <DefinitionText>A data property.</DefinitionText>
+  </ObjectProperty>
+  <ObjectProperty s:id="Datatype">
+    <Name>Datatype</Name>
+    <Namespace s:ref="mm" xsi:nil="true"/>
+    <DefinitionText>A datatype.</DefinitionText>
   </ObjectProperty>
 </Model>

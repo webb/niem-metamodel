@@ -12,36 +12,17 @@
 
   <import href="functions.xsl"/>
 
-  <template match="//*[exists(@structures:ref or @structures:id or @structures:uri)]">
-    <message>
-      <text>object id </text>
-      <value-of select="generate-id(.)"/>
-      <text> uri </text>
-      <value-of select="f:get-uri(.)"/>
-      <text> matches objects:&#10;</text>
-      <for-each select="f:collect-objects(.)">
-        <text>  id </text>
-        <value-of select="generate-id(.)"/>
-        <text> uri </text>
-        <value-of select="f:get-uri(.)"/>
-        <text>&#10;</text>
-      </for-each>
-      <text>properties:&#10;</text>
-      <for-each select="f:collect-properties-test(.)">
-        <choose>
-          <when test="self::element()">
-            <text>  element </text>
-            <value-of select="node-name(.)"/>
-            <text>&#10;</text>
-          </when>
-          <when test="self::attribute()">
-            <text>  attribute </text>
-            <value-of select="node-name(.)"/>
-            <text>&#10;</text>
-          </when>
-        </choose>
-      </for-each>
-    </message>
+  <template match="//*[@structures:ref or @structures:id or @structures:uri]">
+    <variable name="objects" select="f:collect-objects(.)"/>
+    <!-- just do the first occurrence -->
+    <if test="$objects[1] eq .">
+      <message><value-of select="f:describe(.)"/>
+        <for-each select="f:collect-parents($objects)">
+          <text>&#10;  parent: </text>
+          <value-of select="f:describe(.)"/>
+        </for-each>
+      </message>
+    </if>
     <apply-templates/>
   </template>
 

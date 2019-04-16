@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<w:WantList w:release="4.1" w:product="NIEM" w:nillableDefault="true" xmlns:w="http://niem.gov/niem/wantlist/2.2"/>
+<w:WantList w:release="4.1" w:product="NIEM" w:nillableDefault="true"
+  xmlns:w="http://niem.gov/niem/wantlist/2.2" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/">
+  <w:Type w:name="niem-xs:anyURI" w:isRequested="true"/>
+</w:WantList>

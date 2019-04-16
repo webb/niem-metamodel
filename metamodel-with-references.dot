@@ -1,0 +1,101 @@
+digraph G {
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0];
+  rankdir = LR;
+
+  node [shape=Mrecord];
+  
+  /** ============================================================ **/
+  /** Model **/
+
+  Model [label="\N\l|NamespaceReference*\lObjectPropertyReference*\lClassReference*\lDataPropertyReference*\lDatatypeReference*\l"];
+
+  /** ============================================================ **/
+  /** References **/
+
+  NamespaceReference [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
+
+  ClassReference [label="\N\l|Name\l"];
+  ClassReference -> NamespaceReference;
+
+  ObjectPropertyReference [label="\N\l|Name\l"];
+  ObjectPropertyReference -> NamespaceReference;
+                          
+  DataPropertyReference [label="\N\l|Name\l"];
+  DataPropertyReference -> NamespaceReference;
+  
+  DatatypeReference [label="\N\l|Name\l"];
+  DatatypeReference -> NamespaceReference;
+
+  /** ============================================================ **/
+  /** Definitions **/
+
+  Namespace [label="\N\l|DefinitionText\l"];
+  
+  NamespaceReference -> Namespace [label="SubPropertyOf",dir=back];
+
+  ClassReference [label="\N\l|Name\lNamespace\l"];
+  Class [label="\N\l|DefinitionText\l"];
+  ClassReference -> Class [dir=back, label="SubPropertyOf"];
+  Class -> ExtensionOf:w;
+  ExtensionOf [label="\N\l"];
+  ExtensionOf -> { ClassReference HasDataProperty HasObjectProperty HasValue};
+  
+  HasObjectProperty [label="\N\l|SequenceID\lMinOccurs\lObjectPropertyMaxOccurs\l"];
+  HasObjectProperty -> ObjectPropertyReference;
+
+  ObjectPropertyReference [label="\N\l|Name\lNamespace\l"];
+  ObjectProperty -> SubPropertyOf;
+  
+  ObjectProperty [label="\N\l|DefinitionText\l"];
+  ObjectPropertyReference -> ObjectProperty [dir=back, label=SubPropertyOf];
+  ObjectProperty -> ClassReference;
+
+  SubPropertyOf [label="\N\l"];
+  SubPropertyOf -> ObjectPropertyReference;
+
+  HasDataProperty [label="\N\l|MinOccurs\lDataPropertyMaxOccurs\l"];
+  HasDataProperty -> DataPropertyReference;
+
+  DataPropertyReference [label="\N\l|Name\lNamespace\l"];
+  DataProperty [label="\N\l|DefinitionText\l"];
+  DataPropertyReference -> DataProperty [dir=back,label=SubPropertyOf];
+  
+  DataProperty -> DatatypeReference;
+  
+  DatatypeReference [label="\N\l|Name\lNamespace\l"];
+  Datatype [label="\N\l|DefinitionText\l"];
+  DatatypeReference -> Datatype [label=SubPropertyof,dir=back];
+  Datatype -> ListOf;
+  Datatype -> UnionOf;
+  Datatype -> RestrictionOf;
+
+  HasValue [label="\N\l"];
+  HasValue -> DatatypeReference;
+
+  ListOf [label="\N\l"];
+  ListOf -> DatatypeReference;
+  UnionOf [label="\N\l"];
+  UnionOf -> DatatypeReference;
+
+  RestrictionOf [label="\N\l"];
+  RestrictionOf -> { Facet DatatypeReference };
+
+  // facets
+  Facet [label="\N\l"];
+  Length [label="\N\l|Value\lDefinitionText\l"];
+  MinLength [label="\N\l|Value\lDefinitionText\l"];
+  MaxLength [label="\N\l|Value\lDefinitionText\l"];
+  Pattern [label="\N\l|Value\lDefinitionText\l"];
+  Enumeration [label="\N\l|Value\lDefinitionText\l"];
+  WhiteSpace [label="\N\l|Value\lDefinitionText\l"];
+  MaxInclusive [label="\N\l|Value\lDefinitionText\l"];
+  MaxExclusive [label="\N\l|Value\lDefinitionText\l"];
+  MinExclusive [label="\N\l|Value\lDefinitionText\l"];
+  MinInclusive [label="\N\l|Value\lDefinitionText\l"];
+  TotalDigits [label="\N\l|Value\lDefinitionText\l"];
+  FractionDigits [label="\N\l|Vaalue\lDefinitionText\l"];
+
+  edge [dir=back, label="SubPropertyOf"];
+  Facet -> { Length MinLength MaxLength Pattern Enumeration WhiteSpace MaxInclusive MaxExclusive MinExclusive MinInclusive TotalDigits FractionDigits }
+}

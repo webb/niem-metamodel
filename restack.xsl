@@ -15,27 +15,31 @@
   <output method="xml" indent="yes"/>
 
   <template match="*">
-    <copy>
-      <if test=". eq root()">
-        <namespace name="structures">http://release.niem.gov/niem/structures/4.0/</namespace>
-      </if>
-      <variable name="uri" as="xs:anyURI?" select="f:get-uri(.)"/>
-      <if test="exists($uri)">
-        <attribute name="structures:uri" select="$uri"/>
-      </if>
-      <variable name="objects" select="f:collect-objects(.)"/>
-      <if test=". eq $objects[1]">
-        <variable name="properties" select="f:collect-properties($objects)"/>
-        <for-each select="$properties[
-                          self::attribute()[not(node-name(.) = (xs:QName('structures:uri'), xs:QName('structures:id'), xs:QName('structures:ref')))]
-                          or self::text()]">
-          <copy-of select="."/>
-        </for-each>
-        <for-each select="$properties[self::element()]">
-          <apply-templates select="."/>
-        </for-each>
-      </if>
-    </copy>
+    <variable name="objects" select="f:collect-objects(.)"/>
+    <!-- omit anything that's just a child of the model and has already been covered -->
+    <if test=". eq $objects[1] or not(parent::mm:Model)">
+      <copy>
+        <if test=". eq root()">
+          <namespace name="structures">http://release.niem.gov/niem/structures/4.0/</namespace>
+        </if>
+        <variable name="uri" as="xs:anyURI?" select="f:get-uri(.)"/>
+        <if test="exists($uri)">
+          <attribute name="structures:uri" select="$uri"/>
+        </if>
+        <if test=". eq $objects[1]">
+          <variable name="properties" select="f:collect-properties($objects)"/>
+          <variable name="parents" select="f:collect-parents($objects)"/>
+          <for-each select="$properties[
+                            self::attribute()[not(node-name(.) = (xs:QName('structures:uri'), xs:QName('structures:id'), xs:QName('structures:ref')))]
+                            or self::text()]">
+            <copy-of select="."/>
+          </for-each>
+          <for-each select="$properties[self::element()]">
+            <apply-templates select="."/>
+          </for-each>
+        </if>
+      </copy>
+    </if>
   </template>
 
   <template match="text()"/>

@@ -15,31 +15,66 @@
   <template match="mm:Model">
     <result-document href="tmp/xsd/xml-catalog.xml" indent="yes">
       <c:catalog prefer="public">
-        <apply-templates select="//mm:Namespace[empty(@structures:ref)]" mode="generate-xml-catalog"/>
+        <apply-templates select="//mm:Namespace[f:is-target(.)]" mode="generate-xml-catalog"/>
       </c:catalog>
     </result-document>
-    <apply-templates select="//mm:Namespace[empty(@structures:ref)]" mode="generate-xsd"/>
+    <apply-templates select="//mm:Namespace[f:is-target(.)]" mode="generate-xsd"/>
   </template>
 
-  <template match="mm:Namespace" mode="generate-xml-catalog">
-    <c:uri name="{@mm:namespaceURI}" uri="{@mm:namespacePrefix}.xsd"/>
+  <template match="@*|node()" priority="-1">
+    <message terminate="yes">Unexpected element (default mode)</message>
   </template>
 
-  <template match="mm:Namespace" mode="generate-xsd">
-    <variable name="this" as="element()" select="."/>
-    <result-document href="tmp/xsd/{@mm:namespacePrefix}.xsd" indent="yes">
+  <!-- ==================================================================== -->
+
+  <template match="mm:Namespace[f:is-target(.)]" mode="generate-xml-catalog">
+    <c:uri name="{mm:NamespaceURI}"
+           uri="{mm:NamespacePrefix}.xsd"/>
+  </template>
+
+  <template match="@*|node()" priority="-1" mode="generate-xml-catalog">
+    <message terminate="yes">Unexpected element (mode=generate-xml-catalog)</message>
+  </template>
+
+  <!-- ==================================================================== -->
+
+  <template match="mm:Namespace[f:is-target(.)]" mode="generate-xsd">
+    <result-document href="tmp/xsd/{mm:NamespacePrefix}.xsd" indent="yes">
       <xs:schema>
-        <apply-templates select="//*[(self::mm:Type or self::mm:Property)
-                                     and f:resolve(./mm:Namespace) is $this]"
-                         mode="generate-xsd">
-          <sort select="@mm:name"/>
+        <apply-templates select="//*[f:is-target(.)
+                                     and (self::mm:ObjectProperty
+                                          or self::mm:DataProperty
+                                          or self::mm:Class
+                                          or self::mm:Datatype)
+                                     and f:has-namespace(., current())]" mode="generate-xsd">
+          <sort select="mm:Name"/>
         </apply-templates>
       </xs:schema>
     </result-document>
   </template>
 
-  <template match="mm:Type" mode="generate-xsd">
-    <xs:complexType name="{@mm:name}">
+  <template match="mm:ObjectProperty" mode="generate-xsd">
+    <xs:element name="{mm:Name}">
+      <choose>
+        <when test="exists(mm:Class)">
+          <attribute name="type">
+            <value-of select="f:resolve(mm:Namespace)get-uri(mm:Class)"/>
+          </attribute>
+        </when>
+        <otherwise>
+          <attribute name="abstract">true</attribute>
+        </otherwise>
+      </choose>
+      <xs:annotation>
+        <xs:documentation>
+          <value-of select="mm:DefinitionText"/>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </template>
+
+  <template match="mm:Class" mode="generate-xsd">
+    <xs:complexType name="{mm:Name}">
       <xs:annotation>
         <xs:documentation>
           <value-of select="mm:DefinitionText"/>
@@ -48,16 +83,8 @@
     </xs:complexType>
   </template>
 
-  <template match="mm:Property" mode="generate-xsd">
-    <xs:element name="{@mm:name}">
-      <if test="exists(mm:Type)">
-      </if>
-      <xs:annotation>
-        <xs:documentation>
-          <value-of select="mm:DefinitionText"/>
-        </xs:documentation>
-      </xs:annotation>
-    </xs:element>
+  <template match="@*|node()" priority="-1" mode="generate-xsd">
+    <message terminate="yes">Unexpected element (mode=generate-xsd): <value-of select="f:describe(.)"/></message>
   </template>
 
 </stylesheet>

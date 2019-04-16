@@ -1,19 +1,31 @@
 A metamodel for NIEM.
 
+# Terminology:
+
 Primarily uses terms from RDFS and OWL.
 
 - Model
     - an entire data model, profile, EIEM, or release.
-- Datatype
-    - from rdfs:Datatype
-    - maps to XSD simple types
-- DatatypeProperty
-    - from 
 - ObjectProperty
 - Class - maps to XSD complex types
     - from RDFS
+- Datatype
+    - from rdfs:Datatype
+    - maps to XSD simple types
+- DataProperty
 - SubClassOf
 - SubPropertyOf
+
+# Versioning
+
+- Later: 
+    - include a "Release" object, that identifies a set of namespaces.
+    - include versioning info, identifying relationships between versions of components
+    - include some kind of object that represents the concept of a namespace across multiple versions (e.g., the Justice domain /in general/).
+    
+    
+    
+
 
 Constraning facets: <https://www.w3.org/TR/xmlschema-2/#rf-facets>
 

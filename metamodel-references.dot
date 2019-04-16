@@ -1,0 +1,22 @@
+digraph G {
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0];
+  rankdir = LR;
+
+  node [shape=record];
+  
+  NamespaceReference [label="\N\l|NamespaceURI\lNamespacePrefix\l"];
+
+  ClassReference [label="\N\l|Name\l"];
+  ClassReference -> NamespaceReference;
+
+  ObjectPropertyReference [label="\N\l|Name\l"];
+  ObjectPropertyReference -> NamespaceReference;
+                          
+  DataPropertyReference [label="\N\l|Name\l"];
+  DataPropertyReference -> NamespaceReference;
+  
+  DatatypeReference [label="\N\l|Name\l"];
+  DatatypeReference -> NamespaceReference;
+  
+}
