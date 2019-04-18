@@ -12,18 +12,20 @@
 
   <import href="functions.xsl"/>
 
-  <template match="//*[@structures:ref or @structures:id or @structures:uri]">
-    <variable name="objects" select="f:collect-objects(.)"/>
-    <!-- just do the first occurrence -->
-    <if test="$objects[1] eq .">
-      <message><value-of select="f:describe(.)"/>
-        <for-each select="f:collect-parents($objects)">
-          <text>&#10;  parent: </text>
-          <value-of select="f:describe(.)"/>
-        </for-each>
-      </message>
-    </if>
-    <apply-templates/>
+  <template match="*">
+    <message>
+      <text>in </text>
+      <value-of select="node-name(.)"/>
+      <text>:&#10;  </text>
+      <for-each select="*[position() ge 2]">
+        <text> </text>
+        <value-of select="position()"/>
+        <text>=</text>
+        <value-of select="node-name(.)"/>
+      </for-each>
+    </message>
+    
+    <apply-templates select="*"/>
   </template>
 
 </stylesheet>

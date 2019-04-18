@@ -93,12 +93,15 @@
             </for-each>
             <variable name="uri" as="xs:anyURI?" select="f:get-uri($item)"/>
             <if test="exists($uri)"> uri <value-of select="$uri"/></if>
+            <if test="not(f:is-target(.))">
+              <text>&#10;  resolves to: </text>
+              <value-of select="f:describe(f:resolve(.))"/>
+            </if>
+          </when>
+          <when test="self::text()">
+            <value-of>text &quot;<value-of select="."/>&quot;</value-of>
           </when>
         </choose>
-        <if test="not(f:is-target(.))">
-          <text>&#10;  resolves to: </text>
-          <value-of select="f:describe(f:resolve(.))"/>
-        </if>
       </for-each>
     </value-of>
   </function>

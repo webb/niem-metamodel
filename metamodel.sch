@@ -193,8 +193,6 @@
 
   <pattern>
     <rule context="mm:Datatype[f:is-target(.) and mm:DefinitionText]">
-      <assert test="mm:Datatype"
-              >A Datatype that is a definition must have mm:Datatype.</assert>
       <assert test="1 = count(mm:ListOf|mm:UnionOf|mm:RestrictionOf)"
               >A Datatype that is a definition must have one of ListOf, UnionOf, or RestrictionOf.</assert>
     </rule>

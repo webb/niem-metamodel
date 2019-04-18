@@ -57,12 +57,12 @@
         </xs:annotation>
 
         <for-each select="//*[(. ne $this)
-                              and (self::mm:Namespace or self::mm:Namespace)
-                              and . = $referenced-namespaces]">
+                          and (self::mm:Namespace or self::mm:Namespace)
+                          and . = $referenced-namespaces]">
           <xs:import namespace="{mm:NamespaceURI}"/>
         </for-each>
         <apply-templates select="//*[f:is-target(.) and f:is-component(.)
-                                     and f:component-get-namespace(.) eq $this]"
+                                 and f:component-get-namespace(.) eq $this]"
                          mode="generate-xsd">
           <sort select="mm:Name"/>
         </apply-templates>
@@ -82,6 +82,10 @@
           <attribute name="abstract">true</attribute>
         </if>
       </for-each>
+      <for-each select="mm:SubPropertyOf">
+        <attribute name="substitutionGroup" select="f:component-get-qname(mm:ObjectProperty)"/>
+      </for-each>
+      <attribute name="nillable">true</attribute>
       <xs:annotation>
         <xs:documentation>
           <value-of select="mm:DefinitionText"/>
@@ -103,21 +107,49 @@
         </xs:documentation>
       </xs:annotation>
       <variable name="content-style" select="f:class-get-content-style(.)"/>
-      <choose>
-        <when test="$content-style = 'HasObjectProperty'">
-          <xs:complexContent>
-            <xs:extension base="{f:component-get-qname(mm:ExtensionOf/mm:Class)}">
-              <xs:sequence>
-                <for-each select="mm:ExtensionOf/mm:HasObjectProperty">
+      <for-each select="mm:ExtensionOf">
+        <choose>
+          <when test="$content-style = 'HasObjectProperty'">
+            <xs:complexContent>
+              <xs:extension base="{f:component-get-qname(mm:Class)}">
+                <xs:sequence>
+                  <apply-templates select="mm:HasObjectProperty" mode="#current">
+                    <sort select="@mm:sequenceID"/>
+                    <sort select="f:resolve(mm:ObjectProperty)/mm:Name"/>
+                  </apply-templates>
+                </xs:sequence>
+                <apply-templates select="mm:HasDataProperty" mode="#current">
                   <sort select="@mm:sequenceID"/>
-                  <xs:element ref="{f:component-get-qname(mm:ObjectProperty)}" minOccurs="{@mm:minOccurs}" maxOccurs="{@mm:maxOccurs}"></xs:element>
-                </for-each>
-              </xs:sequence>
-            </xs:extension>
-          </xs:complexContent>
-        </when>
-      </choose>
+                </apply-templates>
+              </xs:extension>
+            </xs:complexContent>
+          </when>
+          <when test="$content-style = 'HasValue'">
+            <xs:simpleContent>
+              <xs:extension>
+                <choose>
+                  <when test="mm:HasValue">
+                    <attribute name="base" select="f:component-get-qname(mm:HasValue/mm:Datatype)"/>
+                  </when>
+                </choose>
+              </xs:extension>
+            </xs:simpleContent>
+          </when>
+        </choose>
+      </for-each>
     </xs:complexType>
+  </template>
+
+  <template match="mm:HasObjectProperty" mode="generate-xsd">
+    <xs:element ref="{f:component-get-qname(mm:ObjectProperty)}" minOccurs="{@mm:minOccurs}" maxOccurs="{@mm:maxOccurs}"></xs:element>
+  </template>
+
+  <template match="mm:HasDataProperty" mode="generate-xsd">
+    <xs:attribute ref="{f:component-get-qname(mm:DataProperty)}">
+      <!--
+      minOccurs="{@mm:minOccurs}" maxOccurs="{@mm:maxOccurs}"></xs:element>
+      -->
+    </xs:attribute>
   </template>
 
   <template match="mm:DataProperty[f:is-target(.)]" mode="generate-xsd">
@@ -137,7 +169,24 @@
           <value-of select="mm:DefinitionText"/>
         </xs:documentation>
       </xs:annotation>
+      <for-each select="mm:RestrictionOf">
+        <xs:restriction base="{f:component-get-qname(mm:Datatype)}">
+          <apply-templates select="*[position() ge 2]" mode="generate-xsd">
+            <sort select="local-name()"/>
+            <sort select="*[1]"/>
+          </apply-templates>
+        </xs:restriction>
+      </for-each>
     </xs:simpleType>
+  </template>
+
+  <template match="mm:Enumeration" mode="generate-xsd">
+    <xs:enumeration value="{*[1]}">
+      <xs:annotation>
+        <xs:documentation><xs:value-of select="mm:DefinitionText"/>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:enumeration>
   </template>
 
   <template match="@*|node()" priority="-1" mode="generate-xsd">

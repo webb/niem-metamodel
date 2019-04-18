@@ -14,6 +14,16 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:complexType name="boolean">
+    <xs:annotation>
+      <xs:documentation>A data type for binary-valued logic (true/false).</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="nonNegativeInteger">
     <xs:annotation>
       <xs:documentation>A data type for an integer with a minimum value of 0.</xs:documentation>
