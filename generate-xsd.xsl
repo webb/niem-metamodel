@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stylesheet 
-  exclude-result-prefixes="xsl c f mm structures xsl"
+  exclude-result-prefixes="c f mm structures xsl"
   version="2.0"
   xmlns:c="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+  xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
   xmlns:f="http://example.org/functions"
   xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
   xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
@@ -49,6 +50,8 @@
         <for-each select="$referenced-namespaces">
           <namespace name="{mm:NamespacePrefix}" select="mm:NamespaceURI"/>
         </for-each>
+        <attribute name="ct:conformanceTargets">http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument</attribute>
+        <attribute name="version">1</attribute>
 
         <xs:annotation>
           <xs:documentation>
@@ -96,6 +99,8 @@
   </template>
 
   <template match="mm:Class[f:is-target(.) and mm:DefinitionText and mm:ExtensionOf]" mode="generate-xsd">
+    <variable name="this" select="."/>
+    <variable name="content-style" select="f:class-get-content-style(.)"/>
     <xs:complexType name="{mm:Name}">
       <for-each select="mm:Abstract">
         <if test="xs:boolean(.) = true()">
@@ -107,7 +112,6 @@
           <value-of select="mm:DefinitionText"/>
         </xs:documentation>
       </xs:annotation>
-      <variable name="content-style" select="f:class-get-content-style(.)"/>
       <for-each select="mm:ExtensionOf">
         <choose>
           <when test="$content-style = 'HasObjectProperty'">
@@ -118,9 +122,10 @@
                     <sort select="@mm:sequenceID"/>
                     <sort select="f:resolve(mm:ObjectProperty)/mm:Name"/>
                   </apply-templates>
+                  <xs:element ref="{f:class-get-augmentation-point-qname($this)}" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
                 <apply-templates select="mm:HasDataProperty" mode="#current">
-                  <sort select="@mm:sequenceID"/>
+                  <sort select="f:resolve(mm:DataPropert)/mm:Name"/>
                 </apply-templates>
               </xs:extension>
             </xs:complexContent>
@@ -134,12 +139,22 @@
                     <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
                   </when>
                 </choose>
+                <apply-templates select="mm:HasDataProperty" mode="#current">
+                  <sort select="f:resolve(mm:DataPropert)/mm:Name"/>
+                </apply-templates>
               </xs:extension>
             </xs:simpleContent>
           </when>
         </choose>
       </for-each>
     </xs:complexType>
+    <if test="$content-style = 'HasObjectProperty'">
+      <xs:element name="{local-name-from-QName(f:class-get-augmentation-point-qname($this))}" abstract="true">
+        <xs:annotation>
+          <xs:documentation>An augmentation point for <value-of select="f:component-get-qname($this)"/>.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </if>
   </template>
 
   <template match="mm:HasObjectProperty" mode="generate-xsd">
@@ -199,7 +214,8 @@
   <template match="mm:Enumeration" mode="generate-xsd">
     <xs:enumeration value="{*[1]}">
       <xs:annotation>
-        <xs:documentation><xs:value-of select="mm:DefinitionText"/>
+        <xs:documentation>
+          <value-of select="mm:DefinitionText"/>
         </xs:documentation>
       </xs:annotation>
     </xs:enumeration>

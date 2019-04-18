@@ -12,19 +12,13 @@
 
   <import href="functions.xsl"/>
 
+  <template match="mm:Class/mm:Name">
+    <message>name=&quot;<value-of select="."/>&quot;
+      ap=&quot;<value-of select="f:class-get-augmentation-point-qname(..)"/></message>
+    <apply-templates select="*"/>
+  </template>
+
   <template match="*">
-    <message>
-      <text>in </text>
-      <value-of select="node-name(.)"/>
-      <text>:&#10;  </text>
-      <for-each select="*[position() ge 2]">
-        <text> </text>
-        <value-of select="position()"/>
-        <text>=</text>
-        <value-of select="node-name(.)"/>
-      </for-each>
-    </message>
-    
     <apply-templates select="*"/>
   </template>
 

@@ -4,10 +4,12 @@ png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
 targets = \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
+  tmp/token/generated-xsd \
+  tmp/token/valid-xsd-generated/metamodel.xml \
   ${png_target_files} \
 
 .PHONY: default
-default: ${targets} xsd 
+default: ${targets}
 
 .PHONY: png
 png: ${png_target_files}
@@ -30,14 +32,25 @@ tmp/restacked.xml: metamodel.xml restack.xsl functions.xsl
 	mkdir -p ${dir $@}
 	saxon --in=$< --out=$@ --xsl=restack.xsl
 
-generated/%.png: %.dot
-	dot -Tpng -o$@ $<
-
-.PHONY: xsd
-xsd:
+tmp/token/generated-xsd: metamodel.xml generate-xsd.xsl functions.xsl
 	rm -rf generated/xsd
 	mkdir -p generated/xsd
 	saxon --in=metamodel.xml --xsl=generate-xsd.xsl
+	mkdir -p ${dir $@}
+	touch $@
+
+tmp/token/valid-xsd-generated/metamodel.xml: metamodel.xml tmp/token/generated-xsd xml-catalog-generated.xml ${shell find niem -type f}
+	xs-validate -c xml-catalog-generated.xml $<
+	mkdir -p ${dir $@}
+	touch $@
+
+.PHONY: xsd
+xsd:
+	rm -rf generated/xsd tmp/token/generated-xsd 
+	${MAKE} tmp/token/generated-xsd
+
+generated/%.png: %.dot
+	dot -Tpng -o$@ $<
 
 tmp.metamodel.sch.xsl: metamodel.sch functions.xsl
 	schematron-compile --output-file=$@ $<
@@ -56,3 +69,7 @@ tmp/token/valid-xsd/%: %
 clean:
 	${RM} -rf tmp
 	${RM} ${wildcard tmp.*}
+
+# conformance check
+cc: tmp/token/generated-xsd
+	schematron-execute --xslt-file=../ndr/artifacts/repo/ndr-rules-conformance-target-ref.sch.xsl generated/xsd/mm.xsd

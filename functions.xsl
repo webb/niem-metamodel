@@ -158,6 +158,15 @@
     </for-each>
   </function>
 
+  <function name="f:namespace-get-qname" as="xs:QName*">
+    <param name="namespace" as="element(mm:Namespace)"/>
+    <param name="local-name" as="xs:string"/>
+    <for-each select="f:resolve($namespace)">
+      <sequence select="QName($namespace/mm:NamespaceURI, 
+                        concat($namespace/mm:NamespacePrefix, ':', $local-name))"/>
+    </for-each>
+  </function>
+
   <function name="f:component-get-namespace" as="element(mm:Namespace)*">
     <param name="components" as="element()*"/>
     <for-each select="$components">
@@ -168,6 +177,33 @@
         </if>
         <sequence select="f:resolve(mm:Namespace)"/>
       </for-each>
+    </for-each>
+  </function>
+
+  <function name="f:class-get-augmentation-point-qname" as="xs:QName">
+    <param name="class" as="element(mm:Class)"/>
+    <for-each select="f:resolve($class)">
+      <variable name="class-qname" select="f:component-get-qname(.)"/>
+      <variable name="class-local-name" select="local-name-from-QName($class-qname)"/>
+      <choose>
+        <when test="ends-with($class-local-name, 'Type')">
+          <variable name="new-local-name"
+                    select="concat(
+                            substring($class-local-name, 1, string-length($class-local-name) - 4),
+                            'AugmentationPoint')"/>
+          <sequence select="QName(namespace-uri-from-QName($class-qname),
+                            concat(prefix-from-QName($class-qname), 
+                            ':', 
+                            $new-local-name))"/>
+        </when>
+        <otherwise>
+          <sequence select="QName(namespace-uri-from-QName($class-qname),
+                            concat(prefix-from-QName($class-qname), 
+                                   ':', 
+                                   prefix-from-QName($class-qname),
+                                   'AugmentationPoint'))"/>
+        </otherwise>
+      </choose>
     </for-each>
   </function>
 

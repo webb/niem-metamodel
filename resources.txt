@@ -1,5 +1,0 @@
-      <complexContent>
-        <extension base="structures:ObjectType">
-
-        </extension>
-      </complexContent>
