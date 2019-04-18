@@ -278,7 +278,7 @@
    </xs:simpleType>
    <xs:simpleType name="MaxOccursUnboundedSimpleType">
       <xs:annotation>
-         <xs:documentation/>
+         <xs:documentation>A data type for identifying that there is no maximum number of times that a property may occur within a class.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:string">
          <xs:enumeration value="unbounded">

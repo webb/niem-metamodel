@@ -296,6 +296,7 @@
         <Datatype>
           <Name>MaxOccursUnboundedSimpleType</Name>
           <Namespace s:ref="mm" xsi:nil="true"/>
+          <DefinitionText>A data type for identifying that there is no maximum number of times that a property may occur within a class.</DefinitionText>
           <RestrictionOf>
             <Datatype s:ref="xs.string" xsi:nil="true"/>
             <Enumeration>
