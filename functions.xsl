@@ -9,13 +9,6 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/XSL/Transform">
 
-<!--
-  <function name="f:uri-to-qname" as="xs:QName">
-    <param name="uri" as="xs:anyURI"/>
-    <substring-before></substring-before>
-  </function>
--->
-
   <function name="f:get-base-uri" as="xs:anyURI">
     <param name="context" as="element()"/>
     <variable name="base-attribute" as="attribute(xml:base)?"
@@ -90,38 +83,151 @@
   <function name="f:describe" as="xs:string">
     <param name="item" as="item()"/>
     <value-of>
-      <choose>
-        <when test="$item/self::element()">
-          <text>element </text>
-          <value-of select="node-name($item)"/>
-          <if test="exists($item/@mm:name)">
-            <value-of> name <value-of select="$item/@mm:name"/></value-of>
-          </if>
-          <variable name="uri" as="xs:anyURI?" select="f:get-uri($item)"/>
-          <if test="exists($uri)"> uri <value-of select="$uri"/></if>
-        </when>
-      </choose>
+      <for-each select="$item">
+        <choose>
+          <when test="self::element()">
+            <text>element </text>
+            <value-of select="node-name(.)"/>
+            <for-each select="mm:Name">
+              <value-of> name <value-of select="."/></value-of>
+            </for-each>
+            <variable name="uri" as="xs:anyURI?" select="f:get-uri($item)"/>
+            <if test="exists($uri)"> uri <value-of select="$uri"/></if>
+          </when>
+        </choose>
+        <if test="not(f:is-target(.))">
+          <text>&#10;  resolves to: </text>
+          <value-of select="f:describe(f:resolve(.))"/>
+        </if>
+      </for-each>
     </value-of>
   </function>
 
-  <function name="f:has-namespace" as="xs:boolean">
-    <param name="context" as="element()"/>
-    <param name="namespace" as="element(mm:Namespace)"/>
-    <sequence select="exists($context/mm:Namespace) 
-                      and (f:resolve($context/mm:Namespace) eq $namespace)"/>
+  <!-- yield either 'HasValue, or 'HasObjectProperty', or 'none', or a message for a fail.  -->
+  <function name="f:class-get-content-style" as="xs:string?">
+    <param name="context" as="element(mm:Class)"/>
+    <for-each select="f:resolve($context)">
+      <choose>
+        <when test="f:component-get-qname(.) = xs:QName('structures:ObjectType')">
+          <value-of>none</value-of>
+        </when>
+        <when test="empty(mm:DefinitionText) and mm:ContentStyle">
+          <value-of select="mm:ContentStyle"/>
+        </when>
+        <when test="mm:ExtensionOf">
+          <variable name="base-style"
+                    select="f:class-get-content-style(mm:ExtensionOf/mm:Class)"/>
+          <choose>
+            <when test="$base-style = 'none' and mm:ExtensionOf/mm:HasValue">HasValue</when>
+            <when test="$base-style = 'none'">HasObjectProperty</when>
+            <otherwise>
+              <value-of select="$base-style"/>
+            </otherwise>
+          </choose>
+        </when>
+        <otherwise>
+          <text>weird case</text>
+        </otherwise>
+      </choose>
+    </for-each>
+  </function>
+
+  <function name="f:is-component" as="xs:boolean">
+    <param name="element" as="element()"/>
+    <for-each select="$element">
+      <sequence select="self::mm:ObjectProperty
+                        or self::mm:Class
+                        or self::mm:DataProperty
+                        or self::mm:Datatype"/>
+    </for-each>
+  </function>
+
+  <function name="f:component-get-qname" as="xs:QName*">
+    <param name="components" as="element()*"/>
+    <for-each select="$components">
+      <if test="not(f:is-component(.))">
+        <message terminate="yes">f:component-get-qname() called on non-component (<value-of select="f:describe(.)"/>).</message>
+      </if>
+      <for-each select="f:resolve(.)">
+        <variable name="namespace" select="f:resolve(mm:Namespace)"/>
+        <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefix, ':', mm:Name))"/>
+      </for-each>
+    </for-each>
+  </function>
+
+  <function name="f:component-get-namespace" as="element(mm:Namespace)*">
+    <param name="components" as="element()*"/>
+    <for-each select="$components">
+      <for-each select="f:resolve(.)">
+        <if test="not(f:is-component(.))">
+          <message terminate="yes"
+                   >in f:component-get-namespace, member of $components is not a component (was <value-of select="f:qname-get-clark-name(node-name(.))"/>).</message>
+        </if>
+        <sequence select="f:resolve(mm:Namespace)"/>
+      </for-each>
+    </for-each>
+  </function>
+
+  <function name="f:collect-components-in-namespace" as="element()*">
+    <param name="namespace" as="element()"/>
+    <for-each select="f:resolve($namespace)">
+      <sequence select="root(.)//*[f:is-target(.) and f:is-component(.) 
+                        and f:component-get-namespace(.) eq current()]"/>
+    </for-each>
+  </function>
+
+  <function name="f:component-get-referenced-components" as="element()*">
+    <param name="components" as="element()*"/>
+    <for-each select="$components">
+      <for-each select="f:resolve(.)">
+        <choose>
+          <when test="self::mm:ObjectProperty">
+            <for-each select="f:resolve(mm:SubPropertyOf)">
+              <sequence select="f:resolve(mm:ObjectProperty)"/>
+            </for-each>
+            <sequence select="f:resolve(mm:Class)"/>
+          </when>
+          <when test="self::mm:Class">
+            <for-each select="mm:ExtensionOf">
+              <sequence select="f:resolve(mm:Class)"/>
+            </for-each>
+            <for-each select="mm:HasValue">
+              <sequence select="f:resolve(mm:Datatype)"/>
+            </for-each>
+            <for-each select="mm:HasDataProperty">
+              <sequence select="f:resolve(mm:DataProperty)"/>
+            </for-each>
+            <for-each select="mm:HasObjectProperty">
+              <sequence select="f:resolve(mm:ObjectProperty)"/>
+            </for-each>
+          </when>
+          <when test="self::mm:DataProperty">
+            <sequence select="f:resolve(mm:Datatype)"/>
+          </when>
+          <when test="self::mm:Datatype">
+            <for-each select="mm:RestrictionOf">
+              <sequence select="f:resolve(mm:DataType)"/>
+            </for-each>
+            <for-each select="mm:ListOf">
+              <sequence select="f:resolve(mm:DataType)"/>
+            </for-each>
+            <for-each select="mm:UnionOf">
+              <for-each select="mm:DataType">
+                <sequence select="f:resolve(.)"/>
+              </for-each>
+            </for-each>
+          </when>
+        </choose>
+      </for-each>
+    </for-each>
   </function>
 
   <function name="f:resolve" as="element()?">
-    <param name="context" as="element()"/>
+    <param name="context" as="element()?"/>
     <choose>
+      <when test="empty($context)"/>
       <when test="$context/@structures:ref">
         <sequence select="root($context)//*[@structures:id = $context/@structures:ref]"/>
-      </when>
-      <when test="$context/@structures:id">
-        <sequence select="$context"/>
-      </when>
-      <when test="$context/@structures:uri">
-        <sequence select="()"/>
       </when>
       <otherwise>
         <sequence select="$context"/>
@@ -131,8 +237,12 @@
 
   <function name="f:is-target" as="xs:boolean">
     <param name="context" as="element()"/>
-    <variable name="resolved" select="f:resolve($context)"/>
-    <sequence select="exists($resolved) and ($context eq $resolved)"/>
+    <sequence select="empty($context/@structures:ref)"/>
+  </function>
+
+  <function name="f:qname-get-clark-name" as="xs:string">
+    <param name="qname" as="xs:QName"/>
+    <value-of>{<value-of select="namespace-uri-from-QName($qname)"/>}<value-of select="local-name-from-QName($qname)"/></value-of>
   </function>
 
 </stylesheet>

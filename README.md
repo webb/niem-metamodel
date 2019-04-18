@@ -26,6 +26,16 @@ Consistently use this order:
 4. DataProperty
 5. Datatype
 
+# Class content style
+
+Each class needs to identify its content style as one of the following:
+- HasValue
+- HasObjectProperty
+
+This is self-evident given
+1. a reference to a base type which identifies its content style, and
+2. extension content (has-value has-object-property)
+
 # Versioning
 
 - Later: 

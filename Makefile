@@ -15,6 +15,10 @@ png: ${png_target_files}
 .PHONY: vxsd
 vxsd: tmp/token/valid-xsd/metamodel.xml
 
+.PHONY: v2
+v2: xsd
+	xs-validate -c xml-catalog-generated.xml metamodel.xml
+
 .PHONY: sch
 sch: tmp/token/valid-sch/metamodel.xml
 

@@ -25,7 +25,7 @@ digraph G {
 
   // class ///////////////////////////////////////////////////////
 
-  Class [label="\N\l- Name\l- Namespace\l- DefinitionText [0-1]\l- ContentStyle [0-1]"];
+  Class [label="\N\l- Name\l- Namespace\l- DefinitionText [0-1]\l- Abstract [0-1]\l- ContentStyle [0-1]"];
   Class -> ExtensionOf [dir=both,taillabel="[0-1]"];
   ExtensionOf [label="\N\l"];
   ExtensionOf -> { HasDataProperty HasObjectProperty } [taillabel="0-n"];
