@@ -35,8 +35,8 @@ tmp/restacked.xml: metamodel.xml restack.xsl functions.xsl
 
 .PHONY: xsd
 xsd:
-	rm -rf tmp/xsd
-	mkdir -p tmp/xsd
+	rm -rf generated/xsd
+	mkdir -p generated/xsd
 	saxon --in=metamodel.xml --xsl=generate-xsd.xsl
 
 tmp.metamodel.sch.xsl: metamodel.sch functions.xsl

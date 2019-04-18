@@ -13,7 +13,7 @@
   <import href="functions.xsl"/>
 
   <template match="mm:Model">
-    <result-document href="tmp/xsd/xml-catalog.xml" indent="yes">
+    <result-document href="generated/xsd/xml-catalog.xml" indent="yes">
       <c:catalog prefer="public">
         <apply-templates select="//mm:Namespace[f:is-target(.) and mm:DefinitionText]" mode="generate-xml-catalog"/>
       </c:catalog>
@@ -40,7 +40,7 @@
 
   <template match="mm:Namespace[f:is-target(.)]" mode="generate-xsd">
     <variable name="this" as="element(mm:Namespace)" select="."/>
-    <result-document href="tmp/xsd/{mm:NamespacePrefix}.xsd" indent="yes">
+    <result-document href="generated/xsd/{mm:NamespacePrefix}.xsd" indent="yes">
       <xs:schema targetNamespace="{mm:NamespaceURI}">
         <variable name="referenced-namespaces"
                   select="f:component-get-namespace(
@@ -64,7 +64,8 @@
         <apply-templates select="//*[f:is-target(.) and f:is-component(.)
                                  and f:component-get-namespace(.) eq $this]"
                          mode="generate-xsd">
-          <sort select="mm:Name"/>
+          <sort select="lower-case(mm:Name)"/>
+          <sort select="lower-case(mm:Name)" case-order="upper-first"/>
         </apply-templates>
       </xs:schema>
     </result-document>
@@ -130,6 +131,7 @@
                 <choose>
                   <when test="mm:HasValue">
                     <attribute name="base" select="f:component-get-qname(mm:HasValue/mm:Datatype)"/>
+                    <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
                   </when>
                 </choose>
               </xs:extension>
@@ -154,6 +156,9 @@
 
   <template match="mm:DataProperty[f:is-target(.)]" mode="generate-xsd">
     <xs:attribute name="{mm:Name}">
+      <for-each select="mm:Datatype">
+        <attribute name="type" select="f:component-get-qname(.)"/>
+      </for-each>
       <xs:annotation>
         <xs:documentation>
           <value-of select="mm:DefinitionText"/>
@@ -176,6 +181,17 @@
             <sort select="*[1]"/>
           </apply-templates>
         </xs:restriction>
+      </for-each>
+      <for-each select="mm:UnionOf">
+        <variable name="member-types" as="xs:string*">
+          <for-each select="mm:Datatype">
+            <value-of select="f:component-get-qname(.)"/>
+          </for-each>
+        </variable>
+        <xs:union memberTypes="{string-join($member-types, ' ')}"/>
+      </for-each>
+      <for-each select="mm:ListOf">
+        <xs:list itemType="{f:component-get-qname(mm:Datatype)}"/>
       </for-each>
     </xs:simpleType>
   </template>

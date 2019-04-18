@@ -284,11 +284,28 @@
     <Datatype s:ref="xs.nonNegativeInteger" xsi:nil="true"/>
   </DataProperty>
   <DataProperty s:id="maxOccurs">
-    <!-- TODO: define the data type of this as a union -->
     <Name>maxOccurs</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A maximum number of times a property may occur within a class.</DefinitionText>
-    <Datatype s:ref="xs.nonNegativeInteger" xsi:nil="true"/>
+    <Datatype>
+      <Name>MaxOccursSimpleType</Name>
+      <Namespace s:ref="mm" xsi:nil="true"/>
+      <DefinitionText>A data type for the maximum number of times a property may occur within a class.</DefinitionText>
+      <UnionOf>
+        <Datatype s:ref="xs.nonNegativeInteger" xsi:nil="true"/>
+        <Datatype>
+          <Name>MaxOccursUnboundedSimpleType</Name>
+          <Namespace s:ref="mm" xsi:nil="true"/>
+          <RestrictionOf>
+            <Datatype s:ref="xs.string" xsi:nil="true"/>
+            <Enumeration>
+              <StringValue>unbounded</StringValue>
+              <DefinitionText>There is no maximum number of times that a property may occur.</DefinitionText>
+            </Enumeration>
+          </RestrictionOf>
+        </Datatype>
+      </UnionOf>
+    </Datatype>
   </DataProperty>
 
   <ObjectProperty s:id="DataProperty">
@@ -345,6 +362,24 @@
                     <DefinitionText>A facet that restricts an aspect of a data type.</DefinitionText>
                     <Abstract>true</Abstract>
                   </ObjectProperty>
+                </HasObjectProperty>
+              </ExtensionOf>
+            </Class>
+          </ObjectProperty>
+        </HasObjectProperty>
+        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="1">
+          <ObjectProperty>
+            <Name>UnionOf</Name>
+            <Namespace s:ref="mm" xsi:nil="true"/>
+            <DefinitionText>A union of data types.</DefinitionText>
+            <Class>
+              <Name>UnionOfType</Name>
+              <Namespace s:ref="mm" xsi:nil="true"/>
+              <DefinitionText>A data type for a union of data types.</DefinitionText>
+              <ExtensionOf>
+                <Class s:ref="structures.ObjectType" xsi:nil="true"/>
+                <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="unbounded">
+                  <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
                 </HasObjectProperty>
               </ExtensionOf>
             </Class>

@@ -72,3 +72,9 @@ Christina's perspectives
     - augmentation
     - metadata
 
+# TODO
+
+- there's no way to wantlist "an element in a type" or "an attribute in a type".
+    - at this point, a reference to a type is just to the whole type.
+- Write something that generates a regular wantlist from the metamodel.
+
