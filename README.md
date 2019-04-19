@@ -29,10 +29,12 @@ Consistently use this order:
 # Class content style
 
 Each class needs to identify its content style as one of the following:
+
 - HasValue
 - HasObjectProperty
 
-This is self-evident given
+This is self-evident, given:
+
 1. a reference to a base type which identifies its content style, and
 2. extension content (has-value has-object-property)
 
@@ -41,40 +43,32 @@ This is self-evident given
 - Later: 
     - include a "Release" object, that identifies a set of namespaces.
     - include versioning info, identifying relationships between versions of components
-    - include some kind of object that represents the concept of a namespace across multiple versions (e.g., the Justice domain /in general/).
+        - a namespace as a new version of another namespace
+        - a class as a new version of a class
+            - a class as *merging* two independent classes
+    - include some kind of object that represents the concept of a namespace across multiple versions (e.g., the Justice domain *in general*).
     
     
-    
+# Relevant Specifications
 
+- Constraning facets: <https://www.w3.org/TR/xmlschema-2/#rf-facets>
+- List & Union: <https://www.w3.org/TR/xmlschema-2/#atomic-vs-list>
 
-Constraning facets: <https://www.w3.org/TR/xmlschema-2/#rf-facets>
+# TODO #
 
-List & Union: <https://www.w3.org/TR/xmlschema-2/#atomic-vs-list>
-
-
-Christina's perspectives
-- "accessors" to return different "slices" of the data
-- 
-- release
-    - need to handle releases
-        - a release is a collection of namespaces
-        - "multiple versions of a namespace"
-    - namespace as a new version of another namespace
-    - component being a new version of another compoennt
-    - can we look at a separate layer of release
-    - "a model" versus "each iepd as its own model"
-        - each could have their own releases
-    - each namespace has a version attribute
-- "namespace version"
-- certain things optional vs required
-    - schema generator
-    - adapter
-    - augmentation
-    - metadata
-
-# TODO
-
-- there's no way to wantlist "an element in a type" or "an attribute in a type".
-    - at this point, a reference to a type is just to the whole type.
-- Write something that generates a regular wantlist from the metamodel.
+- Wantlist requirements:
+    - How to cover profiling?
+        - profile of a class:
+            - don't need a base class
+            - it doesn't have the "extensionof" semantic
+            - it doesn't need to indicate the "hasvalue", as that's required
+            - it needs has*property elements for "element in a type"
+                    - there's not a simple way to wantlist "an element in a type" or "an attribute in a type".
+                        - at this point, a reference to a type is just a pointer to the type
+                        - I could have a "profile" element containing Has*Property elements
+                    - Write something that generates a regular wantlist from the metamodel.
+- Augmentations
+    - We don't represent augmentations in the metamodel
+    - It'd be nice for a model to be able to use its own augmentation points
+    - We'll need to identify specific augmentation types and let domains build augmentation elements.
 
