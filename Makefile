@@ -2,6 +2,7 @@
 png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
 
 targets = \
+  tmp/token/xml/metamodel.xml \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
   tmp/token/generated-xsd \
@@ -73,3 +74,11 @@ clean:
 # conformance check
 cc: tmp/token/generated-xsd
 	schematron-execute --xslt-file=../ndr/artifacts/repo/ndr-rules-conformance-target-ref.sch.xsl generated/xsd/mm.xsd
+
+
+# xml via xmllint check
+tmp/token/xml/%: %
+	xmllint --noout $<
+	mkdir -p ${dir $@}
+	touch $@
+
