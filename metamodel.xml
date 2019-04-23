@@ -6,7 +6,7 @@
 
   <Namespace s:id="mm">
     <NamespaceURI>http://reference.niem.gov/specification/metamodel/5.0alpha1</NamespaceURI>
-    <NamespacePrefix>mm</NamespacePrefix>
+    <NamespacePrefixName>mm</NamespacePrefixName>
     <DefinitionText>A data model for a metamodel for NIEM.</DefinitionText>
   </Namespace>
 
@@ -20,12 +20,12 @@
       <DefinitionText>A data type for a data model.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="unbounded">
-          <ObjectProperty s:id="ModelItem">
-            <Name>ModelItem</Name>
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
+          <ObjectProperty s:id="ModelItemAbstract">
+            <Name>ModelItemAbstract</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
-            <DefinitionText>An item in a data model.</DefinitionText>
-            <Abstract>true</Abstract>
+            <DefinitionText>A data concept for an item in a data model.</DefinitionText>
+            <AbstractIndicator>true</AbstractIndicator>
           </ObjectProperty>
         </HasObjectProperty>
       </ExtensionOf>
@@ -37,7 +37,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A namespace of a data model component.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="ModelItem" xsi:nil="true"/>
+      <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>NamespaceType</Name>
@@ -45,7 +45,7 @@
       <DefinitionText>A data type for a namespace</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty>
             <Name>NamespaceURI</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -53,15 +53,15 @@
             <Class s:ref="xs-proxy.anyURI" xsi:nil="true"/>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty>
-            <Name>NamespacePrefix</Name>
+            <Name>NamespacePrefixName</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
             <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
             <Class s:ref="NCName" xsi:nil="true"/>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="3" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="3" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -72,10 +72,10 @@
     <Name>ComponentType</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A data type for common properties of a data component in NIEM.</DefinitionText>
-    <Abstract>true</Abstract>
+    <AbstractIndicator>true</AbstractIndicator>
     <ExtensionOf>
       <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-      <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+      <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
         <ObjectProperty>
           <Name>Name</Name>
           <Namespace s:ref="mm" xsi:nil="true"/>
@@ -83,10 +83,10 @@
           <Class s:ref="NCName" xsi:nil="true"/>
         </ObjectProperty>
       </HasObjectProperty>
-      <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+      <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
         <ObjectProperty s:ref="Namespace" xsi:nil="true"/>
       </HasObjectProperty>
-      <HasObjectProperty mm:sequenceID="3" mm:minOccurs="0" mm:maxOccurs="1">
+      <HasObjectProperty mm:sequenceID="3" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
         <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
       </HasObjectProperty>
     </ExtensionOf>
@@ -97,7 +97,7 @@
     <Namespace xsi:nil="true" s:ref="mm"/>
     <DefinitionText>An object property.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="ModelItem" xsi:nil="true"/>
+      <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>ObjectPropertyType</Name>
@@ -105,7 +105,7 @@
       <DefinitionText>A data type for an object property</DefinitionText>
       <ExtensionOf>
         <Class s:ref="ComponentType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty>
             <Name>SubPropertyOf</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -116,18 +116,18 @@
               <DefinitionText>A data type for a description of a subproperty.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+                <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
                   <ObjectProperty s:ref="ObjectProperty" xsi:nil="true"/>
                 </HasObjectProperty>
               </ExtensionOf>
             </Class>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="Class" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="3" mm:minOccurs="0" mm:maxOccurs="1">
-          <ObjectProperty s:ref="Abstract" xsi:nil="true"/>
+        <HasObjectProperty mm:sequenceID="3" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
+          <ObjectProperty s:ref="AbstractIndicator" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
     </Class>
@@ -137,7 +137,7 @@
     <Namespace xsi:nil="true" s:ref="mm"/>
     <DefinitionText>A class.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="ModelItem" xsi:nil="true"/>
+      <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>ClassType</Name>
@@ -145,10 +145,10 @@
       <DefinitionText>A data type for a class.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="ComponentType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="1">
-          <ObjectProperty s:ref="Abstract" xsi:nil="true"/>
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
+          <ObjectProperty s:ref="AbstractIndicator" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty>
             <Name>ExtensionOf</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -159,10 +159,10 @@
               <DefinitionText>A data type for an extension of a class.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+                <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
                   <ObjectProperty s:ref="Class" xsi:nil="true"/>
                 </HasObjectProperty>
-                <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="unbounded">
+                <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
                   <ObjectProperty>
                     <Name>HasValue</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
@@ -173,14 +173,14 @@
                       <DefinitionText>A data type for an occurrence of a value as content of a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+                        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
                           <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
                         </HasObjectProperty>
                       </ExtensionOf>
                     </Class>
                   </ObjectProperty>
                 </HasObjectProperty>
-                <HasObjectProperty mm:sequenceID="3" mm:minOccurs="0" mm:maxOccurs="unbounded">
+                <HasObjectProperty mm:sequenceID="3" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
                   <ObjectProperty>
                     <Name>HasDataProperty</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
@@ -191,20 +191,20 @@
                       <DefinitionText>A data type for an occurrence of a data property within a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                        <HasDataProperty mm:minOccurs="1" mm:maxOccurs="1">
-                          <DataProperty s:ref="minOccurs" xsi:nil="true"/>
+                        <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+                          <DataProperty s:ref="minOccursQuantity" xsi:nil="true"/>
                         </HasDataProperty>
-                        <HasDataProperty mm:minOccurs="1" mm:maxOccurs="1">
-                          <DataProperty s:ref="maxOccurs" xsi:nil="true"/>
+                        <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+                          <DataProperty s:ref="maxOccursQuantity" xsi:nil="true"/>
                         </HasDataProperty>
-                        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="unbounded">
+                        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
                           <ObjectProperty s:ref="DataProperty" xsi:nil="true"/>
                         </HasObjectProperty>
                       </ExtensionOf>
                     </Class>
                   </ObjectProperty>
                 </HasObjectProperty>
-                <HasObjectProperty mm:sequenceID="4" mm:minOccurs="0" mm:maxOccurs="unbounded">
+                <HasObjectProperty mm:sequenceID="4" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
                   <ObjectProperty>
                     <Name>HasObjectProperty</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
@@ -215,7 +215,7 @@
                       <DefinitionText>A data type for an occurrence of an object property within a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                        <HasDataProperty mm:minOccurs="1" mm:maxOccurs="1">
+                        <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
                           <DataProperty>
                             <Name>sequenceID</Name>
                             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -223,13 +223,13 @@
                             <Datatype s:ref="xs.positiveInteger" xsi:nil="true"/>
                           </DataProperty>
                         </HasDataProperty>
-                        <HasDataProperty mm:minOccurs="1" mm:maxOccurs="1">
-                          <DataProperty s:ref="minOccurs" xsi:nil="true"/>
+                        <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+                          <DataProperty s:ref="minOccursQuantity" xsi:nil="true"/>
                         </HasDataProperty>
-                        <HasDataProperty mm:minOccurs="1" mm:maxOccurs="1">
-                          <DataProperty s:ref="maxOccurs" xsi:nil="true"/>
+                        <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+                          <DataProperty s:ref="maxOccursQuantity" xsi:nil="true"/>
                         </HasDataProperty>
-                        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="unbounded">
+                        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
                           <ObjectProperty s:ref="ObjectProperty" xsi:nil="true"/>
                         </HasObjectProperty>
                       </ExtensionOf>
@@ -240,22 +240,22 @@
             </Class>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="3" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="3" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty>
-            <Name>ContentStyle</Name>
+            <Name>ContentStyleCode</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
             <DefinitionText>An indication of whether a referenced class has simple content or complex content.</DefinitionText>
             <Class>
-              <Name>ContentStyleType</Name>
+              <Name>ContentStyleCodeType</Name>
               <Namespace s:ref="mm" xsi:nil="true"/>
               <DefinitionText>A data type for an indication of whether a referenced class has simple content or complex content.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                 <HasValue>
                   <Datatype>
-                    <Name>ContentStyleSimpleType</Name>
+                    <Name>ContentStyleCodeSimpleType</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
-                    <DefinitionText>A simple data type for an indication of whether a referenced class has simple content or complex content.</DefinitionText>
+                    <DefinitionText>A data type for an indication of whether a referenced class has simple content or complex content.</DefinitionText>
                     <RestrictionOf>
                       <Datatype s:ref="xs.string" xsi:nil="true"/>
                       <Enumeration>
@@ -277,14 +277,14 @@
     </Class>
   </ObjectProperty>
 
-  <DataProperty s:id="minOccurs">
-    <Name>minOccurs</Name>
+  <DataProperty s:id="minOccursQuantity">
+    <Name>minOccursQuantity</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A minimum number of times a property may occur within a class.</DefinitionText>
     <Datatype s:ref="xs.nonNegativeInteger" xsi:nil="true"/>
   </DataProperty>
-  <DataProperty s:id="maxOccurs">
-    <Name>maxOccurs</Name>
+  <DataProperty s:id="maxOccursQuantity">
+    <Name>maxOccursQuantity</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A maximum number of times a property may occur within a class.</DefinitionText>
     <Datatype>
@@ -294,7 +294,7 @@
       <UnionOf>
         <Datatype s:ref="xs.nonNegativeInteger" xsi:nil="true"/>
         <Datatype>
-          <Name>MaxOccursUnboundedSimpleType</Name>
+          <Name>MaxOccursUnboundedCodeSimpleType</Name>
           <Namespace s:ref="mm" xsi:nil="true"/>
           <DefinitionText>A data type for identifying that there is no maximum number of times that a property may occur within a class.</DefinitionText>
           <RestrictionOf>
@@ -314,7 +314,7 @@
     <Namespace xsi:nil="true" s:ref="mm"/>
     <DefinitionText>A data property.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="ModelItem" xsi:nil="true"/>
+      <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>DataPropertyType</Name>
@@ -322,7 +322,7 @@
       <DefinitionText>A data type for a data property.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="ComponentType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -334,7 +334,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A datatype.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="ModelItem" xsi:nil="true"/>
+      <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>DatatypeType</Name>
@@ -342,7 +342,7 @@
       <DefinitionText>A data type for a data type.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="ComponentType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty>
             <Name>RestrictionOf</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -353,22 +353,22 @@
               <DefinitionText>A data type for a restriction of a data type.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+                <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
                   <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
                 </HasObjectProperty>
-                <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="unbounded">
-                  <ObjectProperty s:id="Facet">
-                    <Name>Facet</Name>
+                <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="0" mm:maxOccursQuantity="unbounded">
+                  <ObjectProperty s:id="FacetAbstract">
+                    <Name>FacetAbstract</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
-                    <DefinitionText>A facet that restricts an aspect of a data type.</DefinitionText>
-                    <Abstract>true</Abstract>
+                    <DefinitionText>A data concept for a facet that restricts an aspect of a data type.</DefinitionText>
+                    <AbstractIndicator>true</AbstractIndicator>
                   </ObjectProperty>
                 </HasObjectProperty>
               </ExtensionOf>
             </Class>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="0" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="0" mm:maxOccursQuantity="1">
           <ObjectProperty>
             <Name>UnionOf</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
@@ -379,7 +379,7 @@
               <DefinitionText>A data type for a union of data types.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-                <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="unbounded">
+                <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="unbounded">
                   <ObjectProperty s:ref="Datatype" xsi:nil="true"/>
                 </HasObjectProperty>
               </ExtensionOf>
@@ -396,10 +396,10 @@
     <DefinitionText>A human-readable text definition of a data model component.</DefinitionText>
     <Class s:ref="xs-proxy.string" xsi:nil="true"/>
   </ObjectProperty>
-  <ObjectProperty s:id="Abstract">
-    <Name>Abstract</Name>
+  <ObjectProperty s:id="AbstractIndicator">
+    <Name>AbstractIndicator</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
-    <DefinitionText>True when a component is a base for extension, and must be specialized to be used directly.</DefinitionText>
+    <DefinitionText>True if a component is a base for extension, and must be specialized to be used directly; false if a component may be used directly.</DefinitionText>
     <Class s:ref="xs-proxy.boolean" xsi:nil="true"/>
   </ObjectProperty>
 
@@ -409,7 +409,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A restriction of the length of a data type. Unit of length varies depending on the type that is being derived from.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:id="NonNegativeValueFacetType">
       <Name>NonNegativeValueFacetType</Name>
@@ -417,10 +417,10 @@
       <DefinitionText>A data type for a restriction of the length of a data type.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="NonNegativeValue" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -431,7 +431,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A minimum length of a data type. Unit of length varies depending on the type that is being derived from.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="NonNegativeValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -440,7 +440,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A maximum length of a data type. Unit of length varies depending on the type that is being derived from.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="NonNegativeValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -449,7 +449,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A restriction of the content of a datatype to values that match a specific pattern, provided as a regular expression.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>PatternFacetType</Name>
@@ -457,10 +457,10 @@
       <DefinitionText>A data type for restricting the content of a datatype to values that match a specific pattern, provided as a regular expression.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="StringValue" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -471,7 +471,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A restriction of the length of a data type.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:id="AnyValueFacetType">
       <Name>AnyValueFacetType</Name>
@@ -479,10 +479,10 @@
       <DefinitionText>A data type for a facet that can have any value type.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
-          <ObjectProperty s:ref="AnyValue" xsi:nil="true"/>
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+          <ObjectProperty s:ref="AnyValueAbstract" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -493,7 +493,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A constraint on how white space within data values is handled.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class>
       <Name>WhiteSpaceFacetType</Name>
@@ -501,20 +501,20 @@
       <DefinitionText>A data type constraining how white space within data values is handled.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty>
-            <Name>WhiteSpaceValue</Name>
+            <Name>WhiteSpaceValueCode</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
             <DefinitionText>A value of a specification of white space for a data type.</DefinitionText>
             <Class>
-              <Name>WhiteSpaceValueType</Name>
+              <Name>WhiteSpaceValueCodeType</Name>
               <Namespace s:ref="mm" xsi:nil="true"/>
               <DefinitionText>A data type for a specification of white space for a data type.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                 <HasValue>
                   <Datatype>
-                    <Name>WhiteSpaceFacetSimpleType</Name>
+                    <Name>WhiteSpaceFacetCodeSimpleType</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
                     <DefinitionText>A data type for a data type for a specification of white space for a data type.</DefinitionText>
                     <RestrictionOf>
@@ -538,7 +538,7 @@
             </Class>
           </ObjectProperty>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -549,7 +549,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>An inclusive upper bound of a data type.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="AnyValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -558,7 +558,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>An exclusive upper bound of a data type.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="AnyValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -567,7 +567,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>An exclusive lower bound of a data type.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="AnyValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -576,7 +576,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>An inclusive lower bound of a data type.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="AnyValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
@@ -585,7 +585,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A restriction on the precision and of a decimal data type, via a restriction on the number of digits required to represent its value.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:id="PositiveValueFacetType">
       <Name>PositiveValueFacetType</Name>
@@ -593,10 +593,10 @@
       <DefinitionText>A data type for a facet that carries a value that is a positive integer.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
-        <HasObjectProperty mm:sequenceID="1" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="PositiveValue" xsi:nil="true"/>
         </HasObjectProperty>
-        <HasObjectProperty mm:sequenceID="2" mm:minOccurs="1" mm:maxOccurs="1">
+        <HasObjectProperty mm:sequenceID="2" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
           <ObjectProperty s:ref="DefinitionText" xsi:nil="true"/>
         </HasObjectProperty>
       </ExtensionOf>
@@ -607,24 +607,24 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A restriction on the precision and of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="Facet" xsi:nil="true"/>
+      <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="NonNegativeValueFacetType" xsi:nil="true"/>
   </ObjectProperty>
   
   
-  <ObjectProperty s:id="AnyValue">
-    <Name>AnyValue</Name>
+  <ObjectProperty s:id="AnyValueAbstract">
+    <Name>AnyValueAbstract</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
-    <DefinitionText>A value of a facet.</DefinitionText>
-    <Abstract>true</Abstract>
+    <DefinitionText>A data concept for a value of a facet.</DefinitionText>
+    <AbstractIndicator>true</AbstractIndicator>
   </ObjectProperty>
   <ObjectProperty s:id="NonNegativeValue">
     <Name>NonNegativeValue</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A value of a facet, with an integer value zero or greater.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="AnyValue" xsi:nil="true"/>
+      <ObjectProperty s:ref="AnyValueAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="xs-proxy.nonNegativeInteger" xsi:nil="true"/>
   </ObjectProperty>
@@ -633,7 +633,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A value of a facet, with an integer value greater than zero.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="AnyValue" xsi:nil="true"/>
+      <ObjectProperty s:ref="AnyValueAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="xs-proxy.positiveInteger" xsi:nil="true"/>
   </ObjectProperty>
@@ -642,7 +642,7 @@
     <Namespace s:ref="mm" xsi:nil="true"/>
     <DefinitionText>A value of a facet, with a string value.</DefinitionText>
     <SubPropertyOf>
-      <ObjectProperty s:ref="AnyValue" xsi:nil="true"/>
+      <ObjectProperty s:ref="AnyValueAbstract" xsi:nil="true"/>
     </SubPropertyOf>
     <Class s:ref="xs-proxy.string" xsi:nil="true"/>
   </ObjectProperty>
@@ -661,7 +661,7 @@
 
   <Namespace s:id="structures">
     <NamespaceURI>http://release.niem.gov/niem/structures/4.0/</NamespaceURI>
-    <NamespacePrefix>structures</NamespacePrefix>
+    <NamespacePrefixName>structures</NamespacePrefixName>
   </Namespace>
   <Class s:id="structures.ObjectType">
     <Name>ObjectType</Name>
@@ -670,37 +670,37 @@
 
   <Namespace s:id="xs-proxy">
     <NamespaceURI>http://release.niem.gov/niem/proxy/xsd/4.0/</NamespaceURI>
-    <NamespacePrefix>xs-proxy</NamespacePrefix>
+    <NamespacePrefixName>xs-proxy</NamespacePrefixName>
   </Namespace>
   <Class s:id="xs-proxy.string">
     <Name>string</Name>
     <Namespace s:ref="xs-proxy" xsi:nil="true"/>
-    <ContentStyle>HasValue</ContentStyle>
+    <ContentStyleCode>HasValue</ContentStyleCode>
   </Class>
   <Class s:id="xs-proxy.anyURI">
     <Name>anyURI</Name>
     <Namespace s:ref="xs-proxy" xsi:nil="true"/>
-    <ContentStyle>HasValue</ContentStyle>
+    <ContentStyleCode>HasValue</ContentStyleCode>
   </Class>
   <Class s:id="xs-proxy.nonNegativeInteger">
     <Name>nonNegativeInteger</Name>
     <Namespace s:ref="xs-proxy" xsi:nil="true"/>
-    <ContentStyle>HasValue</ContentStyle>
+    <ContentStyleCode>HasValue</ContentStyleCode>
   </Class>
   <Class s:id="xs-proxy.positiveInteger">
     <Name>positiveInteger</Name>
     <Namespace s:ref="xs-proxy" xsi:nil="true"/>
-    <ContentStyle>HasValue</ContentStyle>
+    <ContentStyleCode>HasValue</ContentStyleCode>
   </Class>
   <Class s:id="xs-proxy.boolean">
     <Name>boolean</Name>
     <Namespace s:ref="xs-proxy" xsi:nil="true"/>
-    <ContentStyle>HasValue</ContentStyle>
+    <ContentStyleCode>HasValue</ContentStyleCode>
   </Class>
 
   <Namespace s:id="xs">
     <NamespaceURI>http://www.w3.org/2001/XMLSchema</NamespaceURI>
-    <NamespacePrefix>xs</NamespacePrefix>
+    <NamespacePrefixName>xs</NamespacePrefixName>
   </Namespace>
   <Datatype s:id="xs.NCName">
     <Name>NCName</Name>

@@ -112,14 +112,14 @@
               >An ObjectProperty that is a reference must not have mm:SubPropertyOf.</assert>
       <assert test="empty(mm:Class)"
               >An ObjectProperty that is a reference must not have mm:Class.</assert>
-      <assert test="empty(mm:Abstract)"
-              >An ObjectProperty that is a reference must not have mm:Abstract.</assert>
+      <assert test="empty(mm:AbstractIndicator)"
+              >An ObjectProperty that is a reference must not have mm:AbstractIndicator.</assert>
     </rule>
   </pattern>
 
   <pattern>
     <rule context="mm:ObjectProperty[f:is-target(.) and mm:DefinitionText and empty(mm:Class)]">
-      <assert test="xs:boolean(mm:Abstract) = true()"
+      <assert test="xs:boolean(mm:AbstractIndicator) = true()"
               >An object property with no class must be abstract.</assert>
     </rule>
   </pattern>
@@ -128,24 +128,24 @@
     <rule context="mm:Class[f:is-target(.) and f:component-get-qname(.) = xs:QName('structures:ObjectType')]">
       <assert test="empty(mm:DefinitionText)"
               >A Class for structures:ObjectType must not have mm:DefinitionText.</assert>
-      <assert test="empty(mm:Abstract)"
-              >A Class for structures:ObjectType must not have mm:Abstract.</assert>
+      <assert test="empty(mm:AbstractIndicator)"
+              >A Class for structures:ObjectType must not have mm:AbstractIndicator.</assert>
       <assert test="empty(mm:ExtensionOf)"
               >A Class for structures:ObjectType must not have mm:ExtensionOf.</assert>
-      <assert test="empty(mm:ContentStyle)"
-              >A Class for structures:ObjectType must not have mm:ContentStyle.</assert>
+      <assert test="empty(mm:ContentStyleCode)"
+              >A Class for structures:ObjectType must not have mm:ContentStyleCode.</assert>
     </rule>
     <rule context="mm:Class[f:is-target(.) and mm:DefinitionText]">
       <assert test="mm:ExtensionOf"
               >A class that is a definition must have mm:ExtensionOf</assert>
     </rule>
     <rule context="mm:Class[f:is-target(.) and empty(mm:DefinitionText)]">
-      <assert test="empty(mm:Abstract)"
-              >A class that is a reference must not have mm:Abstract.</assert>
+      <assert test="empty(mm:AbstractIndictoar)"
+              >A class that is a reference must not have mm:AbstractIndicator.</assert>
       <assert test="empty(mm:ExtensionOf)"
               >A class that is a reference must not have mm:ExtensionOf.</assert>
-      <assert test="mm:ContentStyle"
-              >A Class that is a reference must have mm:ContentStyle.</assert>
+      <assert test="mm:ContentStyleCode"
+              >A Class that is a reference must have mm:ContentStyleCode.</assert>
     </rule>
   </pattern>
 

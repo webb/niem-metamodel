@@ -68,7 +68,7 @@ tmp/token/valid-xsd/%: %
 
 .PHONY: clean
 clean:
-	${RM} -rf tmp
+	${RM} -rf tmp generated
 	${RM} ${wildcard tmp.*}
 
 # conformance check

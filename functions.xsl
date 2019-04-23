@@ -114,8 +114,8 @@
         <when test="f:component-get-qname(.) = xs:QName('structures:ObjectType')">
           <value-of>none</value-of>
         </when>
-        <when test="empty(mm:DefinitionText) and mm:ContentStyle">
-          <value-of select="mm:ContentStyle"/>
+        <when test="empty(mm:DefinitionText) and mm:ContentStyleCode">
+          <value-of select="mm:ContentStyleStyle"/>
         </when>
         <when test="mm:ExtensionOf">
           <variable name="base-style"
@@ -153,7 +153,7 @@
       </if>
       <for-each select="f:resolve(.)">
         <variable name="namespace" select="f:resolve(mm:Namespace)"/>
-        <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefix, ':', mm:Name))"/>
+        <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefixName, ':', mm:Name))"/>
       </for-each>
     </for-each>
   </function>
@@ -163,7 +163,7 @@
     <param name="local-name" as="xs:string"/>
     <for-each select="f:resolve($namespace)">
       <sequence select="QName($namespace/mm:NamespaceURI, 
-                        concat($namespace/mm:NamespacePrefix, ':', $local-name))"/>
+                        concat($namespace/mm:NamespacePrefixName, ':', $local-name))"/>
     </for-each>
   </function>
 

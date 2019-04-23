@@ -30,7 +30,7 @@
 
   <template match="mm:Namespace[f:is-target(.)]" mode="generate-xml-catalog">
     <c:uri name="{mm:NamespaceURI}"
-           uri="{mm:NamespacePrefix}.xsd"/>
+           uri="{mm:NamespacePrefixName}.xsd"/>
   </template>
 
   <template match="@*|node()" priority="-1" mode="generate-xml-catalog">
@@ -41,14 +41,14 @@
 
   <template match="mm:Namespace[f:is-target(.)]" mode="generate-xsd">
     <variable name="this" as="element(mm:Namespace)" select="."/>
-    <result-document href="generated/xsd/{mm:NamespacePrefix}.xsd" indent="yes">
+    <result-document href="generated/xsd/{mm:NamespacePrefixName}.xsd" indent="yes">
       <xs:schema targetNamespace="{mm:NamespaceURI}">
         <variable name="referenced-namespaces"
                   select="f:component-get-namespace(
                           f:component-get-referenced-components(
                           f:collect-components-in-namespace($this)))"/>
         <for-each select="$referenced-namespaces">
-          <namespace name="{mm:NamespacePrefix}" select="mm:NamespaceURI"/>
+          <namespace name="{mm:NamespacePrefixName}" select="mm:NamespaceURI"/>
         </for-each>
         <attribute name="ct:conformanceTargets">http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument</attribute>
         <attribute name="version">1</attribute>
@@ -81,7 +81,7 @@
           <value-of select="f:component-get-qname(.)"/>
         </attribute>
       </for-each>
-      <for-each select="mm:Abstract">
+      <for-each select="mm:AbstractIndicator">
         <if test="xs:boolean(.) = true()">
           <attribute name="abstract">true</attribute>
         </if>
@@ -102,7 +102,7 @@
     <variable name="this" select="."/>
     <variable name="content-style" select="f:class-get-content-style(.)"/>
     <xs:complexType name="{mm:Name}">
-      <for-each select="mm:Abstract">
+      <for-each select="mm:AbstractIndicator">
         <if test="xs:boolean(.) = true()">
           <attribute name="abstract">true</attribute>
         </if>
@@ -158,12 +158,12 @@
   </template>
 
   <template match="mm:HasObjectProperty" mode="generate-xsd">
-    <xs:element ref="{f:component-get-qname(mm:ObjectProperty)}" minOccurs="{@mm:minOccurs}" maxOccurs="{@mm:maxOccurs}"></xs:element>
+    <xs:element ref="{f:component-get-qname(mm:ObjectProperty)}" minOccurs="{@mm:minOccursQuantity}" maxOccurs="{@mm:maxOccursQuantity}"></xs:element>
   </template>
 
   <template match="mm:HasDataProperty" mode="generate-xsd">
     <xs:attribute ref="{f:component-get-qname(mm:DataProperty)}">
-      <!--
+      <!-- TODO TODO ZZZ add use="required", etc.
       minOccurs="{@mm:minOccurs}" maxOccurs="{@mm:maxOccurs}"></xs:element>
       -->
     </xs:attribute>

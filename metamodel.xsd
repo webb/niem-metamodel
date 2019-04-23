@@ -36,7 +36,7 @@
     <complexType>
       <sequence>
         <element name="NamespaceURI" type="anyURI"/>
-        <element name="NamespacePrefix" type="NCName"/>
+        <element name="NamespacePrefixName" type="NCName"/>
         <element ref="mm:DefinitionText" minOccurs="0"/>
       </sequence>
       <attribute ref="structures:id"/>
@@ -58,7 +58,7 @@
           </complexType>
         </element>
         <element ref="mm:Class" minOccurs="0"/>
-        <element name="Abstract" type="boolean" minOccurs="0"/>
+        <element name="AbstractIndicator" type="boolean" minOccurs="0"/>
       </sequence>
       <attribute ref="structures:id"/>
       <attribute ref="structures:ref"/>
@@ -71,7 +71,7 @@
         <element name="Name" type="NCName"/>
         <element ref="mm:Namespace"/>
         <element ref="mm:DefinitionText" minOccurs="0"/>
-        <element name="Abstract" type="boolean" minOccurs="0"/>
+        <element name="AbstractIndicator" type="boolean" minOccurs="0"/>
         <element name="ExtensionOf" minOccurs="0">
           <complexType>
             <sequence>
@@ -88,7 +88,7 @@
             </sequence>
           </complexType>
         </element>
-        <element name="ContentStyle" minOccurs="0">
+        <element name="ContentStyleCode" minOccurs="0">
           <simpleType>
             <restriction base="string">
               <enumeration value="HasValue"/>
@@ -108,8 +108,8 @@
         <element ref="mm:ObjectProperty"/>
       </sequence>
       <attribute name="sequenceID" type="positiveInteger" use="required"/>
-      <attribute name="minOccurs" type="nonNegativeInteger" use="required"/>
-      <attribute name="maxOccurs" use="required">
+      <attribute name="minOccursQuantity" type="nonNegativeInteger" use="required"/>
+      <attribute name="maxOccursQuantity" use="required">
         <simpleType>
           <union memberTypes="nonNegativeInteger">
             <simpleType>
@@ -130,8 +130,8 @@
       <sequence>
         <element ref="mm:DataProperty"/>
       </sequence>
-      <attribute name="minOccurs" type="integer" use="required"/>
-      <attribute name="maxOccurs" type="integer" use="required"/>
+      <attribute name="minOccursQuantity" type="integer" use="required"/>
+      <attribute name="maxOccursQuantity" type="integer" use="required"/>
     </complexType>
   </element>
 
