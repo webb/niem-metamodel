@@ -71,4 +71,8 @@ This is self-evident, given:
     - We don't represent augmentations in the metamodel
     - It'd be nice for a model to be able to use its own augmentation points
     - We'll need to identify specific augmentation types and let domains build augmentation elements.
+- Handle attribute use (required, prohibited, etc).
+- Add min / max occurs restrictiosn
+    - 0-1 for attributes
+    - min <= max
 
