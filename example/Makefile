@@ -13,6 +13,13 @@ valid-before:
 	touch $@
 
 generated/xsd/xml-catalog.xml: extension.xml
+	rm -rf generated/xsd
 	saxon -x ../generate-xsd.xsl -i $<
 
+.PHONY: clean
+clean:
+	rm -rf generated/xsd
+	rm -rf ../tmp/valid/example-xsd
+	rm -rf ../tmp/valid-xsd-generated/example
+	rm -rf ../tmp/valid-sch/example
 

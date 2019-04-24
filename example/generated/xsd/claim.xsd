@@ -25,6 +25,7 @@
          <xs:extension base="structures:ObjectType">
             <xs:sequence>
                <xs:element ref="claim:DamagedVehicle" minOccurs="1" maxOccurs="1"/>
+               <xs:element ref="claim:VehicleDamageAmount" minOccurs="1" maxOccurs="1"/>
                <xs:element ref="claim:ClaimAugmentationPoint"
                            minOccurs="0"
                            maxOccurs="unbounded"/>
@@ -40,6 +41,11 @@
    <xs:element name="DamagedVehicle" type="nc:VehicleType" nillable="true">
       <xs:annotation>
          <xs:documentation>A vehicle that has sustained damage.</xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="VehicleDamageAmount" type="nc:AmountType" nillable="true">
+      <xs:annotation>
+         <xs:documentation>An amount of money evaluating the cost of repair of damage to a vehicle.</xs:documentation>
       </xs:annotation>
    </xs:element>
 </xs:schema>

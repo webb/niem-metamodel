@@ -12,5 +12,9 @@
       <nc:IdentificationID>JYAVN01E7CA042113</nc:IdentificationID>
     </nc:VehicleIdentification>
   </claim:DamagedVehicle>
+  <claim:VehicleDamageAmount>
+    <nc:Amount>1432.28</nc:Amount>
+    <nc:CurrencyCode>USD</nc:CurrencyCode>
+  </claim:VehicleDamageAmount>
 </claim:Claim>
   
