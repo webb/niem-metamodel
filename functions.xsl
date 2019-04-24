@@ -33,6 +33,12 @@
     </choose>
   </function>
 
+  <function name="f:get-uri-for-id" as="xs:anyURI">
+    <param name="context" as="element()"/>
+    <param name="id" as="xs:string"/>
+    <sequence select="resolve-uri(concat('#', $id), f:get-base-uri($context))"/>
+  </function>
+
   <function name="f:get-uri" as="xs:anyURI?">
     <param name="context" as="element()"/>
     <choose>
@@ -67,8 +73,8 @@
   </function>
 
   <function name="f:collect-properties" as="node()*">
-    <param name="object" as="element()"/>
-    <for-each select="f:collect-objects($object)">
+    <param name="objects" as="element()*"/>
+    <for-each select="$objects">
       <sequence select="@*|*|text()[string-length(normalize-space(.)) gt 0]"/>
     </for-each>
   </function>

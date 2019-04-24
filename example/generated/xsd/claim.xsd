@@ -10,8 +10,8 @@
    <xs:annotation>
       <xs:documentation>A data model for an insurance claim.</xs:documentation>
    </xs:annotation>
-   <xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
    <xs:import namespace="http://release.niem.gov/niem/structures/4.0/"/>
+   <xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
    <xs:element name="Claim" type="claim:ClaimType" nillable="true">
       <xs:annotation>
          <xs:documentation>An insurance claim resulting from an auto crash.</xs:documentation>

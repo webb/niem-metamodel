@@ -23,3 +23,6 @@ clean:
 	rm -rf ../tmp/valid-xsd-generated/example
 	rm -rf ../tmp/valid-sch/example
 
+cc:
+	schematron-execute --xslt-file=../../ndr/artifacts/repo/ndr-rules-conformance-target-ref.sch.xsl generated/xsd/claim.xsd
+	schematron-execute --param=+xml-catalog=xml-catalog.xml --xslt-file=../../ndr/artifacts/repo/ndr-rules-conformance-target-set.sch.xsl generated/xsd/claim.xsd
