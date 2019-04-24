@@ -40,7 +40,7 @@ tmp/token/generated-xsd: metamodel.xml generate-xsd.xsl functions.xsl
 	mkdir -p ${dir $@}
 	touch $@
 
-tmp/token/valid-xsd-generated/metamodel.xml: metamodel.xml tmp/token/generated-xsd xml-catalog-generated.xml ${shell find niem -type f}
+tmp/token/valid-xsd-generated/%.xml: %.xml tmp/token/generated-xsd xml-catalog-generated.xml ${shell find niem -type f}
 	xs-validate -c xml-catalog-generated.xml $<
 	mkdir -p ${dir $@}
 	touch $@

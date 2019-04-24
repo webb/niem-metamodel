@@ -1,0 +1,53 @@
+<Model
+  xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
+  xmlns:s="http://release.niem.gov/niem/structures/4.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://reference.niem.gov/specification/metamodel/5.0alpha1">
+
+  <Namespace s:id="claim">
+    <NamespaceURI>http://example.org/claim/1/</NamespaceURI>
+    <NamespacePrefixName>claim</NamespacePrefixName>
+    <DefinitionText>A data model for an insurance claim.</DefinitionText>
+  </Namespace>
+
+  <ObjectProperty>
+    <Name>Claim</Name>
+    <Namespace s:ref="claim" xsi:nil="true"/>
+    <DefinitionText>An insurance claim resulting from an auto crash.</DefinitionText>
+    <Class>
+      <Name>ClaimType</Name>
+      <Namespace s:ref="claim" xsi:nil="true"/>
+      <DefinitionText>A data type for an insurance claim.</DefinitionText>
+      <ExtensionOf>
+        <Class s:ref="structures.ObjectType" xsi:nil="true"/>
+        <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
+          <ObjectProperty>
+            <Name>DamagedVehicle</Name>
+            <Namespace s:ref="claim" xsi:nil="true"/>
+            <DefinitionText>A vehicle that has sustained damage.</DefinitionText>
+            <Class>
+              <Name>VehicleType</Name>
+              <Namespace>
+                <NamespaceURI>http://release.niem.gov/niem/niem-core/4.0/</NamespaceURI>
+                <NamespacePrefixName>nc</NamespacePrefixName>
+              </Namespace>
+              <ContentStyleCode>HasObjectProperty</ContentStyleCode>
+            </Class>
+          </ObjectProperty>
+        </HasObjectProperty>
+      </ExtensionOf>
+    </Class>
+  </ObjectProperty>
+
+  <Namespace s:id="structures">
+    <NamespaceURI>http://release.niem.gov/niem/structures/4.0/</NamespaceURI>
+    <NamespacePrefixName>structures</NamespacePrefixName>
+  </Namespace>
+
+  <Class s:id="structures.ObjectType">
+    <Name>ObjectType</Name>
+    <Namespace s:ref="structures" xsi:nil="true"/>
+  </Class>
+  
+
+</Model>
