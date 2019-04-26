@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- really important that this runs only on a fully-restacked data expression -->
 <stylesheet 
   exclude-result-prefixes="xsl c f mm xsl"
   version="2.0"

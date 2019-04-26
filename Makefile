@@ -2,6 +2,7 @@
 png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
 
 targets = \
+  docs/niem-metamodel.png \
   tmp/token/xml/metamodel.xml \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
@@ -82,3 +83,5 @@ tmp/token/xml/%: %
 	mkdir -p ${dir $@}
 	touch $@
 
+docs/niem-metamodel.png: metamodel-tb.dot
+	dot -Tpng -o$@ $<

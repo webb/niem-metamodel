@@ -1,3 +1,5 @@
+
+
 A metamodel for NIEM.
 
 # Terminology:
