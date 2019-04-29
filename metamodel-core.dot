@@ -1,22 +1,25 @@
 digraph G {
+  layout = dot;
   edge [fontname = "Helvetica", fontsize = 10, dir = forward];
   node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
   rankdir = TB;
 
-  node [shape=Mrecord];
+  node [shape=box, style=rounded];
   
-  Class [label="\N\l- Namespace, Name, Definition\l", rank = 1];
-  Class:w -> Class:w [label="ExtensionOf"];
-  Class -> { HasDataProperty HasObjectProperty HasValue };
-  
-  ObjectProperty [label="\N\l- Namespace, Name, Definition\l"];
-  ObjectProperty:e -> Class [weight=0];
 
-  { rank = same; 
+  Class [label="\N\n(namespace, name, definition)\n"];
+  ExtensionOf;
+  
+  Class -> ExtensionOf -> Class;
+  ExtensionOf -> { HasDataProperty HasObjectProperty HasValue };
+  
+  ObjectProperty [label="\N\n(namespace, name, definition)\n"];
+  ObjectProperty -> Class;
+
   HasValue;
-  HasObjectProperty [label="\N\l- minOccurs, maxOccurs, sequenceID\l"];
-  HasDataProperty [label="\N\l- minOccurs, maxOccurs\l"];
-  }
+  HasObjectProperty [label="\N\n(minOccurs, maxOccurs, sequenceID)\n"];
+  HasDataProperty [label="\N\n(minOccurs, maxOccurs)\n"];
+
   HasValue -> Datatype;
 
   HasObjectProperty -> ObjectProperty;
@@ -25,12 +28,18 @@ digraph G {
 
   // data property ///////////////////////////////////////////////////////
 
-  DataProperty [label="\N\l- Namespace, Name, Definition\l"];
+  DataProperty [label="\N\n(namespace, name, definition)\n"];
   DataProperty -> Datatype;
-  Datatype:e -> Datatype:e [label="RestrictionOf"];
-  
-  // datatype ///////////////////////////////////////////////////////
 
-  Datatype [label="\N\l- Namespace, Name, Definition\l"];
+  Datatype [label="\N\n(namespace, name, definition)\n"];
+  RestrictionOf;
+
+  Datatype -> RestrictionOf -> Datatype;
+  Datatype -> ListOf -> Datatype;
+  Datatype -> UnionOf -> Datatype;
+
+  Facets [label="\N\n(minLength, maxLength, enumeration, etc.)\n"];
+  RestrictionOf -> Facets
+  
 
 }
