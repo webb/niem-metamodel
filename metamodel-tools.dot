@@ -12,36 +12,21 @@ digraph G {
   }
   
   { rank = same;
-  schema_xsd [label="Schema for Messages\n(XSD)"];
+  schema_xsd [label="Schema for Messages\n(XML Schema)"];
   schema_json [label="Schema for Messages\n(JSON Schema)"];
   uml_model [label="UML model\n(XMI)"];
   api_spec [label="API Specification\n(OpenAPI)"];
+  docs [label="Other documentation"];
+
   }
   
-  { rank = same; model; metamodel; }
-
-  edge [label="validates"];
-  schema_xsd -> message_xml;
-  schema_json -> message_json;
+  schema_xsd -> message_xml [label="validates"];
+  schema_json -> message_json [label="validates"];
 
   model [label="Model for Messages\n"];
-  model -> { schema_xsd schema_json uml_model api_spec }  [label="translates to"];
-  model -> { message_xml message_json } [label="defines"];
-  
+  model -> { schema_xsd schema_json uml_model api_spec docs }  [label="translates to"];
 
-//  trans [label="Model-to-XSD transformer\n(XSLT)"];
-//  model -> trans -> schema;
-
-  metaschema [label="Schema for Models\n(XSD)"];
-  metaschema -> model [label="validates"];
-
-  metamodel [label="Model for Models\nMetamodel"];
+  metamodel [label="Model for Models\n(Metamodel)"];
   metamodel -> model [label="defines"];
-
-//  trans2 [label="Model-to-XSD transformer\n(XSLT)"];
-  metamodel -> metaschema [label="translates to"];
-
-  metaschema -> metamodel [label="validates"];
-  
 
 }

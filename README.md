@@ -1,23 +1,37 @@
 
-A metamodel for NIEM.
+# A Metamodel for NIEM
 
-![alt text](generated/metamodel-core.png "Hover text")
+The [National Information Exchange Model (NIEM)](https://niem.gov) is a standards-based approach for building interoperable information exchanges, focused on the development and reuse of a set of common data definitions. These data definitions are provided as XML Schema, suitable for use as a basis for building schemas for XML messages for interchange between systems. 
+
+NIEM has focused on distributed, interoperable governance, enabling organizations to work together on a set of data definitions that all can use, and which work together seamlessly. NIEM has also focused on providing data and data definitions that are interoperable across systems and implementation technology. By relying on XML Schema and XML as the point of interoperability, NIEM enabled systems to be developed without a dependency on programming language, operating system platform, or database implementation. 
+
+This repository reflects an effort to improve NIEM to allow for data defintions that are interoperable across data representation and specification technologies. This repository defines a model for NIEM data definitions, so that those definitions may be used with technologies other than XML Schema. For example, an exchange may be stood up using JSON messages, with JSON schema defining the syntax of those messages. The model, describing objects, values, and relationships between them, will be consistent across the XML Schema and the JSON schema. This consistency will ensure that data definitions can be reused across multiple technologies.
+
+NIEM's current effort is on developing the model to define data defintions for XML Schema, JSON Schema, and UML.
+
+![Use of the metamodel to support technologies](generated/metamodel-tools.png "Models can be used many ways, to support many technologies.")
 
 # Terminology:
 
 Primarily uses terms from RDFS and OWL.
 
 - Model
-    - an entire data model, profile, EIEM, or release.
-- ObjectProperty
-- Class - maps to XSD complex types
-    - from RDFS
+    - A NIEM-conformant information exchange model, release, or enterprise model.
+- Namespace
+    - A collection of data definitions, so that they may be managed together, and distinguised from similarly-named data definitions in other collections.
+    - In NIEM, the namespace *NIEM core* is managed by the NIEM Business Architecture Committee (NBAC), and provides many objects used in most NIEM information exchanges.
+- Class
+    - A category of things. Instances of a class are called *objects*.
+    - In NIEM, complex type `nc:PersonType` is a class, and its instances are individual people.
 - Datatype
-    - from rdfs:Datatype
-    - maps to XSD simple types
-- DataProperty
-- SubClassOf
-- SubPropertyOf
+    - A category of literal values. Literal values are simple values that include strings, dates, and numbers. A literal value doesn't have its own properties, and its equivalence to another literal is evaluated only based on their values, whereas objects can have the same value and still be distinct.
+    - In NIEM, the XML Schema date type is a data type.
+- Object Property
+    - A relationship from an instance of one class to an instance of another. An object property can also be thought of a relatiionship between classes (e.g., <q>cars have owners</q>).
+    - In NIEM, element `nc:PersonName` is an object property, relating a person (who has a name) to a name object (which has parts like *given name* and *surname*).
+- Data Property
+    - A relationship from an instance of one class to a literal of a data type.
+    - In NIEM, data properties are most frequently used to carry modifiers on simple values, like units.
 
 # Order
 
