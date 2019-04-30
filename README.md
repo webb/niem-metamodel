@@ -13,16 +13,22 @@ NIEM's current effort is on developing the model to define data defintions for X
 
 ![Use of the metamodel to support technologies](generated/metamodel-tools.png "Models can be used many ways, to support many technologies.")
 
-## A true metamodel
+# A true metamodel
 
 This repository holds a true *metamodel*, in that the metamodel defines itself. 
 
 - The core of the metamodel is a model for models, represented as the XML file [metamodel.xml](metamodel.xml). 
 - The XSLT transformation [generate-xsd.xsl](generate-xsd.xsl) translates the metamodel XML file into XML Schema [generated/xsd/mm.xsd](generated/xsd/mm.xsd).
 - The metamodel is valid against the schema generated from itself, and so is defined by iteslf.
+- The translation from the *Model for Models* to the *Schema for Models* is the same translation as the one from *Model for Messages* to the *Schema for Messages*.
 
 ![The metamodel is a model that defines models for models](generated/metamodel-workflow.png "The metamodel is a model that defines models for models.")
 
+# The contents of a model
+
+A model consists of a set of data definitions, described [below](#terminology). Each of these relationships are described by the metamodel, and enforced with XML Schema and Schematron rules.
+
+![The contents of a model](generated/metamodel-core.png "The contents of a model")
 
 # Terminology:
 
