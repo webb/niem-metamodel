@@ -16,6 +16,9 @@ digraph G {
   ObjectProperty [label="\N\n(namespace, name, definition)\n"];
   ObjectProperty -> Class;
 
+  SubPropertyOf;
+  ObjectProperty -> SubPropertyOf -> ObjectProperty;
+
   HasValue;
   HasObjectProperty [label="\N\n(minOccurs, maxOccurs, sequenceID)\n"];
   HasDataProperty [label="\N\n(minOccurs, maxOccurs)\n"];

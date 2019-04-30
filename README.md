@@ -1,6 +1,7 @@
 
-
 A metamodel for NIEM.
+
+![alt text](generated/metamodel-core.png "Hover text")
 
 # Terminology:
 

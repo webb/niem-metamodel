@@ -3,6 +3,7 @@ png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
 
 targets = \
   docs/niem-metamodel.png \
+  docs/NIEM-Metamodel.pptx \
   tmp/token/xml/metamodel.xml \
   tmp/token/valid-xsd/metamodel.xml \
   tmp/token/valid-sch/metamodel.xml \
@@ -85,3 +86,14 @@ tmp/token/xml/%: %
 
 docs/niem-metamodel.png: metamodel-tb.dot
 	dot -Tpng -o$@ $<
+
+# output format: pptx
+# input: markdown_strict
+# doesn't work well:	  --reference-doc=reference.pptx
+docs/NIEM-Metamodel.pptx: slides.md reference.pptx generated/metamodel-core.png
+	pandoc \
+	  --to=pptx --output=$@ \
+	  --reference-doc=reference.pptx \
+	  --from=markdown_strict+yaml_metadata_block $< \
+
+
