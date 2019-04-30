@@ -9,11 +9,24 @@ This repository reflects an effort to improve NIEM to allow for data defintions 
 
 NIEM's current effort is on developing the model to define data defintions for XML Schema, JSON Schema, and UML.
 
+## Expressing a NIEM model with different technologies
+
 ![Use of the metamodel to support technologies](generated/metamodel-tools.png "Models can be used many ways, to support many technologies.")
+
+## A true metamodel
+
+This repository holds a true *metamodel*, in that the metamodel defines itself. 
+
+- The core of the metamodel is a model for models, represented as the XML file [metamodel.xml](metamodel.xml). 
+- The XSLT transformation [generate-xsd.xsl](generate-xsd.xsl) translates the metamodel XML file into XML Schema [generated/xsd/mm.xsd](generated/xsd/mm.xsd).
+- The metamodel is valid against the schema generated from itself, and so is defined by iteslf.
+
+![The metamodel is a model that defines models for models](generated/metamodel-workflow.png "The metamodel is a model that defines models for models.")
+
 
 # Terminology:
 
-Primarily uses terms from RDFS and OWL.
+The NIEM Metamodel primarily uses terms from RDFS and OWL, along with terms from XML Schema.
 
 - Model
     - A NIEM-conformant information exchange model, release, or enterprise model.
@@ -71,7 +84,7 @@ This is self-evident, given:
 - Constraning facets: <https://www.w3.org/TR/xmlschema-2/#rf-facets>
 - List & Union: <https://www.w3.org/TR/xmlschema-2/#atomic-vs-list>
 
-# TODO #
+# Todo and Options #
 
 - Wantlist requirements:
     - How to cover profiling?
@@ -92,4 +105,5 @@ This is self-evident, given:
 - Add min / max occurs restrictiosn
     - 0-1 for attributes
     - min <= max
-
+- The metamodel could eschew representation terms in component names, and rely on the production of those via model-to-schema translation. 
+    - For example, we could have a data property *person* with a class *person*, which would be translated into an element `Person` with type `PersonType`.
