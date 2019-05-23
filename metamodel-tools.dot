@@ -8,7 +8,7 @@ digraph G {
 
   { rank = same;
   message_xml [label="Message\n(XML data)"];
-  message_json [label="Message\n(JSON schema)"];
+  message_json [label="Message\n(JSON)"];
   message_json_ld [label="JSON-LD data"];
   message_rdf_xml [label="RDF/XML data"];
   }
