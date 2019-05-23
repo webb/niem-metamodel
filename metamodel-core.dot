@@ -12,6 +12,8 @@ digraph G {
   
   Class -> ExtensionOf -> Class;
   ExtensionOf -> { HasDataProperty HasObjectProperty HasValue };
+
+  { rank = same; HasDataProperty; HasObjectProperty; HasValue; }
   
   ObjectProperty [label="\N\n(namespace, name, definition)\n"];
   ObjectProperty -> Class;
