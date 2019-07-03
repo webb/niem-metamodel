@@ -15,7 +15,7 @@ digraph G {
 
   // model ///////////////////////////////////////////////////////////////////
 
-  Model [label="\N\l- Namespace\l- ObjectProperty\l- Class\l- DataProperty\l- Datatype\l"];
+  Model [label="\N\l- Namespace\l- Property\l- Class\l- Datatype\l"];
 
   // namespace ///////////////////////////////////////////////////////
 
@@ -25,34 +25,24 @@ digraph G {
 
   // object property ///////////////////////////////////////////////////////
 
-  ObjectProperty [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
-  ObjectProperty -> Class;
-  // ObjectProperty -> SubPropertyOf [dir=both];
-  ObjectProperty -> SubPropertyOf -> ObjectProperty;
+  Property [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
+  Property -> Class;
+  // Property -> SubPropertyOf [dir=both];
+  Property -> SubPropertyOf -> Property;
 
   // class ///////////////////////////////////////////////////////
 
   Class [label="\N\l- Name\l- Namespace\l- DefinitionText\l- AbstractIndicator\l- ContentStyleCode"];
-  // Class -> ExtensionOf [dir=both];
   Class -> ExtensionOf -> Class;
+  Class -> { HasProperty HasValue }
   ExtensionOf [label="\N\l"];
-  ExtensionOf -> { HasDataProperty HasObjectProperty };
-  ExtensionOf -> HasValue;
   
   HasValue [label="\N\l"];
   HasValue -> Datatype;
 
-  HasObjectProperty [label="\N\l- @sequenceID\l- @minOccursQuantity\l- @maxOccursQuantity\l"];
-  HasObjectProperty -> ObjectProperty;
+  HasProperty [label="\N\l- @sequenceID\l- @minOccursQuantity\l- @maxOccursQuantity\l- AbstractIndicator\l"];
+  HasProperty -> Property;
 
-  HasDataProperty [label="\N\l- @minOccursQuantity\l- @maxOccursQuantity\l"];
-  HasDataProperty -> DataProperty;
-
-  // data property ///////////////////////////////////////////////////////
-
-  DataProperty [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
-  DataProperty -> Datatype;
-  
   // datatype ///////////////////////////////////////////////////////
 
   Datatype [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
