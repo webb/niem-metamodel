@@ -1,0 +1,9 @@
+{
+  "@context": {
+    "xml": "http://www.w3.org/XML/1998/namespace#",
+    "model": "http://reference.niem.gov/specification/metamodel/5.0alpha1#",
+    "s": "http://release.niem.gov/niem/structures/4.0/#",
+    "xsi": "http://www.w3.org/2001/XMLSchema-instance#",
+    "this": "file:/Users/wr/r/niem/metamodel/metamodel.xml#"
+  }
+}

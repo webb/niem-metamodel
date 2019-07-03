@@ -1,0 +1,21 @@
+{
+  "@context": "context.json",
+  "claim:Claim": {
+    "claim:DamagedVehicle": {
+      "nc:ItemValue": {
+        "nc:ItemValueAmount": {
+          "nc:Amount": 23827,
+          "nc:CurrencyCode": "USD"
+        }
+      },
+      "nc:VehicleIdentification": {
+        "nc:IdentificationID": "JYAVN01E7CA042113"
+      }
+    },
+    "claim:VehicleDamageAmount": {
+      "nc:Amount": 1432.28,
+      "nc:CurrencyCode": "USD"
+    }
+  }
+}
+  
