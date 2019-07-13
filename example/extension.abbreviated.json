@@ -1,0 +1,41 @@
+{
+  "@context": "context.json",
+  "m:model": {
+    "m:namespace": {
+      "@id": "claim",
+      "m:definition": "A data model for an insurance claim.",
+      "m:namespaceURI": "http://example.org/claim/1/",
+      "m:prefix": "claim"
+    },
+    "m:property": {
+      "@id": "claim:claim",
+      "m:class": {
+        "m:extensionOf": {
+          "@id": "structures:object.class"
+        },
+        "m:hasProperty": [
+          {
+            "m:property": {
+              "@id": "claim:damagedVehicle",
+              "m:class": {
+                "@id": "nc:vehicle.class"
+              },
+              "m:definition": "A vehicle that has sustained damage"
+            }
+          },
+          {
+            "m:property": {
+              "@id": "claim:vehicleDamageAmount",
+              "m:class": {
+                "@id": "nc:AmountType"
+              },
+              "m:definition": "An amount of money evaluating the cost of repair of damage to a vehicle."
+            }
+          }
+        ]
+      },
+      "m:definition": "An insurance claim resulting from an auto crash.",
+      "m:name": "claim"
+    }
+  }
+}

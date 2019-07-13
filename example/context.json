@@ -1,0 +1,11 @@
+{
+  "@context": {
+    "m": "http://reference.niem.gov/specification/metamodel/5.0alpha1#",
+    "claim": "http://example.org/claim/1/#",
+    "structures": "http://release.niem.gov/niem/structures/4.0/#",
+    "nc": "http://release.niem.gov/niem/niem-core/4.0/#",
+    "m:hasProperty": {
+      "@container": "@list"
+    }
+  }
+}

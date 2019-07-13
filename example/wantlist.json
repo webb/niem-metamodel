@@ -1,0 +1,9 @@
+{
+  "@context": {
+    "wl": "https://example.org/wantlist#"
+  },
+  "wl:property": { "@id": "nc:CurrenceCode" }
+  "wl:datatype": {
+    "@id": "iso_4217:CurrenceCodeSimpleType",
+  }
+}

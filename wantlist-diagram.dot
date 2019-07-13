@@ -1,4 +1,4 @@
-// constraints here are for complete models, not subsets, profiles, or abbreviated forms
+// wantlists; only wantlists
 digraph G {
   edge [fontname = "Helvetica", fontsize = 10, dir = forward];
   node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];

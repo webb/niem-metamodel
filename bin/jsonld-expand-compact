@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+#HELP:COMMAND_NAME: expand and then recompact a jsonld fragment
+#HELP:Usage: COMMAND_NAME -c $context.json -o $output-file $infile
+
+set -o nounset -o errexit
+
+. "$HOME"/share/wrtools-core/opt_help.bash
+. "$HOME"/share/wrtools-core/opt_verbose.bash
+. "$HOME"/share/wrtools-core/fail.bash
+. "$HOME"/share/wrtools-core/temp.bash
+
+#HELP:Options:
+#HELP:  --help | -h: Print this help
+#HELP:  --verbose, -v: Print additional diagnostics
+
+#HELP:  --context=$context.json | -c $context.json: set a context
+unset context
+opt_context () {
+    (( $# == 1 )) || fail "function $FUNCNAME requires 1 arg (got $#)"
+    [[ -f $1 ]] || fail "context must be a file ($1)"
+    context=$1
+}
+
+#HELP:  --output-file=$file.json | -o $file.json: write output to file
+unset output_file
+opt_output_file () {
+    (( $# == 1 )) || fail "function $FUNCNAME requires 1 arg (got $#)"
+    output_file="$1"
+}
+
+#HELP:  --keep-temps | -k: Don't delete temporary files
+
+  # keep-temps ) opt_keep_temps;;
+  # keep-temps=* ) fail "No argument expected for long option \"${OPTARG%%=*}\"";;
+
+OPTIND=1
+while getopts :hkvc:o:-: option
+do case "$option" in
+       c ) opt_context "$OPTARG";;
+       h ) opt_help;;
+       k ) opt_keep_temps;;
+       o ) opt_output_file "$OPTARG";;
+       v ) opt_verbose;;
+       - ) case "$OPTARG" in
+               help ) opt_help;;
+               output-file=* ) opt_output_file "${OPTARG#*=}";;
+               context=* ) opt_context "${OPTARG#*=}";;
+               verbose ) opt_verbose;;
+               help=* \
+                 | verbose=* ) fail "Long option \"${OPTARG%%=*}\" has unexpected argument";;
+               output-file | context \
+                 ) fail "Argument required for long option \"$OPTARG\"";;
+               * ) fail "Unknown long option \"${OPTARG%%=*}\"";;
+            esac;;
+        '?' ) fail "Unknown short option \"$OPTARG\"";;
+        : ) fail "Short option \"$OPTARG\" missing argument";;
+        * ) fail_assert "Bad state in getopts (OPTARG=\"$OPTARG\")";;
+   esac
+done
+shift $((OPTIND-1))
+
+(( $# == 1 )) || fail "Need exactly 1 file to process (got $#)"
+
+if [[ ${output_file+is-set} != is-set ]]
+then vecho No output file set. Sending to stdout
+     output_file=/dev/fd/1
+fi
+
+if [[ ${context+is-set} != is-set ]]
+then vecho No context set. Looking for context.json
+     if [[ -f context.json ]]
+     then vecho Using $PWD/context.json as JSON-LD context.
+          context=context.json
+     else fail "Can't find a JSON-LD context"
+     fi
+fi
+
+WRTOOLS_TEMP_DIR=$PWD
+temp_make_file expanded done
+vrun jsonld expand "$1" > "$expanded"
+vrun jsonld compact -c "$context" "$expanded" > "$done"
+cat "$done" > "$output_file"
+
+
+
