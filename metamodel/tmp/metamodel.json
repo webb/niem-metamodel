@@ -1,0 +1,1238 @@
+{
+  "@context": "context.json",
+  "model:Model": {
+    "model:Class": [
+      {
+        "@id": "model:ComponentType",
+        "model:AbstractIndicator": "true",
+        "model:DefinitionText": "A data type for common properties of a data component in NIEM.",
+        "model:ExtensionOf": {
+          "model:Class": {
+            "@id": "structures:ObjectType"
+          },
+          "model:HasProperty": [
+            {
+              "model:Property": {
+                "model:Class": {
+                  "@id": "model:NCName"
+                },
+                "model:DefinitionText": "A name of a data model component.",
+                "model:Name": "Name",
+                "model:Namespace": {
+                  "@id": "local:model"
+                }
+              },
+              "model:maxOccursQuantity": "1",
+              "model:minOccursQuantity": "1",
+              "model:sequenceID": "1"
+            },
+            {
+              "model:Property": {
+                "@id": "model:Namespace"
+              },
+              "model:maxOccursQuantity": "1",
+              "model:minOccursQuantity": "1",
+              "model:sequenceID": "2"
+            },
+            {
+              "model:Property": {
+                "@id": "model:DefinitionText"
+              },
+              "model:maxOccursQuantity": "1",
+              "model:minOccursQuantity": "0",
+              "model:sequenceID": "3"
+            }
+          ]
+        },
+        "model:Name": "ComponentType",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "model:NCName",
+        "model:DefinitionText": "A data type for XML names that exclude a colon character.",
+        "model:ExtensionOf": {
+          "model:Class": {
+            "@id": "structures:ObjectType"
+          },
+          "model:HasValue": {
+            "model:Datatype": {
+              "@id": "xs:NCName"
+            }
+          }
+        },
+        "model:Name": "NCName",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "structures:ObjectType",
+        "model:Name": "ObjectType",
+        "model:Namespace": {
+          "@id": "local:structures"
+        }
+      },
+      {
+        "@id": "xs-proxy:string",
+        "model:ContentStyleCode": "HasValue",
+        "model:Name": "string",
+        "model:Namespace": {
+          "@id": "local:xs-proxy"
+        }
+      },
+      {
+        "@id": "xs-proxy:anyURI",
+        "model:ContentStyleCode": "HasValue",
+        "model:Name": "anyURI",
+        "model:Namespace": {
+          "@id": "local:xs-proxy"
+        }
+      },
+      {
+        "@id": "xs-proxy:nonNegativeInteger",
+        "model:ContentStyleCode": "HasValue",
+        "model:Name": "nonNegativeInteger",
+        "model:Namespace": {
+          "@id": "local:xs-proxy"
+        }
+      },
+      {
+        "@id": "xs-proxy:positiveInteger",
+        "model:ContentStyleCode": "HasValue",
+        "model:Name": "positiveInteger",
+        "model:Namespace": {
+          "@id": "local:xs-proxy"
+        }
+      },
+      {
+        "@id": "xs-proxy:boolean",
+        "model:ContentStyleCode": "HasValue",
+        "model:Name": "boolean",
+        "model:Namespace": {
+          "@id": "local:xs-proxy"
+        }
+      }
+    ],
+    "model:DataProperty": [
+      {
+        "@id": "model:minOccursQuantity",
+        "model:Datatype": {
+          "@id": "xs:nonNegativeInteger"
+        },
+        "model:DefinitionText": "A minimum number of times a property may occur within a class.",
+        "model:Name": "minOccursQuantity",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "model:maxOccursQuantity",
+        "model:Datatype": {
+          "model:DefinitionText": "A data type for the maximum number of times a property may occur within a class.",
+          "model:Name": "MaxOccursSimpleType",
+          "model:Namespace": {
+            "@id": "local:model"
+          },
+          "model:UnionOf": {
+            "model:Datatype": [
+              {
+                "@id": "xs:nonNegativeInteger"
+              },
+              {
+                "model:DefinitionText": "A data type for identifying that there is no maximum number of times that a property may occur within a class.",
+                "model:Name": "MaxOccursUnboundedCodeSimpleType",
+                "model:Namespace": {
+                  "@id": "local:model"
+                },
+                "model:RestrictionOf": {
+                  "model:Datatype": {
+                    "@id": "xs:string"
+                  },
+                  "model:Enumeration": {
+                    "model:DefinitionText": "There is no maximum number of times that a property may occur.",
+                    "model:StringValue": "unbounded"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "model:DefinitionText": "A maximum number of times a property may occur within a class.",
+        "model:Name": "maxOccursQuantity",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      }
+    ],
+    "model:Datatype": [
+      {
+        "@id": "xs:NCName",
+        "model:Name": "NCName",
+        "model:Namespace": {
+          "@id": "local:xs"
+        }
+      },
+      {
+        "@id": "xs:nonNegativeInteger",
+        "model:Name": "nonNegativeInteger",
+        "model:Namespace": {
+          "@id": "local:xs"
+        }
+      },
+      {
+        "@id": "xs:positiveInteger",
+        "model:Name": "positiveInteger",
+        "model:Namespace": {
+          "@id": "local:xs"
+        }
+      },
+      {
+        "@id": "xs:string",
+        "model:Name": "string",
+        "model:Namespace": {
+          "@id": "local:xs"
+        }
+      }
+    ],
+    "model:Namespace": [
+      {
+        "@id": "local:model",
+        "model:DefinitionText": "A data model for a metamodel for NIEM.",
+        "model:NamespacePrefixName": "mm",
+        "model:NamespaceURI": "http://reference.niem.gov/specification/metamodel/5.0alpha2"
+      },
+      {
+        "@id": "local:structures",
+        "model:NamespacePrefixName": "structures",
+        "model:NamespaceURI": "http://release.niem.gov/niem/structures/4.0/"
+      },
+      {
+        "@id": "local:xs-proxy",
+        "model:NamespacePrefixName": "xs-proxy",
+        "model:NamespaceURI": "http://release.niem.gov/niem/proxy/xsd/4.0/"
+      },
+      {
+        "@id": "local:xs",
+        "model:NamespacePrefixName": "xs",
+        "model:NamespaceURI": "http://www.w3.org/2001/XMLSchema"
+      }
+    ],
+    "model:Property": [
+      {
+        "model:Class": {
+          "model:DefinitionText": "A data type for a data model.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": {
+              "model:Property": {
+                "@id": "model:ModelItemAbstract",
+                "model:AbstractIndicator": "true",
+                "model:DefinitionText": "A data concept for an item in a data model.",
+                "model:Name": "ModelItemAbstract",
+                "model:Namespace": {
+                  "@id": "local:model"
+                }
+              },
+              "model:maxOccursQuantity": "unbounded",
+              "model:minOccursQuantity": "0",
+              "model:sequenceID": "1"
+            }
+          },
+          "model:Name": "ModelType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A data model.",
+        "model:Name": "Model",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "model:Namespace",
+        "model:Class": {
+          "model:DefinitionText": "A data type for a namespace",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "@id": "xs-proxy:anyURI"
+                  },
+                  "model:DefinitionText": "A namespace name URI for a namespace.",
+                  "model:Name": "NamespaceURI",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "@id": "model:NCName"
+                  },
+                  "model:DefinitionText": "A namespace name URI for a namespace.",
+                  "model:Name": "NamespacePrefixName",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "3"
+              }
+            ]
+          },
+          "model:Name": "NamespaceType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A namespace of a data model component.",
+        "model:Name": "Namespace",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:ModelItemAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:Property",
+        "model:Class": {
+          "model:DefinitionText": "A data type for an object property",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "model:ComponentType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for a description of a subproperty.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasProperty": {
+                        "model:Property": {
+                          "@id": "model:Property"
+                        },
+                        "model:maxOccursQuantity": "1",
+                        "model:minOccursQuantity": "1",
+                        "model:sequenceID": "1"
+                      }
+                    },
+                    "model:Name": "SubPropertyOfType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "An object property of which an object property is a subproperty.",
+                  "model:Name": "SubPropertyOf",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:Class"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "2"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:AbstractIndicator"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "3"
+              }
+            ]
+          },
+          "model:Name": "PropertyType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "An object property.",
+        "model:Name": "Property",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:ModelItemAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:Class",
+        "model:Class": {
+          "model:DefinitionText": "A data type for a class.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "model:ComponentType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "@id": "model:AbstractIndicator"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for an extension of a class.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasProperty": [
+                        {
+                          "model:Property": {
+                            "@id": "model:Class"
+                          },
+                          "model:maxOccursQuantity": "1",
+                          "model:minOccursQuantity": "1",
+                          "model:sequenceID": "1"
+                        },
+                        {
+                          "model:Property": {
+                            "model:Class": {
+                              "model:DefinitionText": "A data type for an occurrence of a value as content of a class.",
+                              "model:ExtensionOf": {
+                                "model:Class": {
+                                  "@id": "structures:ObjectType"
+                                },
+                                "model:HasProperty": {
+                                  "model:Property": {
+                                    "@id": "model:Datatype"
+                                  },
+                                  "model:maxOccursQuantity": "1",
+                                  "model:minOccursQuantity": "1",
+                                  "model:sequenceID": "1"
+                                }
+                              },
+                              "model:Name": "HasValueType",
+                              "model:Namespace": {
+                                "@id": "local:model"
+                              }
+                            },
+                            "model:DefinitionText": "An occurrence of a data value as content of a class.",
+                            "model:Name": "HasValue",
+                            "model:Namespace": {
+                              "@id": "local:model"
+                            }
+                          },
+                          "model:maxOccursQuantity": "unbounded",
+                          "model:minOccursQuantity": "0",
+                          "model:sequenceID": "2"
+                        },
+                        {
+                          "model:Property": {
+                            "model:Class": {
+                              "model:DefinitionText": "A data type for an occurrence of a data property within a class.",
+                              "model:ExtensionOf": {
+                                "model:Class": {
+                                  "@id": "structures:ObjectType"
+                                },
+                                "model:HasDataProperty": [
+                                  {
+                                    "model:DataProperty": {
+                                      "@id": "model:minOccursQuantity"
+                                    },
+                                    "model:maxOccursQuantity": "1",
+                                    "model:minOccursQuantity": "1"
+                                  },
+                                  {
+                                    "model:DataProperty": {
+                                      "@id": "model:maxOccursQuantity"
+                                    },
+                                    "model:maxOccursQuantity": "1",
+                                    "model:minOccursQuantity": "1"
+                                  }
+                                ],
+                                "model:HasProperty": {
+                                  "model:Property": {
+                                    "@id": "model:DataProperty"
+                                  },
+                                  "model:maxOccursQuantity": "unbounded",
+                                  "model:minOccursQuantity": "0",
+                                  "model:sequenceID": "1"
+                                }
+                              },
+                              "model:Name": "HasDataPropertyType",
+                              "model:Namespace": {
+                                "@id": "local:model"
+                              }
+                            },
+                            "model:DefinitionText": "An occurrence of a data property within a class.",
+                            "model:Name": "HasDataProperty",
+                            "model:Namespace": {
+                              "@id": "local:model"
+                            }
+                          },
+                          "model:maxOccursQuantity": "unbounded",
+                          "model:minOccursQuantity": "0",
+                          "model:sequenceID": "3"
+                        },
+                        {
+                          "model:Property": {
+                            "model:Class": {
+                              "model:DefinitionText": "A data type for an occurrence of an object property within a class.",
+                              "model:ExtensionOf": {
+                                "model:Class": {
+                                  "@id": "structures:ObjectType"
+                                },
+                                "model:HasDataProperty": [
+                                  {
+                                    "model:DataProperty": {
+                                      "model:Datatype": {
+                                        "@id": "xs:positiveInteger"
+                                      },
+                                      "model:DefinitionText": "An identifier for the order of an object property within a class.",
+                                      "model:Name": "sequenceID",
+                                      "model:Namespace": {
+                                        "@id": "local:model"
+                                      }
+                                    },
+                                    "model:maxOccursQuantity": "1",
+                                    "model:minOccursQuantity": "1"
+                                  },
+                                  {
+                                    "model:DataProperty": {
+                                      "@id": "model:minOccursQuantity"
+                                    },
+                                    "model:maxOccursQuantity": "1",
+                                    "model:minOccursQuantity": "1"
+                                  },
+                                  {
+                                    "model:DataProperty": {
+                                      "@id": "model:maxOccursQuantity"
+                                    },
+                                    "model:maxOccursQuantity": "1",
+                                    "model:minOccursQuantity": "1"
+                                  }
+                                ],
+                                "model:HasProperty": {
+                                  "model:Property": {
+                                    "@id": "model:Property"
+                                  },
+                                  "model:maxOccursQuantity": "unbounded",
+                                  "model:minOccursQuantity": "0",
+                                  "model:sequenceID": "1"
+                                }
+                              },
+                              "model:Name": "HasPropertyType",
+                              "model:Namespace": {
+                                "@id": "local:model"
+                              }
+                            },
+                            "model:DefinitionText": "An occurrence of an object property within a class.",
+                            "model:Name": "HasProperty",
+                            "model:Namespace": {
+                              "@id": "local:model"
+                            }
+                          },
+                          "model:maxOccursQuantity": "unbounded",
+                          "model:minOccursQuantity": "0",
+                          "model:sequenceID": "4"
+                        }
+                      ]
+                    },
+                    "model:Name": "ExtensionOfType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "A extension of a class.",
+                  "model:Name": "ExtensionOf",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "2"
+              },
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for an indication of whether a referenced class has simple content or complex content.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasValue": {
+                        "model:Datatype": {
+                          "model:DefinitionText": "A data type for an indication of whether a referenced class has simple content or complex content.",
+                          "model:Name": "ContentStyleCodeSimpleType",
+                          "model:Namespace": {
+                            "@id": "local:model"
+                          },
+                          "model:RestrictionOf": {
+                            "model:Datatype": {
+                              "@id": "xs:string"
+                            },
+                            "model:Enumeration": [
+                              {
+                                "model:DefinitionText": "A class contains a datatype value.",
+                                "model:StringValue": "HasValue"
+                              },
+                              {
+                                "model:DefinitionText": "A class contains object properties.",
+                                "model:StringValue": "HasProperty"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "model:Name": "ContentStyleCodeType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "An indication of whether a referenced class has simple content or complex content.",
+                  "model:Name": "ContentStyleCode",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "3"
+              }
+            ]
+          },
+          "model:Name": "ClassType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A class.",
+        "model:Name": "Class",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:ModelItemAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:DataProperty",
+        "model:Class": {
+          "model:DefinitionText": "A data type for a data property.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "model:ComponentType"
+            },
+            "model:HasProperty": {
+              "model:Property": {
+                "@id": "model:Datatype"
+              },
+              "model:maxOccursQuantity": "1",
+              "model:minOccursQuantity": "0",
+              "model:sequenceID": "1"
+            }
+          },
+          "model:Name": "DataPropertyType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A data property.",
+        "model:Name": "DataProperty",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:ModelItemAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:Datatype",
+        "model:Class": {
+          "model:DefinitionText": "A data type for a data type.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "model:ComponentType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for a restriction of a data type.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasProperty": [
+                        {
+                          "model:Property": {
+                            "@id": "model:Datatype"
+                          },
+                          "model:maxOccursQuantity": "1",
+                          "model:minOccursQuantity": "1",
+                          "model:sequenceID": "1"
+                        },
+                        {
+                          "model:Property": {
+                            "@id": "model:FacetAbstract",
+                            "model:AbstractIndicator": "true",
+                            "model:DefinitionText": "A data concept for a facet that restricts an aspect of a data type.",
+                            "model:Name": "FacetAbstract",
+                            "model:Namespace": {
+                              "@id": "local:model"
+                            }
+                          },
+                          "model:maxOccursQuantity": "unbounded",
+                          "model:minOccursQuantity": "0",
+                          "model:sequenceID": "2"
+                        }
+                      ]
+                    },
+                    "model:Name": "RestrictionOfType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "A restriction of a data type.",
+                  "model:Name": "RestrictionOf",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for a union of data types.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasProperty": {
+                        "model:Property": {
+                          "@id": "model:Datatype"
+                        },
+                        "model:maxOccursQuantity": "unbounded",
+                        "model:minOccursQuantity": "1",
+                        "model:sequenceID": "1"
+                      }
+                    },
+                    "model:Name": "UnionOfType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "A union of data types.",
+                  "model:Name": "UnionOf",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "0",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "DatatypeType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A datatype.",
+        "model:Name": "Datatype",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:ModelItemAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:DefinitionText",
+        "model:Class": {
+          "@id": "xs-proxy:string"
+        },
+        "model:DefinitionText": "A human-readable text definition of a data model component.",
+        "model:Name": "DefinitionText",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "model:AbstractIndicator",
+        "model:Class": {
+          "@id": "xs-proxy:boolean"
+        },
+        "model:DefinitionText": "True if a component is a base for extension, and must be specialized to be used directly; false if a component may be used directly.",
+        "model:Name": "AbstractIndicator",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:NonNegativeValueFacetType",
+          "model:DefinitionText": "A data type for a restriction of the length of a data type.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "@id": "model:NonNegativeValue"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "NonNegativeValueFacetType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A restriction of the length of a data type. Unit of length varies depending on the type that is being derived from.",
+        "model:Name": "Length",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:NonNegativeValueFacetType"
+        },
+        "model:DefinitionText": "A minimum length of a data type. Unit of length varies depending on the type that is being derived from.",
+        "model:Name": "MinLength",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:NonNegativeValueFacetType"
+        },
+        "model:DefinitionText": "A maximum length of a data type. Unit of length varies depending on the type that is being derived from.",
+        "model:Name": "MaxLength",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "model:DefinitionText": "A data type for restricting the content of a datatype to values that match a specific pattern, provided as a regular expression.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "@id": "model:StringValue"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "PatternFacetType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A restriction of the content of a datatype to values that match a specific pattern, provided as a regular expression.",
+        "model:Name": "Pattern",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:AnyValueFacetType",
+          "model:DefinitionText": "A data type for a facet that can have any value type.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "@id": "model:AnyValueAbstract"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "AnyValueFacetType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A restriction of the length of a data type.",
+        "model:Name": "Enumeration",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "model:DefinitionText": "A data type constraining how white space within data values is handled.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "model:Class": {
+                    "model:DefinitionText": "A data type for a specification of white space for a data type.",
+                    "model:ExtensionOf": {
+                      "model:Class": {
+                        "@id": "structures:ObjectType"
+                      },
+                      "model:HasValue": {
+                        "model:Datatype": {
+                          "model:DefinitionText": "A data type for a data type for a specification of white space for a data type.",
+                          "model:Name": "WhiteSpaceFacetCodeSimpleType",
+                          "model:Namespace": {
+                            "@id": "local:model"
+                          },
+                          "model:RestrictionOf": {
+                            "model:Datatype": {
+                              "@id": "xs:string"
+                            },
+                            "model:Enumeration": [
+                              {
+                                "model:DefinitionText": "No normalization is done, the value is not changed (this is the behavior required by [XML 1.0 (Second Edition)] for element content)",
+                                "model:StringValue": "preserve"
+                              },
+                              {
+                                "model:DefinitionText": "All occurrences of #x9 (tab), #xA (line feed) and #xD (carriage return) are replaced with #x20 (space)",
+                                "model:StringValue": "replace"
+                              },
+                              {
+                                "model:DefinitionText": "After the processing implied by replace, contiguous sequences of #x20's are collapsed to a single #x20, and leading and trailing #x20's are removed.",
+                                "model:StringValue": "collapse"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "model:Name": "WhiteSpaceValueCodeType",
+                    "model:Namespace": {
+                      "@id": "local:model"
+                    }
+                  },
+                  "model:DefinitionText": "A value of a specification of white space for a data type.",
+                  "model:Name": "WhiteSpaceValueCode",
+                  "model:Namespace": {
+                    "@id": "local:model"
+                  }
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "WhiteSpaceFacetType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A constraint on how white space within data values is handled.",
+        "model:Name": "WhiteSpace",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:AnyValueFacetType"
+        },
+        "model:DefinitionText": "An inclusive upper bound of a data type.",
+        "model:Name": "MaxInclusive",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:AnyValueFacetType"
+        },
+        "model:DefinitionText": "An exclusive upper bound of a data type.",
+        "model:Name": "MaxExclusive",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:AnyValueFacetType"
+        },
+        "model:DefinitionText": "An exclusive lower bound of a data type.",
+        "model:Name": "MinExclusive",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:AnyValueFacetType"
+        },
+        "model:DefinitionText": "An inclusive lower bound of a data type.",
+        "model:Name": "MinInclusive",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:PositiveValueFacetType",
+          "model:DefinitionText": "A data type for a facet that carries a value that is a positive integer.",
+          "model:ExtensionOf": {
+            "model:Class": {
+              "@id": "structures:ObjectType"
+            },
+            "model:HasProperty": [
+              {
+                "model:Property": {
+                  "@id": "model:PositiveValue"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "1"
+              },
+              {
+                "model:Property": {
+                  "@id": "model:DefinitionText"
+                },
+                "model:maxOccursQuantity": "1",
+                "model:minOccursQuantity": "1",
+                "model:sequenceID": "2"
+              }
+            ]
+          },
+          "model:Name": "PositiveValueFacetType",
+          "model:Namespace": {
+            "@id": "local:model"
+          }
+        },
+        "model:DefinitionText": "A restriction on the precision and of a decimal data type, via a restriction on the number of digits required to represent its value.",
+        "model:Name": "TotalDigits",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "model:Class": {
+          "@id": "model:NonNegativeValueFacetType"
+        },
+        "model:DefinitionText": "A restriction on the precision and of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.",
+        "model:Name": "FractionDigits",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:FacetAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:AnyValueAbstract",
+        "model:AbstractIndicator": "true",
+        "model:DefinitionText": "A data concept for a value of a facet.",
+        "model:Name": "AnyValueAbstract",
+        "model:Namespace": {
+          "@id": "local:model"
+        }
+      },
+      {
+        "@id": "model:NonNegativeValue",
+        "model:Class": {
+          "@id": "xs-proxy:nonNegativeInteger"
+        },
+        "model:DefinitionText": "A value of a facet, with an integer value zero or greater.",
+        "model:Name": "NonNegativeValue",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:AnyValueAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:PositiveValue",
+        "model:Class": {
+          "@id": "xs-proxy:positiveInteger"
+        },
+        "model:DefinitionText": "A value of a facet, with an integer value greater than zero.",
+        "model:Name": "PositiveValue",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:AnyValueAbstract"
+          }
+        }
+      },
+      {
+        "@id": "model:StringValue",
+        "model:Class": {
+          "@id": "xs-proxy:string"
+        },
+        "model:DefinitionText": "A value of a facet, with a string value.",
+        "model:Name": "StringValue",
+        "model:Namespace": {
+          "@id": "local:model"
+        },
+        "model:SubPropertyOf": {
+          "model:Property": {
+            "@id": "model:AnyValueAbstract"
+          }
+        }
+      }
+    ]
+  }
+}

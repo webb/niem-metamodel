@@ -3,32 +3,24 @@ digraph G {
   node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
   rankdir = TB;
 
-  node [shape=Mrecord];
-  
-  { rank = same;
-    Model;
-    Class;
-    Namespace;
-    }
-
-  Class [rank = 1];
+  node [shape=box,style=rounded,label="\N\l"];
 
   // model ///////////////////////////////////////////////////////////////////
 
-  Model [label="\N\l- Namespace\l- Property\l- Class\l- Datatype\l"];
+  Model [label="\N: \NType\l"];
+  Model -> { Namespace Property Class Datatype };
 
   // namespace ///////////////////////////////////////////////////////
 
-  Namespace [label="\N\l- NamespaceURI\l- NamespacePrefixName\l- DefinitionText\l"];
+  Namespace [label="\N: \NType\l- NamespaceURI\l- NamespacePrefixName\l- DefinitionText\l"];
 
-  //  Model -> Namespace [style = invis];
+  // property ///////////////////////////////////////////////////////
 
-  // object property ///////////////////////////////////////////////////////
-
-  Property [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
-  Property -> Class;
-  // Property -> SubPropertyOf [dir=both];
-  Property -> SubPropertyOf -> Property;
+  Property [label="\N\l"];
+  PropertyType [label="\N\l- URI\l- Name\l- Namespace\l- DefinitionText\l"];
+  Property -> PropertyType [label="type"];
+  PropertyType -> Class;
+  PropertyType -> SubPropertyOf -> PropertyType;
 
   // class ///////////////////////////////////////////////////////
 
@@ -46,11 +38,8 @@ digraph G {
   // datatype ///////////////////////////////////////////////////////
 
   Datatype [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
-  // Datatype -> ListOf [dir=both];
   Datatype -> ListOf -> Datatype;
-  // Datatype -> UnionOf [dir=both];
   Datatype -> UnionOf -> Datatype;
-  // Datatype -> RestrictionOf [dir=both];
   Datatype -> RestrictionOf -> Datatype;
 
   RestrictionOf -> Facets;

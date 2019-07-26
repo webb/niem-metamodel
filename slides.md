@@ -93,6 +93,6 @@ This is some text on a slide.
 
 # another title
 
- ![alt text](generated/metamodel-core.png "Hover text")
+ ![alt text](generated/metamodel-light.png "Hover text")
  
  

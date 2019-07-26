@@ -1,0 +1,14 @@
+{
+  "@context": "../../context.json",
+  "m:Property": {
+    "@id": "claim:VehicleDamageAmount",
+    "m:Class": {
+      "@id": "nc:AmountType"
+    },
+    "m:DefinitionText": "An amount of money evaluating the cost of repair of damage to a vehicle.",
+    "m:Name": "VehicleDamageAmount",
+    "m:Namespace": {
+      "@id": "http://example.org/claim/1/"
+    }
+  }
+}

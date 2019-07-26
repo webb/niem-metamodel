@@ -1,0 +1,24 @@
+{
+  "@context": "context.json",
+  "m:model": {
+    "m:definition": "Deta definitions for an insurance claim.",
+    "m:namespace": {
+      "@id": "http://example.org/claim/1/",
+      "m:namespaceURI": "http://example.org/claim/1/",
+      "m:prefix": "claim",
+      "m:definition": "Data defintions for an insurance claim"
+    },
+    "m:property": {
+      "m:name": "Claim",
+      "m:namespace-ref": "claim:",
+      "m:definition": "An insurance claim resulting from an auto crash.",
+      "m:class-ref": "m:ClaimType"
+    },
+    "m:class": {
+      "@id": "claim:ClaimType",
+      "m:name": "ClaimType",
+      "m:namespace-ref": "claim",
+      "m:definition": "An insurance claim resulting from an auto crash."
+    }
+  }
+}

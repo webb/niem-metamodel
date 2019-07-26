@@ -1,0 +1,14 @@
+{
+  "@context": {
+    "xml": "http://www.w3.org/XML/1998/namespace#",
+    "structures": "http://release.niem.gov/niem/structures/4.0/#",
+    "xsi": "http://www.w3.org/2001/XMLSchema-instance#",
+    "model": "http://reference.niem.gov/specification/metamodel/5.0alpha2#",
+    "spec": "http://reference.niem.gov/specification/",
+    "xs-proxy": "http://release.niem.gov/niem/proxy/xsd/4.0/#",
+    "local": "http://example.org/local/#",
+    "xs": {
+      "@id": "http://www.w3.org/2001/XMLSchema#"
+    }
+  }
+}

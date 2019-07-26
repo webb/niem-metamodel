@@ -1,0 +1,2945 @@
+[
+  {
+    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Model": [
+      {
+        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ComponentType",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator": [
+              {
+                "@value": "true"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data type for common properties of a data component in NIEM."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                  {
+                    "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NCName"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                          {
+                            "@value": "A name of a data model component."
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                          {
+                            "@value": "Name"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                          {
+                            "@id": "http://example.org/local/#model"
+                          }
+                        ]
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                      {
+                        "@value": "1"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                      {
+                        "@value": "1"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                      {
+                        "@value": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                      {
+                        "@value": "1"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                      {
+                        "@value": "1"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                      {
+                        "@value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                      {
+                        "@value": "1"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                      {
+                        "@value": "0"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                      {
+                        "@value": "3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "ComponentType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NCName",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data type for XML names that exclude a colon character."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                  {
+                    "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasValue": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                      {
+                        "@id": "http://www.w3.org/2001/XMLSchema#NCName"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "NCName"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "ObjectType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#structures"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#string",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ContentStyleCode": [
+              {
+                "@value": "HasValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "string"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs-proxy"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#anyURI",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ContentStyleCode": [
+              {
+                "@value": "HasValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "anyURI"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs-proxy"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#nonNegativeInteger",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ContentStyleCode": [
+              {
+                "@value": "HasValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "nonNegativeInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs-proxy"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#positiveInteger",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ContentStyleCode": [
+              {
+                "@value": "HasValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "positiveInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs-proxy"
+              }
+            ]
+          },
+          {
+            "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#boolean",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#ContentStyleCode": [
+              {
+                "@value": "HasValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "boolean"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs-proxy"
+              }
+            ]
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+              {
+                "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A minimum number of times a property may occur within a class."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "minOccursQuantity"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for the maximum number of times a property may occur within a class."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "MaxOccursSimpleType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#UnionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                      {
+                        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                          {
+                            "@value": "A data type for identifying that there is no maximum number of times that a property may occur within a class."
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                          {
+                            "@value": "MaxOccursUnboundedCodeSimpleType"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                          {
+                            "@id": "http://example.org/local/#model"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#RestrictionOf": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                              {
+                                "@id": "http://www.w3.org/2001/XMLSchema#string"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Enumeration": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "There is no maximum number of times that a property may occur."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                  {
+                                    "@value": "unbounded"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A maximum number of times a property may occur within a class."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "maxOccursQuantity"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#NCName",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "NCName"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs"
+              }
+            ]
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "nonNegativeInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs"
+              }
+            ]
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#positiveInteger",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "positiveInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs"
+              }
+            ]
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#string",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "string"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#xs"
+              }
+            ]
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+          {
+            "@id": "http://example.org/local/#model",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data model for a metamodel for NIEM."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespacePrefixName": [
+              {
+                "@value": "mm"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespaceURI": [
+              {
+                "@value": "http://reference.niem.gov/specification/metamodel/5.0alpha2"
+              }
+            ]
+          },
+          {
+            "@id": "http://example.org/local/#structures",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespacePrefixName": [
+              {
+                "@value": "structures"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespaceURI": [
+              {
+                "@value": "http://release.niem.gov/niem/structures/4.0/"
+              }
+            ]
+          },
+          {
+            "@id": "http://example.org/local/#xs-proxy",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespacePrefixName": [
+              {
+                "@value": "xs-proxy"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespaceURI": [
+              {
+                "@value": "http://release.niem.gov/niem/proxy/xsd/4.0/"
+              }
+            ]
+          },
+          {
+            "@id": "http://example.org/local/#xs",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespacePrefixName": [
+              {
+                "@value": "xs"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#NamespaceURI": [
+              {
+                "@value": "http://www.w3.org/2001/XMLSchema"
+              }
+            ]
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a data model."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract",
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator": [
+                              {
+                                "@value": "true"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A data concept for an item in a data model."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "ModelItemAbstract"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "unbounded"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "ModelType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data model."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a namespace"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#anyURI"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A namespace name URI for a namespace."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "NamespaceURI"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NCName"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A namespace name URI for a namespace."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "NamespacePrefixName"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "NamespaceType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A namespace of a data model component."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Namespace"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for an object property"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ComponentType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for a description of a subproperty."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "SubPropertyOfType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "An object property of which an object property is a subproperty."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "SubPropertyOf"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "PropertyType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "An object property."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Property"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a class."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ComponentType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for an extension of a class."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                              {
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                  {
+                                                    "@value": "A data type for an occurrence of a value as content of a class."
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                                      {
+                                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                                  {
+                                                    "@value": "HasValueType"
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                                  {
+                                                    "@id": "http://example.org/local/#model"
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "An occurrence of a data value as content of a class."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "HasValue"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "unbounded"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "0"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "2"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                              {
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                  {
+                                                    "@value": "A data type for an occurrence of a data property within a class."
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                                      {
+                                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasDataProperty": [
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "unbounded"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "0"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                                  {
+                                                    "@value": "HasDataPropertyType"
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                                  {
+                                                    "@id": "http://example.org/local/#model"
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "An occurrence of a data property within a class."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "HasDataProperty"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "unbounded"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "0"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "3"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                              {
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                  {
+                                                    "@value": "A data type for an occurrence of an object property within a class."
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                                      {
+                                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasDataProperty": [
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+                                                          {
+                                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                                                              {
+                                                                "@id": "http://www.w3.org/2001/XMLSchema#positiveInteger"
+                                                              }
+                                                            ],
+                                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                              {
+                                                                "@value": "An identifier for the order of an object property within a class."
+                                                              }
+                                                            ],
+                                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                                              {
+                                                                "@value": "sequenceID"
+                                                              }
+                                                            ],
+                                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                                              {
+                                                                "@id": "http://example.org/local/#model"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                                      {
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                                          {
+                                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                                          {
+                                                            "@value": "unbounded"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                                          {
+                                                            "@value": "0"
+                                                          }
+                                                        ],
+                                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                                          {
+                                                            "@value": "1"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                                  {
+                                                    "@value": "HasPropertyType"
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                                  {
+                                                    "@id": "http://example.org/local/#model"
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "An occurrence of an object property within a class."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "HasProperty"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "unbounded"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "0"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "4"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "ExtensionOfType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A extension of a class."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "ExtensionOf"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for an indication of whether a referenced class has simple content or complex content."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasValue": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                                          {
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "A data type for an indication of whether a referenced class has simple content or complex content."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "ContentStyleCodeSimpleType"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#RestrictionOf": [
+                                              {
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                                                  {
+                                                    "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Enumeration": [
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                      {
+                                                        "@value": "A class contains a datatype value."
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                                      {
+                                                        "@value": "HasValue"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                      {
+                                                        "@value": "A class contains object properties."
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                                      {
+                                                        "@value": "HasProperty"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "ContentStyleCodeType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "An indication of whether a referenced class has simple content or complex content."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "ContentStyleCode"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "ClassType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A class."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Class"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DataProperty",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a data property."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ComponentType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "DataPropertyType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data property."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "DataProperty"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a data type."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ComponentType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for a restriction of a data type."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract",
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator": [
+                                              {
+                                                "@value": "true"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "A data concept for a facet that restricts an aspect of a data type."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "FacetAbstract"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "unbounded"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "0"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "2"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "RestrictionOfType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A restriction of a data type."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "RestrictionOf"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for a union of data types."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                                          {
+                                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                                          {
+                                            "@value": "unbounded"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ],
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                                          {
+                                            "@value": "1"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "UnionOfType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A union of data types."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "UnionOf"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "0"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "DatatypeType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A datatype."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Datatype"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#ModelItemAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#string"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A human-readable text definition of a data model component."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "DefinitionText"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#boolean"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "True if a component is a base for extension, and must be specialized to be used directly; false if a component may be used directly."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "AbstractIndicator"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValueFacetType",
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a restriction of the length of a data type."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValue"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "NonNegativeValueFacetType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A restriction of the length of a data type. Unit of length varies depending on the type that is being derived from."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Length"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A minimum length of a data type. Unit of length varies depending on the type that is being derived from."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MinLength"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A maximum length of a data type. Unit of length varies depending on the type that is being derived from."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MaxLength"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for restricting the content of a datatype to values that match a specific pattern, provided as a regular expression."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "PatternFacetType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A restriction of the content of a datatype to values that match a specific pattern, provided as a regular expression."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Pattern"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueFacetType",
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a facet that can have any value type."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueAbstract"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "AnyValueFacetType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A restriction of the length of a data type."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "Enumeration"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type constraining how white space within data values is handled."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                              {
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                  {
+                                    "@value": "A data type for a specification of white space for a data type."
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                                  {
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                                      {
+                                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                                      }
+                                    ],
+                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasValue": [
+                                      {
+                                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                                          {
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                              {
+                                                "@value": "A data type for a data type for a specification of white space for a data type."
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                              {
+                                                "@value": "WhiteSpaceFacetCodeSimpleType"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                              {
+                                                "@id": "http://example.org/local/#model"
+                                              }
+                                            ],
+                                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#RestrictionOf": [
+                                              {
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Datatype": [
+                                                  {
+                                                    "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                                  }
+                                                ],
+                                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Enumeration": [
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                      {
+                                                        "@value": "No normalization is done, the value is not changed (this is the behavior required by [XML 1.0 (Second Edition)] for element content)"
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                                      {
+                                                        "@value": "preserve"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                      {
+                                                        "@value": "All occurrences of #x9 (tab), #xA (line feed) and #xD (carriage return) are replaced with #x20 (space)"
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                                      {
+                                                        "@value": "replace"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                                                      {
+                                                        "@value": "After the processing implied by replace, contiguous sequences of #x20's are collapsed to a single #x20, and leading and trailing #x20's are removed."
+                                                      }
+                                                    ],
+                                                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue": [
+                                                      {
+                                                        "@value": "collapse"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                                  {
+                                    "@value": "WhiteSpaceValueCodeType"
+                                  }
+                                ],
+                                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                                  {
+                                    "@id": "http://example.org/local/#model"
+                                  }
+                                ]
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                              {
+                                "@value": "A value of a specification of white space for a data type."
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                              {
+                                "@value": "WhiteSpaceValueCode"
+                              }
+                            ],
+                            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                              {
+                                "@id": "http://example.org/local/#model"
+                              }
+                            ]
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "WhiteSpaceFacetType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A constraint on how white space within data values is handled."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "WhiteSpace"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "An inclusive upper bound of a data type."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MaxInclusive"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "An exclusive upper bound of a data type."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MaxExclusive"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "An exclusive lower bound of a data type."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MinExclusive"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "An inclusive lower bound of a data type."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "MinInclusive"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#PositiveValueFacetType",
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+                  {
+                    "@value": "A data type for a facet that carries a value that is a positive integer."
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#ExtensionOf": [
+                  {
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+                      {
+                        "@id": "http://release.niem.gov/niem/structures/4.0/#ObjectType"
+                      }
+                    ],
+                    "http://reference.niem.gov/specification/metamodel/5.0alpha2#HasProperty": [
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#PositiveValue"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                          {
+                            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#maxOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#minOccursQuantity": [
+                          {
+                            "@value": "1"
+                          }
+                        ],
+                        "http://reference.niem.gov/specification/metamodel/5.0alpha2#sequenceID": [
+                          {
+                            "@value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+                  {
+                    "@value": "PositiveValueFacetType"
+                  }
+                ],
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+                  {
+                    "@id": "http://example.org/local/#model"
+                  }
+                ]
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A restriction on the precision and of a decimal data type, via a restriction on the number of digits required to represent its value."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "TotalDigits"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValueFacetType"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A restriction on the precision and of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "FractionDigits"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#FacetAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueAbstract",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#AbstractIndicator": [
+              {
+                "@value": "true"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A data concept for a value of a facet."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "AnyValueAbstract"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#NonNegativeValue",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#nonNegativeInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A value of a facet, with an integer value zero or greater."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "NonNegativeValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#PositiveValue",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#positiveInteger"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A value of a facet, with an integer value greater than zero."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "PositiveValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueAbstract"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#StringValue",
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Class": [
+              {
+                "@id": "http://release.niem.gov/niem/proxy/xsd/4.0/#string"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#DefinitionText": [
+              {
+                "@value": "A value of a facet, with a string value."
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Name": [
+              {
+                "@value": "StringValue"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#Namespace": [
+              {
+                "@id": "http://example.org/local/#model"
+              }
+            ],
+            "http://reference.niem.gov/specification/metamodel/5.0alpha2#SubPropertyOf": [
+              {
+                "http://reference.niem.gov/specification/metamodel/5.0alpha2#Property": [
+                  {
+                    "@id": "http://reference.niem.gov/specification/metamodel/5.0alpha2#AnyValueAbstract"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

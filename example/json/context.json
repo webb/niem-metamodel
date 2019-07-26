@@ -1,16 +1,10 @@
 {
   "@context": {
     "claim": "http://example.org/claim/1/#",
+    "local": "http://example.org/local#",
     "nc": "http://release.niem.gov/niem/niem-core/4.0/#",
     "m": "http://reference.niem.gov/specification/metamodel/5.0alpha1#",
-    "@vocab": "http://example.org/error#",
-    "m:namespace-ref": {
-      "@type": "@id",
-      "@id": "m:namespace"
-    },
-    "m:class-ref": {
-      "@type": "@id",
-      "@id": "m:class"
-    }
+    "error": "http://example.org/error#",
+    "structures": "http://release.niem.gov/niem/structures/4.0/#"
   }
 }

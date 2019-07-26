@@ -167,3 +167,12 @@ with new code.
 - Add min / max occurs restrictiosn
     - 0-1 for attributes
     - min <= max
+    
+# Abbreviated rules
+
+A model can be in an *abbreviated* form. A model can be completed through the process of normalization, which will populate optional content, when possible. In particular:
+
+- URIs are significant, and used to search for ways to populate the model from components found elsewhere.
+- Names and definitions of components can derived.
+- Cardinalities are defaulted
+- XML name and JSON name can be derived from a full structured name

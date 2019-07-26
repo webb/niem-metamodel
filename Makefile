@@ -1,5 +1,5 @@
 
-png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
+png_target_files = ${patsubst diagrams/%.dot,generated/%.png,${wildcard diagrams/*.dot}}
 
 targets = \
   docs/niem-metamodel.png \
@@ -52,7 +52,8 @@ xsd:
 	rm -rf generated/xsd tmp/token/generated-xsd 
 	${MAKE} tmp/token/generated-xsd
 
-generated/%.png: %.dot
+generated/%.png: diagrams/%.dot
+	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<
 
 tmp.metamodel.sch.xsl: metamodel.sch functions.xsl
@@ -84,13 +85,13 @@ tmp/token/xml/%: %
 	mkdir -p ${dir $@}
 	touch $@
 
-docs/niem-metamodel.png: metamodel-tb.dot
+docs/niem-metamodel.png: diagrams/metamodel-light.dot
 	dot -Tpng -o$@ $<
 
 # output format: pptx
 # input: markdown_strict
 # doesn't work well:	  --reference-doc=reference.pptx
-docs/NIEM-Metamodel.pptx: slides.md reference.pptx generated/metamodel-core.png
+docs/NIEM-Metamodel.pptx: slides.md reference.pptx generated/metamodel-light.png
 	pandoc \
 	  --to=pptx --output=$@ \
 	  --reference-doc=reference.pptx \

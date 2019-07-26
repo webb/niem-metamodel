@@ -1,0 +1,32 @@
+{
+  "@context": "../../context.json",
+  "m:Class": {
+    "@id": "claim:ClaimType",
+    "m:DefinitionText": "A data type for an insurance claim.",
+    "m:ExtensionOf": {
+      "@id": "structures:ObjectType"
+    },
+    "m:HasProperty": [
+      {
+        "m:Property": {
+          "@id": "claim:DamagedVehicle"
+        },
+        "m:maxOccursQuantity": "1",
+        "m:minOccursQuantity": "1",
+        "m:sequenceID": "1"
+      },
+      {
+        "m:Property": {
+          "@id": "claim:VehicleDamageAmount"
+        },
+        "m:maxOccursQuantity": "1",
+        "m:minOccursQuantity": "1",
+        "m:sequenceID": "2"
+      }
+    ],
+    "m:Name": "ClaimType",
+    "m:Namespace": {
+      "@id": "http://example.org/claim/1/"
+    }
+  }
+}

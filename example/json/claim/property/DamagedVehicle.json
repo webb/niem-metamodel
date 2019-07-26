@@ -1,0 +1,14 @@
+{
+  "@context": "../../context.json",
+  "m:Property": {
+    "@id": "claim:DamagedVehicle",
+    "m:Class": {
+      "@id": "nc:VehicleType"
+    },
+    "m:DefinitionText": "A vehicle that has sustained damage.",
+    "m:Name": "DamagedVehicle",
+    "m:Namespace": {
+      "@id": "http://example.org/claim/1/"
+    }
+  }
+}

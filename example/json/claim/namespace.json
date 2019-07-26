@@ -1,0 +1,24 @@
+[
+  {
+    "http://reference.niem.gov/specification/metamodel/5.0alpha1#Namespace": [
+      {
+        "@id": "http://example.org/claim/1/",
+        "http://reference.niem.gov/specification/metamodel/5.0alpha1#DefinitionText": [
+          {
+            "@value": "A data model for an insurance claim."
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha1#NamespacePrefixName": [
+          {
+            "@value": "claim"
+          }
+        ],
+        "http://reference.niem.gov/specification/metamodel/5.0alpha1#NamespaceURI": [
+          {
+            "@value": "http://example.org/claim/1/"
+          }
+        ]
+      }
+    ]
+  }
+]

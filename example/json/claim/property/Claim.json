@@ -1,0 +1,11 @@
+{
+  "@context": "../../context.json",
+  "m:Property": {
+    "@id": "claim:Claim",
+    "m:Class": {
+      "@id": "claim:ClaimType"
+    },
+    "m:DefinitionText": "An insurance claim resulting from an auto crash.",
+    "m:Name": "Claim"
+  }
+}
