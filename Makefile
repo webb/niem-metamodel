@@ -53,6 +53,7 @@ xsd:
 	${MAKE} tmp/token/generated-xsd
 
 generated/%.png: %.dot
+	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<
 
 tmp.metamodel.sch.xsl: metamodel.sch functions.xsl
@@ -85,12 +86,14 @@ tmp/token/xml/%: %
 	touch $@
 
 docs/niem-metamodel.png: metamodel-tb.dot
+	mkdir -p ${dir $@}
 	dot -Tpng -o$@ $<
 
 # output format: pptx
 # input: markdown_strict
 # doesn't work well:	  --reference-doc=reference.pptx
 docs/NIEM-Metamodel.pptx: slides.md reference.pptx generated/metamodel-core.png
+	mkdir -p ${dir $@}
 	pandoc \
 	  --to=pptx --output=$@ \
 	  --reference-doc=reference.pptx \
