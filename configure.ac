@@ -1,7 +1,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([NIEM Metamodel],[0],[https://github.com/NIEM/NIEM-Metamodel/issues],[niem-metamodel-core],[https://github.com/NIEM/NIEM-Metamodel])
+AC_INIT([NIEM Metamodel],[0],[https://github.com/NIEM/NIEM-Metamodel/issues],[niem-metamodel],[https://github.com/NIEM/NIEM-Metamodel])
+
+AC_SUBST([tmp_dir],[\${abs_top_builddir}/tmp])
+AC_SUBST([generated_dir],[\${abs_top_srcdir}/generated])
 
 # Checks for programs.
 AC_PROG_INSTALL
@@ -22,8 +25,14 @@ AC_DEFUN([check_prog_options],[AC_PATH_PROGS($1,$2)
 
 check_prog(bash)
 check_prog(dot)
-check_prog_options(find,gfind find)
+check_prog(xmllint)
+check_prog_options(xs_validate,xs-validate)
+check_prog_options(schematron_compile,schematron-compile)
+check_prog_options(schematron_execute,schematron-execute)
+
+#AC_PATH_PROG([xmllint],[xmllint],[xmllint])
 
 AC_CONFIG_FILES([docs/Makefile], [chmod 444 docs/Makefile])
+AC_CONFIG_FILES([metamodel-core/Makefile], [chmod 444 metamodel-core/Makefile])
 AC_SUBST([config_files],$ac_config_files)
 AC_OUTPUT
