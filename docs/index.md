@@ -1,5 +1,12 @@
+---
+title: A Metamodel for NIEM
+---
 
-# A Metamodel for NIEM
+{% capture code_root %}{{site.github.repository_url}}/blob/master{% endcapture %}
+
+See git repository at <{{site.github.repository_url}}>. Report issues at <https://github.com/NIEM/NIEM-Metamodel/issues>
+
+# Introduction
 
 The [National Information Exchange Model (NIEM)](https://niem.gov) is a standards-based approach for building interoperable information exchanges, focused on the development and reuse of a set of common data definitions. These data definitions are provided as XML Schema, suitable for use as a basis for building schemas for XML messages for interchange between systems. 
 
@@ -11,24 +18,24 @@ NIEM's current effort is on developing the model to define data defintions for X
 
 ## Expressing a NIEM model with different technologies
 
-![Use of the metamodel to support technologies](generated/metamodel-tools.png "Models can be used many ways, to support many technologies.")
+![Use of the metamodel to support technologies](metamodel-tools.png "Models can be used many ways, to support many technologies.")
 
 # A true metamodel
 
 This repository holds a true *metamodel*, in that the metamodel defines itself. 
 
-- The core of the metamodel is a model for models, represented as the XML file [metamodel.xml](metamodel.xml). 
-- The XSLT transformation [generate-xsd.xsl](generate-xsd.xsl) translates the metamodel XML file into XML Schema [generated/xsd/mm.xsd](generated/xsd/mm.xsd).
+- The core of the metamodel is a model for models, represented as the XML file [metamodel.xml]({{code_root}}/metamodel.xml). 
+- The XSLT transformation [generate-xsd.xsl]({{code_root}}/generate-xsd.xsl) translates the metamodel XML file into XML Schema [generated/xsd/mm.xsd]({{code_root}}/generated/xsd/mm.xsd).
 - The metamodel is valid against the schema generated from itself, and so is defined by iteslf.
 - The translation from the *Model for Models* to the *Schema for Models* is the same translation as the one from *Model for Messages* to the *Schema for Messages*.
 
-![The metamodel is a model that defines models for models](generated/metamodel-workflow.png "The metamodel is a model that defines models for models.")
+![The metamodel is a model that defines models for models](metamodel-workflow.png "The metamodel is a model that defines models for models.")
 
 # The contents of a model
 
 A model consists of a set of data definitions, described [below](#terminology). Each of these relationships are described by the metamodel, and enforced with XML Schema and Schematron rules.
 
-![The contents of a model](generated/metamodel-core.png "The contents of a model")
+![The contents of a model](metamodel-core.png "The contents of a model")
 
 # Terminology:
 
