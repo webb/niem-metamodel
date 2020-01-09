@@ -76,7 +76,7 @@
       <let name="matches" value="root(.)//*[f-model:is-component(.) and f-niem:is-target(.)
                                             and f-model:component-get-qname(.) = $component-qname]"/>
       <assert test="1 = count($matches)"
-              >There can be only one component with a given QName (QName is <value-of select="f:qname-get-clark-name($component-qname)"/>).</assert>
+              >There can be only one component with a given QName (QName is <value-of select="f-xml:qname-get-clark-name($component-qname)"/>).</assert>
     </rule>
   </pattern>
 

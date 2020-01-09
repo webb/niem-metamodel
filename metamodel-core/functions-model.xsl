@@ -11,6 +11,58 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- describe a thing -->
+  <function name="f-model:describe" as="xs:string">
+    <param name="item" as="item()"/>
+    <value-of>
+      <for-each select="$item">
+        <choose>
+          <when test="self::element()">
+            <text>element </text>
+            <value-of select="node-name(.)"/>
+            <for-each select="mm:Name">
+              <value-of> name <value-of select="."/></value-of>
+            </for-each>
+            <variable name="uri" as="xs:anyURI?" select="f-niem:get-uri($item)"/>
+            <if test="exists($uri)"> uri <value-of select="$uri"/></if>
+            <if test="not(f-niem:is-target(.))">
+              <text>&#10;  resolves to: </text>
+              <value-of select="f-model:describe(f-niem:resolve(.))"/>
+            </if>
+          </when>
+          <when test="self::text()">
+            <value-of>text &quot;<value-of select="."/>&quot;</value-of>
+          </when>
+        </choose>
+      </for-each>
+    </value-of>
+  </function>
+
+  <function name="f-model:is-component" as="xs:boolean">
+    <param name="element" as="element()"/>
+    <for-each select="$element">
+      <sequence select="self::mm:ObjectProperty
+                        or self::mm:Class
+                        or self::mm:DataProperty
+                        or self::mm:Datatype"/>
+    </for-each>
+  </function>
+
+  <function name="f-model:component-get-qname" as="xs:QName*">
+    <param name="components" as="element()*"/>
+    <for-each select="$components">
+      <if test="not(f-model:is-component(.))">
+        <message terminate="yes">f-model:component-get-qname() called on non-component (<value-of select="f-model:describe(.)"/>).</message>
+      </if>
+      <for-each select="f-niem:resolve(.)">
+        <variable name="namespace" select="f-niem:resolve(mm:Namespace)"/>
+        <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefixName, ':', mm:Name))"/>
+      </for-each>
+    </for-each>
+  </function>
+
+</stylesheet>
+
 <!--
 
   <function name="f:collect-objects" as="element()*">
@@ -44,34 +96,10 @@
       <sequence select="./parent::element()"/>
     </for-each>
   </function>
-
-  <function name="f:describe" as="xs:string">
-    <param name="item" as="item()"/>
-    <value-of>
-      <for-each select="$item">
-        <choose>
-          <when test="self::element()">
-            <text>element </text>
-            <value-of select="node-name(.)"/>
-            <for-each select="mm:Name">
-              <value-of> name <value-of select="."/></value-of>
-            </for-each>
-            <variable name="uri" as="xs:anyURI?" select="f:get-uri($item)"/>
-            <if test="exists($uri)"> uri <value-of select="$uri"/></if>
-            <if test="not(f:is-target(.))">
-              <text>&#10;  resolves to: </text>
-              <value-of select="f:describe(f:resolve(.))"/>
-            </if>
-          </when>
-          <when test="self::text()">
-            <value-of>text &quot;<value-of select="."/>&quot;</value-of>
-          </when>
-        </choose>
-      </for-each>
-    </value-of>
-  </function>
 -->
 
+
+  
 <!-- yield either 'HasValue, or 'HasObjectProperty', or 'none', or a message for a fail.  -->
 <!--
   <function name="f:class-get-content-style" as="xs:string?">
@@ -102,29 +130,6 @@
     </for-each>
   </function>
 -->
-
-  <function name="f-model:is-component" as="xs:boolean">
-    <param name="element" as="element()"/>
-    <for-each select="$element">
-      <sequence select="self::mm:ObjectProperty
-                        or self::mm:Class
-                        or self::mm:DataProperty
-                        or self::mm:Datatype"/>
-    </for-each>
-  </function>
-
-  <function name="f-model:component-get-qname" as="xs:QName*">
-    <param name="components" as="element()*"/>
-    <for-each select="$components">
-      <if test="not(f:is-component(.))">
-        <message terminate="yes">f-model:component-get-qname() called on non-component (<value-of select="f:describe(.)"/>).</message>
-      </if>
-      <for-each select="f-niem:resolve(.)">
-        <variable name="namespace" select="f:resolve(mm:Namespace)"/>
-        <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefixName, ':', mm:Name))"/>
-      </for-each>
-    </for-each>
-  </function>
 
   <!--
 
@@ -231,5 +236,3 @@
     </for-each>
   </function>
 -->
-
-</stylesheet>
