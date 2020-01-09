@@ -599,8 +599,6 @@ MKDIR_P
 INSTALL_DATA
 INSTALL_SCRIPT
 INSTALL_PROGRAM
-generated_dir
-tmp_dir
 target_alias
 host_alias
 build_alias
@@ -1681,11 +1679,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-tmp_dir=\${abs_top_builddir}/tmp
-
-generated_dir=\${abs_top_srcdir}/generated
-
-
 # Checks for programs.
 ac_aux_dir=
 for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
@@ -2188,6 +2181,8 @@ done
   test "x$schematron_execute" = "x" && as_fn_error $? "schematron_execute not found" "$LINENO" 5
 
 #AC_PATH_PROG([xmllint],[xmllint],[xmllint])
+
+ac_config_files="$ac_config_files Makefile"
 
 ac_config_files="$ac_config_files docs/Makefile"
 
@@ -2903,6 +2898,7 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
 for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
+    "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
     "metamodel-core/Makefile") CONFIG_FILES="$CONFIG_FILES metamodel-core/Makefile" ;;
 
@@ -3331,6 +3327,7 @@ which seems to be undefined.  Please make sure it is defined" >&2;}
 
 
   case $ac_file$ac_mode in
+    "Makefile":F) chmod 444 Makefile ;;
     "docs/Makefile":F) chmod 444 docs/Makefile ;;
     "metamodel-core/Makefile":F) chmod 444 metamodel-core/Makefile ;;
 

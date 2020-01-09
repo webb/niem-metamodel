@@ -6,15 +6,16 @@ this_makefile := ${lastword ${MAKEFILE_LIST}}
 SHELL = @bash@ -o pipefail -o errexit -o nounset
 .SECONDARY:
 
-#
+#############################################################################
 
-abs_top_builddir = @abs_top_builddir@
-abs_top_srcdir = @abs_top_srcdir@
-tmp_dir = @tmp_dir@
-generated_dir = @generated_dir@
+top_builddir = @top_builddir@
 builddir = @builddir@
+
+top_srcdir = @top_srcdir@
 srcdir = @srcdir@
 
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
 xmllint = @xmllint@
 MKDIR_P = @MKDIR_P@
 xs_validate = @xs_validate@
@@ -22,45 +23,55 @@ schematron_execute = @schematron_execute@
 schematron_compile = @schematron_compile@
 
 this_module = metamodel-core
-this_tmp_dir = ${tmp_dir}/${this_module}
-this_tokens_dir = ${this_tmp_dir}/tokens
+tokens_dir = ${builddir}/tokens
+reports_dir = ${builddir}/reports
 
-all_files = \
-  ${this_tokens_dir}/valid-xml/metamodel.xml \
-  ${this_tokens_dir}/valid-xsd/metamodel.xml \
-  ${this_tokens_dir}/valid-sch/metamodel.xml \
+valid_files = \
+  ${tokens_dir}/valid-xml/metamodel.xml \
+  ${tokens_dir}/valid-xsd/metamodel.xml \
+  ${tokens_dir}/valid-sch/metamodel.xml \
 
 .DEFAULT_GOAL = all
 
 .PHONY: all #   Build everything
 all: ${all_files}
 
+.PHONY: valid #   Validate what you can
+valid: ${valid_files}
+
 # xml via xmllint check
-${this_tokens_dir}/valid-xml/%: %
-	${xmllint} --noout $<
+${tokens_dir}/valid-xml/%: ${srcdir}/%
+	${MKDIR_P} ${dir ${reports_dir}/valid-xml/$*}
+	${xmllint} --noout $< 2>&1 | tee ${reports_dir}/valid-xml/$*
 	${MKDIR_P} ${dir $@}
 	touch $@
 
 # XSD validation
-${this_tokens_dir}/valid-xsd/%: %
-	${xs_validate} -c ${srcdir}/xsd/xml-catalog.xml $<
+${tokens_dir}/valid-xsd/%: ${srcdir}/%
+	${MKDIR_P} ${dir ${reports_dir}/valid-xsd/$*}
+	${xs_validate} -c ${srcdir}/xsd/xml-catalog.xml $< 2>&1 | tee ${reports_dir}/valid-xsd/$*
 	${MKDIR_P} ${dir $@}
 	touch $@
 
 # Schematron validation
-${this_tokens_dir}/valid-sch/%: % ${srcdir}/tmp.metamodel.sch.xsl ${srcdir}/functions.xsl
-	${schematron_execute} --xslt-file=${srcdir}/tmp.metamodel.sch.xsl $<
+${tokens_dir}/valid-sch/%: ${srcdir}/% ${builddir}/metamodel.sch.xsl ${builddir}/functions.xsl
+	${MKDIR_P} ${dir ${reports_dir}/valid-xsd/$*}
+	${schematron_execute} --xslt-file=${builddir}/metamodel.sch.xsl $< 2>&1 | tee ${reports_dir}/valid-xsd/$*
 	${MKDIR_P} ${dir $@}
 	touch $@
 
-${srcdir}/tmp.metamodel.sch.xsl: ${srcdir}/metamodel.sch ${srcdir}/functions.xsl
-	${schematron_compile} --output-file=$@ $<
+${builddir}/metamodel.sch.xsl: ${srcdir}/metamodel.sch
+	${MKDIR_P} ${dir $@}
+	${MKDIR_P} ${dir ${reports_dir}/$*}
+	${schematron_compile} --output-file=$@ $< 2>&1 | tee ${reports_dir}/metamodel.sch.xsl
 
+${builddir}/functions.xsl: ${srcdir}/functions.xsl
+	${INSTALL_DATA} $< $@
 
 .PHONY: clean
 clean:
-	${RM} -rf ${this_tmp_dir}
-	${RM} ${builddir}/tmp.metamodel.sch.xsl
+	${RM} -rf ${builddir}/reports ${builddir}/tokens
+	${RM} ${builddir}/metamodel.sch.xsl ${builddir}/functions.xsl
 
 .PHONY: help #   Print this help
 help:

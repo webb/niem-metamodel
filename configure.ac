@@ -3,9 +3,6 @@
 AC_PREREQ([2.69])
 AC_INIT([NIEM Metamodel],[0],[https://github.com/NIEM/NIEM-Metamodel/issues],[niem-metamodel],[https://github.com/NIEM/NIEM-Metamodel])
 
-AC_SUBST([tmp_dir],[\${abs_top_builddir}/tmp])
-AC_SUBST([generated_dir],[\${abs_top_srcdir}/generated])
-
 # Checks for programs.
 AC_PROG_INSTALL
 AC_PROG_MKDIR_P
@@ -32,6 +29,7 @@ check_prog_options(schematron_execute,schematron-execute)
 
 #AC_PATH_PROG([xmllint],[xmllint],[xmllint])
 
+AC_CONFIG_FILES([Makefile], [chmod 444 Makefile])
 AC_CONFIG_FILES([docs/Makefile], [chmod 444 docs/Makefile])
 AC_CONFIG_FILES([metamodel-core/Makefile], [chmod 444 metamodel-core/Makefile])
 AC_SUBST([config_files],$ac_config_files)
