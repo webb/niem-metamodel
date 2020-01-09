@@ -1,3 +1,21 @@
+#############################################################################
+# Don't touch these...
+#############################################################################
+
+this_makefile := ${lastword ${MAKEFILE_LIST}}
+SHELL = @bash@ -o pipefail -o errexit -o nounset
+.SECONDARY:
+
+#
+
+abs_top_builddir = @abs_top_builddir@
+abs_top_srcdir = @abs_top_srcdir@
+tmp_dir = @tmp_dir@
+generated_dir = @generated_dir@
+builddir = @builddir@
+srcdir = @srcdir@
+
+
 
 png_target_files = ${patsubst %.dot,generated/%.png,${wildcard *.dot}}
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stylesheet 
   version="2.0"
-  xmlns:f="http://example.org/functions"
+  xmlns:f-xml="http://niem.github.io/NIEM-Metamodel/xsl-functions/xml"
+  xmlns:f-niem="http://niem.github.io/NIEM-Metamodel/xsl-functions/niem"
+  xmlns:f-model="http://niem.github.io/NIEM-Metamodel/xsl-functions/model"
   xmlns:mm="http://reference.niem.gov/specification/metamodel/5.0alpha1"
   xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
   xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -9,20 +11,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/XSL/Transform">
 
-  <function name="f:get-uri" as="xs:anyURI?">
-    <param name="context" as="element()"/>
-    <choose>
-      <when test="exists($context/@structures:id)">
-        <value-of select="resolve-uri(concat('#', $context/@structures:id), f:get-base-uri($context))"/>
-      </when>
-      <when test="exists($context/@structures:ref)">
-        <value-of select="resolve-uri(concat('#', $context/@structures:ref), f:get-base-uri($context))"/>
-      </when>
-      <when test="exists($context/@structures:uri)">
-        <value-of select="resolve-uri($context/@structures:uri, f:get-base-uri($context))"/>
-      </when>
-    </choose>
-  </function>
+<!--
 
   <function name="f:collect-objects" as="element()*">
     <param name="context" as="element()"/>
@@ -81,8 +70,10 @@
       </for-each>
     </value-of>
   </function>
+-->
 
-  <!-- yield either 'HasValue, or 'HasObjectProperty', or 'none', or a message for a fail.  -->
+<!-- yield either 'HasValue, or 'HasObjectProperty', or 'none', or a message for a fail.  -->
+<!--
   <function name="f:class-get-content-style" as="xs:string?">
     <param name="context" as="element(mm:Class)"/>
     <for-each select="f:resolve($context)">
@@ -110,8 +101,9 @@
       </choose>
     </for-each>
   </function>
+-->
 
-  <function name="f:is-component" as="xs:boolean">
+  <function name="f-model:is-component" as="xs:boolean">
     <param name="element" as="element()"/>
     <for-each select="$element">
       <sequence select="self::mm:ObjectProperty
@@ -121,18 +113,20 @@
     </for-each>
   </function>
 
-  <function name="f:component-get-qname" as="xs:QName*">
+  <function name="f-model:component-get-qname" as="xs:QName*">
     <param name="components" as="element()*"/>
     <for-each select="$components">
       <if test="not(f:is-component(.))">
-        <message terminate="yes">f:component-get-qname() called on non-component (<value-of select="f:describe(.)"/>).</message>
+        <message terminate="yes">f-model:component-get-qname() called on non-component (<value-of select="f:describe(.)"/>).</message>
       </if>
-      <for-each select="f:resolve(.)">
+      <for-each select="f-niem:resolve(.)">
         <variable name="namespace" select="f:resolve(mm:Namespace)"/>
         <sequence select="QName($namespace/mm:NamespaceURI, concat($namespace/mm:NamespacePrefixName, ':', mm:Name))"/>
       </for-each>
     </for-each>
   </function>
+
+  <!--
 
   <function name="f:namespace-get-qname" as="xs:QName*">
     <param name="namespace" as="element(mm:Namespace)"/>
@@ -236,23 +230,6 @@
       </for-each>
     </for-each>
   </function>
-
-  <function name="f:resolve" as="element()?">
-    <param name="context" as="element()?"/>
-    <choose>
-      <when test="empty($context)"/>
-      <when test="$context/@structures:ref">
-        <sequence select="root($context)//*[@structures:id = $context/@structures:ref]"/>
-      </when>
-      <otherwise>
-        <sequence select="$context"/>
-      </otherwise>
-    </choose>
-  </function>
-
-  <function name="f:is-target" as="xs:boolean">
-    <param name="context" as="element()"/>
-    <sequence select="empty($context/@structures:ref)"/>
-  </function>
+-->
 
 </stylesheet>
