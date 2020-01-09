@@ -14,6 +14,7 @@ builddir = @builddir@
 top_srcdir = @top_srcdir@
 srcdir = @srcdir@
 
+SED = @SED@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 xmllint = @xmllint@
