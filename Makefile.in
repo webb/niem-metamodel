@@ -14,6 +14,7 @@ srcdir = @srcdir@
 
 saxon = @saxon@
 SED = @SED@
+MKDIR_P = @MKDIR_P@
 
 #############################################################################
 
@@ -33,12 +34,15 @@ clean:
 #############################################################################
 
 .PHONY: xsd #   Build XSDs from the metamodel
-xsd: ${srcdir}/metamodel-core/metamodel.xml
+update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 	${saxon} \
 	  -i ${srcdir}/metamodel-core/metamodel.xml \
 	  -x ${srcdir}/model-to-xsd/generate-xsd.xsl \
 	  -o ${builddir}/model-to-xsd/report/generate-xsd/metamodel-core/metamodel.xml \
 	  -- target-dir=${abs_builddir}/xsd
+	${RM} -r ${srcdir}/metamodel-core/xsd/metamodel
+	${MKDIR_P} ${srcdir}/metamodel-core/xsd/metamodel
+	tar -C ${builddir}/xsd -c . | tar -C ${srcdir}/metamodel-core/xsd/metamodel -xv
 
 #############################################################################
 
