@@ -29,6 +29,7 @@ valid:
 
 .PHONY: clean #   Remove build products
 clean:
+	${RM} -r xsd
 	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} clean
 
 #############################################################################
