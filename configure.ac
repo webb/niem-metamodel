@@ -27,6 +27,9 @@ check_prog_options(xs_validate,xs-validate)
 check_prog_options(schematron_compile,schematron-compile)
 check_prog_options(schematron_execute,schematron-execute)
 
+AC_PATH_PROG(saxon,saxon)
+test "x$saxon" = "x" && AC_MSG_ERROR([saxon not found])
+
 #AC_PATH_PROG([xmllint],[xmllint],[xmllint])
 
 AC_CONFIG_FILES([Makefile], [chmod 444 Makefile])

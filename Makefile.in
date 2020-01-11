@@ -9,7 +9,10 @@ SHELL = @bash@ -o pipefail -o errexit -o nounset
 #############################################################################
 
 builddir = @builddir@
+abs_builddir = @abs_builddir@
+srcdir = @srcdir@
 
+saxon = @saxon@
 SED = @SED@
 
 #############################################################################
@@ -26,6 +29,18 @@ valid:
 .PHONY: clean #   Remove build products
 clean:
 	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} clean
+
+#############################################################################
+
+.PHONY: xsd #   Build XSDs from the metamodel
+xsd: ${srcdir}/metamodel-core/metamodel.xml
+	${saxon} \
+	  -i ${srcdir}/metamodel-core/metamodel.xml \
+	  -x ${srcdir}/model-to-xsd/generate-xsd.xsl \
+	  -o ${builddir}/model-to-xsd/report/generate-xsd/metamodel-core/metamodel.xml \
+	  -- target-dir=${abs_builddir}/xsd
+
+#############################################################################
 
 .PHONY: help #   Print this help
 help:
