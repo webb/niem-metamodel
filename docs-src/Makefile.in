@@ -10,15 +10,32 @@ SHELL = @bash@ -o pipefail -o errexit -o nounset
 # things to set / override
 #############################################################################
 
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+builddir = @builddir@
+
+m4 = @m4@
 MKDIR_P = @MKDIR_P@
 INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
 
 dot = @dot@
 
-all_files = \
+common_files = \
   metamodel-tools.png \
   metamodel-workflow.png \
   metamodel-core.png \
+
+all_files = \
+  root-readme.md \
+  docs-index.md \
+  ${common_files:%=${builddir}/%} \
+
+install_files = \
+  ${top_srcdir}/README.md \
+  ${top_srcdir}/docs/index.md \
+  ${common_files:%=${top_srcdir}/docs/%} \
+
 
 #############################################################################
 #HELP:Default target is "all". Targets include:
@@ -27,36 +44,38 @@ all_files = \
 .PHONY: all #   Build everything
 all: ${all_files}
 
-%.png: %.dot
-	${MKDIR_P} ${dir $@}
-	${dot} -Tpng -o$@ $<
-
 .PHONY: clean #   Clean build products
 clean:
 	${RM} ${all_files}
-	${RM} -r ${builddir}/build
 
-.PHONY: distclean #   Clean build & configure products
-distclean: clean
-	${RM} ${config_files} config.log config.status
+.PHONY: install #   Install built docs files into the docs directory
+install: ${install_files}
 
-#############################################################################
-# all
-
-${builddir}/build/%: ${srcdir}/src/%
-	${MKDIR_P} ${dir $@}
-	${INSTALL_DATA} -- $< $@
+.PHONY: uninstall #   Remove built docs files from the docs directory
+uninstall::
+	${RM} ${install_files}
 
 #############################################################################
 # install
 
-${prefix}/bin/%: ${builddir}/build/bin/%
-	@ ${MKDIR_P} -- ${dir $@}
-	${INSTALL_PROGRAM_READONLY} -- $< $@
+${top_srcdir}/docs/%.png: ${builddir}/%.png
+	${INSTALL_DATA} $< $@
 
-${prefix}/%: ${builddir}/build/%
-	@ ${MKDIR_P} -- ${dir $@}
-	${INSTALL_DATA_READONLY} -- $< $@
+${top_srcdir}/docs/index.md: ${builddir}/docs-index.md
+	${INSTALL_DATA} $< $@
+
+${top_srcdir}/README.md: ${builddir}/root-readme.md
+	${INSTALL_DATA} $< $@
+
+#############################################################################
+# all
+
+${builddir}/%.png: ${srcdir}/%.dot
+	${MKDIR_P} ${dir $@}
+	${dot} -Tpng -o$@ $<
+
+${builddir}/%.md: ${srcdir}/%.md.m4
+	${m4} -P --include=${srcdir} $< > $@
 
 #############################################################################
 # make help: this must be the last target

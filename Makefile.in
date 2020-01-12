@@ -47,6 +47,14 @@ update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 
 #############################################################################
 
+.PHONY: xsd #   Build XSDs from the metamodel
+update-docs:
+	${MAKE} -C docs-src
+	${MAKE} -C docs-src uninstall
+	${MAKE} -C docs-src install
+
+#############################################################################
+
 .PHONY: help #   Print this help
 help:
 	@ ${SED} -e '/^\.PHONY:/s/^\.PHONY: *\([^ #]*\) *\#\( *\)\([^ ].*\)/\2\1: \3/p;/^[^#]*#HELP:/s/[^#]*#HELP:\(.*\)/\1/p;d' ${this_makefile}
