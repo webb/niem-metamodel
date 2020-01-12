@@ -47,7 +47,7 @@ update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 
 #############################################################################
 
-.PHONY: xsd #   Build XSDs from the metamodel
+.PHONY: update-docs #   Build documentation from the metamodel
 update-docs:
 	${MAKE} -C docs-src
 	${MAKE} -C docs-src uninstall
