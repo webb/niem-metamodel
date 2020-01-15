@@ -1681,6 +1681,10 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+if test "x$prefix" = "xNONE"
+then as_fn_error $? "prefix must be set on command line; use \"$as_myself prefix=\$dir\"" "$LINENO" 5
+fi
+
 # Checks for programs.
 ac_aux_dir=
 for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do

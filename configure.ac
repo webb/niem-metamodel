@@ -3,6 +3,10 @@
 AC_PREREQ([2.69])
 AC_INIT([NIEM Metamodel],[0],[https://github.com/NIEM/NIEM-Metamodel/issues],[niem-metamodel],[https://github.com/NIEM/NIEM-Metamodel])
 
+if test "x$prefix" = "xNONE"
+then AC_MSG_ERROR([prefix must be set on command line; use "$as_myself prefix=\$dir"])
+fi
+
 # Checks for programs.
 AC_PROG_INSTALL
 AC_PROG_MKDIR_P
